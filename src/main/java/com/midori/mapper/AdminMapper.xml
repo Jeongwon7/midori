@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.midori.mapper.AdminMapper">
+	<!-- 리뷰 -->
+	<select id="reviewSelectOne" resultType="com.midori.domain.ReviewVO">
+		select * from review where rbno = #{rbno}
+	</select>
+	
+	<update id="reviewModify">
+		update review set title = #{title}, content = #{content}, star = #{star} where rbno = #{rbno}
+	</update>
+	
+	<delete id="reviewDelete">
+		delete from review where rbno=#{rbno}
+	</delete>
+	
+	<select id="reviewList" resultType="com.midori.domain.ReviewVO">
+		select * from review order by rbno desc
+	</select>
+	
+	<!-- 상품문의 -->
+	<select id="qnaList" resultType="com.midori.domain.QnaVO">
+		select * from qna_view
+	</select>
+	<select id="getQnaOne" resultType="com.midori.domain.QnaVO">
+		select * from qna_view where qbno=#{qbno}
+	</select>
+	<update id="QuestionModify">
+		update question set qtitle=#{qtitle}, qwriter=#{qwriter} , qcontent=#{qcontent}, category=#{category} where qbno = #{qbno} 
+	</update>
+	<delete id="QuestionDelete">
+		delete from question where qbno=#{qbno}
+	</delete>
+	<insert id="AnswerInsert">
+		<selectKey keyProperty="abno" order="BEFORE" resultType="int">
+			select answer_seq.nextval from dual
+		</selectKey>
+			insert into answer(abno, qbno, atitle, acontent, awriter, ref)
+			values(#{abno}, #{qbno}, #{atitle}, #{acontent}, #{awriter}, #{ref})
+	</insert>
+	<update id="updateStatus">
+		update question set status=2 where qbno=#{qbno}
+	</update>
+	<select id="getAnswer" resultType="com.midori.domain.QnaVO">
+		select * from answer where abno = #{abno}
+	</select>
+	<update id="AnswerModify">
+		update answer set atitle=#{atitle}, acontent=#{acontent}, awriter=#{awriter} where abno = #{abno}
+	</update>
+	<delete id="AnswerDelete">
+		delete from answer where abno=#{abno}
+	</delete>
+	<update id="updateStatusDelete">
+		update question set status=1 where qbno=#{qbno}
+	</update>
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.midori.mapper.QnaMapper">
+	<select id="getRef" resultType="int">
+		SELECT MAX(ref) as max FROM question
+	</select>
+	<insert id="questionInsert">
+		<selectKey keyProperty="qbno" order="BEFORE" resultType="int">
+			select question_seq.nextval from dual
+		</selectKey>
+			insert into question(qbno, qtitle, qcontent, qwriter, category, pseq, ref, secret) 
+			values(#{qbno}, #{qtitle}, #{qcontent}, #{qwriter}, #{category}, #{pseq}, #{ref}, #{secret})
+	</insert>
+	
+	<select id="getQuestion" resultType="com.midori.domain.QnaVO">
+		select * from question where qbno = #{qbno}
+	</select>
+	<update id="questionModify">
+		update question set qtitle=#{qtitle}, qcontent=#{qcontent}, category=#{category}, secret=#{secret} where qbno = #{qbno}
+	</update>
+	<delete id="questionDelete">
+		delete from question where qbno=#{qbno}
+	</delete>
+</mapper>

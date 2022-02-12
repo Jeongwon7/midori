@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.midori.mapper.Tbl_memberMapper">
+
+ 	<resultMap type="com.midori.domain.MemberVO" id ="tbl_memberMap">
+		<id property="id" column="id" /><!-- property:vo 이름, column:테이블의 컬럼 이름 -->
+		<result property="id" column="id" />
+		<result property="pwd" column="pwd" />
+		<result property="name" column="name" />
+		<result property="email" column="email" />
+		<result property="zip_num" column="zip_num" />
+		<result property="address1" column="address1" />
+		<result property="address2" column="address2" />
+		<result property="phone" column="phone" />
+		<result property="indate" column="indate" />
+		<collection property="authList" resultMap="authMap"></collection>
+ 	</resultMap>
+ 	
+ 	<resultMap type="com.midori.domain.Member_authVO" id="authMap">
+ 		<result property="id" column="id"/>
+ 		<result property="auth" column="auth"/>
+ 	</resultMap>
+ 	
+ 	<select id="read" resultMap="tbl_memberMap">
+ 		SELECT mem.id, pwd, name, email, zip_num, address1, address2, phone, indate, auth
+		FROM member mem LEFT OUTER JOIN member_auth auth on mem.id = auth.id
+		WHERE mem.id = #{id}
+ 	</select>
+ 	
+ 	
+</mapper>

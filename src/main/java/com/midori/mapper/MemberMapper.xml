@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.midori.mapper.MemberMapper">
+	<select id="idCheck" parameterType="String" resultType="int">
+		select count(id) from member where id = #{id}
+	</select>
+	<insert id="insert">
+		insert into member 
+		(id,pwd,name,email,zip_num,address1,address2,phone) 
+		values 
+		(#{id},#{pwd},#{name},#{email},#{zip_num},#{address1},#{address2},#{phone})
+	</insert>
+	<insert id="inset_auth">
+		insert into member_auth 
+		(id,auth) 
+		values 
+		(#{id},'ROLE_USER')
+	</insert>
+</mapper>
