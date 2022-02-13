@@ -76,10 +76,9 @@ public class ReviewController {//컨트롤러 테스트 다 하고 테이블 제
 	//유저: 리뷰 삭제
 	@ResponseBody
 	@GetMapping("/reviewdelete.do")
-	public String reviewDelete(@RequestParam("rbno") int rbno) {
+	public void reviewDelete(@RequestParam("rbno") int rbno) {
 		System.out.println("rbno: "+rbno);
 		service.reviewDelete(rbno);
-		return "삭제되었습니다";
 	}
 	
 

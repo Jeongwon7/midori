@@ -33,8 +33,8 @@ function review_deletePro(rbno, pseq, logId){
              url: "/review/reviewdelete.do",
              type: "get",
              data:sendData,
-             success:function(result){
-                 alert(result);
+             success:function(){
+                 alert("삭제되었습니다");
 				 getReview(pseq, logId);
              },
              error:function(error){
@@ -54,7 +54,7 @@ function getReview(pseq, logId){
 		data: {"pseq":pseq},
 		dataType:"json",
 		success:function(result){
-			alert("성공");
+			//alert("성공");
 			var num = result.length;
 			if(result.length == 0){
 			 	output += '<tr><td colspan="5">리뷰가 없습니다</td></tr>';
@@ -85,7 +85,7 @@ function getReview(pseq, logId){
 						output += '</div>';
 						output += '</td>';
 						output += '<td>'+result[i].writer+'</td>';
-						output += '<td>'+result[i].regdate+'</td>';
+						output += '<td>'+result[i].regdate.substring(0,10)+'</td>';
 						output += '</tr>';
 						output += '<tr class="hide">';
 						output += '<td colspan="5">';
@@ -106,11 +106,11 @@ function getReview(pseq, logId){
 						output += '</td>';
 						output += '</tr>'
 						output += '</div>';
-						output += '<c:set var="num" value="${num+1}"/>';
+						num = num -1;
 				}
 					$(".review_box").html(output);
 			}//else
-			num = num -1;
+			
 		},error:function(error){
 			alert("통신에러");
 		}

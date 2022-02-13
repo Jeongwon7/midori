@@ -259,7 +259,7 @@
 																<c:set var="num" value="${num-1}" />
 																</c:when>
 																<c:otherwise>
-																	<tr>
+																	<tr class="lock">
 																	<td>${num}</td>
 																	<c:choose>
 																		<c:when test="${list.category == 1}">
@@ -458,6 +458,11 @@
 
             }  
 
+        });
+        
+        $(document).on('click', '.lock td', function() { 
+        	alert("비밀글은 작성자만 읽을 수 있습니다");
+        	
         });
         
         
