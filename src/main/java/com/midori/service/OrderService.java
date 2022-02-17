@@ -15,7 +15,7 @@ public interface OrderService {
 	//oseq 최대값 
 	public int getMaxOseq();
 	//order_detail 테이블 insert(odseq, oseq, pseq, quantity)
-	public void orderDetailInsert(CartVO cvo, int oseq);
+	public void orderDInsert(CartVO cvo);
 	//id로 member 테이블 select
 	public MemberVO memberSelect(String id);
 	//카트리스트

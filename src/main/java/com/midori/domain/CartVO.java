@@ -15,4 +15,5 @@ public class CartVO {
 	private String indate;
 	private String image;
 	
+	private int oseq;
 }

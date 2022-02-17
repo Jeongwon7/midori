@@ -63,7 +63,7 @@
 						    비밀글 설정
 						  </label>
 						  <input class="form-check-input" type="checkbox" name="secret" id="secret" value="${qvo.secret}">
-						  <p>체크하지 않을 경우 기존 설정이 유지됩니다</p>
+						  <p>체크하지 않을 경우 공개글로 저장됩니다</p>
 					  </div>
 					    <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10">

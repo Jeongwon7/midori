@@ -1,6 +1,11 @@
-$(function(){
+function orderInfoOpen(){
+	document.formm.action = "/order/orderinfoOne.do";
+	document.formm.submit();
+}
 
-//헤더에 <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
+
+$(function(){
 
         $("#check_module").click(function () {
         	var IMP = window.IMP; // 생략가능
@@ -37,15 +42,15 @@ $(function(){
         	나중에 포스팅 해볼게요.
         	*/
         	//정보 수정 해야함!!
-        	name: "닭가슴살",
+        	name: "${cartlist[0].pname}"+" 외"+"${cartlist.size()-1}"+"건",
         	//결제창에서 보여질 이름
-        	amount: "200000000",
+        	amount: "${totalPrice}",
         	//가격
-        	buyer_email: 'baozi@naver.com',
-        	buyer_name: '권정원',
-        	buyer_tel: '010-5518-5831',
-        	buyer_addr: '용두동',
-        	buyer_postcode: '35195',
+        	buyer_email: '${mvo.email}',
+        	buyer_name: '${mvo.name}',
+        	buyer_tel: '${mvo.phone}',
+        	buyer_addr: '${mvo.address1}'+'${mvo.address2}',
+        	buyer_postcode: '${mvo.zip_num}',
         	m_redirect_url: '/'
         	/*
         	모바일 결제시,
@@ -61,7 +66,7 @@ $(function(){
         	msg += '결제 금액 : ' + rsp.paid_amount;
         	msg += '카드 승인번호 : ' + rsp.apply_num;
         	
-        	//여기 해당되는 함수 넣기(카트에서 결제, 뷰페이지에서 바로 결제)
+        	orderInsert();
         	
         	} else {
         	var msg = '결제에 실패하였습니다.';
@@ -70,4 +75,9 @@ $(function(){
         	alert(msg);
         	});
         	});
-});  
+}); 
+
+//function orderInfoCartOpen(){
+//	document.formm.action = "/order/orderinfoCart.do";
+//	document.formm.submit();
+//}

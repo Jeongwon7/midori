@@ -29,17 +29,19 @@ public class OrderServiceImpl implements OrderService {
 		mapper.orderInsert(ovo);
 
 	}
+	
+	@Override
+	public void orderDInsert(CartVO cvo) {
+		mapper.orderDetailInsert(cvo);
+		
+	}
 
 	@Override
 	public int getMaxOseq() {
 		return mapper.getMaxOseq();
 	}
 
-	@Override
-	public void orderDetailInsert(CartVO cvo, int oseq) {
-		mapper.orderDetailInsert(cvo, oseq);
 
-	}
 
 	@Override
 	public MemberVO memberSelect(String id) {

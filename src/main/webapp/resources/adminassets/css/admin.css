@@ -1,0 +1,57 @@
+@charset "EUC-KR";
+
+.admin_strong{
+	font-weight: 700;
+	padding-left:30px;
+	padding-top:30px;
+}
+.category{
+	margin: 0 0 50px;
+    line-height: 28px;
+    vertical-align: top;
+}
+.navi {
+	position:relative;
+}
+.sub-category{
+	position: absolute;
+    top: 0;
+    left: 140px;
+    width: 100px;
+    background: rgba(30,30,30,0.9);
+    display:none;
+}
+.sub-category ul {
+    padding: 10px;
+    line-height: 18px;
+}
+.sub-category a{
+	display: block;
+    padding: 1px 0;
+    font-size: 11px;
+    text-decoration: none;
+    font-weight: 500;
+    color: #fff;
+}
+.navi > ul > li{
+   position: relative;
+    z-index: 10;
+    width: 100px;
+    padding: 10px 0;
+}
+.navi > ul > li > a{
+	display: flex;
+    align-items: center;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    position: relative;
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+}
+
+/*-- 어드민 로그인 --*/
+
+.admin_login{
+     width:1214px;
+     
+}

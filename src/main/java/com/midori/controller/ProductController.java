@@ -43,12 +43,12 @@ public class ProductController {
 	//상품뷰페이지 리뷰 ,qna 출력
 	@GetMapping("/productview")
 	public void productView(@RequestParam("pseq") int pseq, Model model) {
-		System.out.println("pseq: "+pseq);
+		//System.out.println("pseq: "+pseq);
 		List<ReviewVO> reviewList = service.reviewRead(pseq);
 		List<QnaVO> qnaList = service.QnaListByProduct(pseq);
 		
-		System.out.println("reviewList: "+reviewList);
-		System.out.println("qnaList: "+qnaList);
+		//System.out.println("reviewList: "+reviewList);
+		//System.out.println("qnaList: "+qnaList);
 		
 		model.addAttribute("rlist", reviewList);
 		model.addAttribute("qnalist",qnaList);

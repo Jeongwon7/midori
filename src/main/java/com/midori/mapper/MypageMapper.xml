@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.midori.mapper.MypageMapper">
+	<select id="orderDetailList" resultType="com.midori.domain.OrderVO">
+		select * from order_view where oseq=#{oseq}
+	</select>
+	<update id="orderConfirm">
+		update orders set status=4 where oseq=#{oseq}
+	</update>
+</mapper>

@@ -47,6 +47,8 @@
 	<script src="/resources/assets/js/jquery-1.11.3.min.js"></script>
 	<!-- 다음 주소 api -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<!-- 아임포트 결제 -->
+	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 	<!-- popper -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<!-- bootstrap -->

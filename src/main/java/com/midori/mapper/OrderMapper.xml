@@ -18,11 +18,9 @@
 	</select>
 	
 	<insert id="orderDetailInsert">
-		<selectKey keyProperty="odseq" order="BEFORE" resultType="int">
-			select order_detail_seq.nextval from dual
-		</selectKey>
-			insert into order_detail(odseq, oseq, pseq, quantity) 
-			values(#{odseq}, #{oseq}, #{pseq}, #{quantity})
+
+			insert into order_detail (odseq, oseq, pseq, quantity) 
+			values (order_detail_seq.nextval, #{oseq}, #{pseq}, #{quantity})
 	</insert>
 	
 	<select id="memberSelect" resultType="com.midori.domain.MemberVO">
