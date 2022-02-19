@@ -16,16 +16,23 @@ pageEncoding="UTF-8"%>
 	<link rel="stylesheet" href="/resources/adminassets/css/styles.css">
 	
 	<link rel="stylesheet" href="/resources/adminassets/css/admin.css">
+	<link rel="stylesheet" href="/resources/assets/css/mycss.css">
+	<!-- summernote -->
+	<link rel="stylesheet" href="/resources/assets/css/summernote.min.css">
 	<!-- google font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
 
     <!-- jquery -->
 	<script src="/resources/adminassets/js/jquery-1.11.3.min.js"></script>
-	
+	<!-- popper -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+	<!-- daum address api -->
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<!-- bootstrap -->
 	<script src="/resources/adminassets/bootstrap/js/bootstrap.min.js"></script>
+	<!-- summernote -->
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 	<!-- count down -->
 	<script src="/resources/adminassets/js/jquery/jquery.countdown.js"></script>
 	<!-- count down -->
@@ -47,8 +54,9 @@ pageEncoding="UTF-8"%>
 	<script src="/resources/adminassets/js/main.js"></script>
 	<!-- google chart js -->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	<script src="/resources/adminassets/js/member.js"></script>
-	<script src="/resources/adminassets/js/my.js"></script>
+	<script src="../resources/assets/js/member.js"></script>
+	<script src="../resources/assets/js/my.js"></script>
+	<script src="../resources/assets/js/qna.js"></script>
 	 
 </head>
     

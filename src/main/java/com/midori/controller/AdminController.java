@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.midori.domain.Criteria;
 import com.midori.domain.OrderVO;
+import com.midori.domain.PageVO;
 import com.midori.domain.QnaVO;
 import com.midori.domain.ReviewVO;
 import com.midori.service.AdminService;
@@ -91,9 +93,11 @@ public class AdminController {
 	//리뷰 리스트
 	//jsp: review.jsp
 	@GetMapping("/review.do")
-	public void reviewList(Model model) {
-		List<ReviewVO> reviewList = service.reviewList();
-		model.addAttribute("reviewList", reviewList);
+	public void reviewList(Model model, Criteria cri) {		
+		model.addAttribute("rlist", service.GetReviewListPaging(cri));
+		int total = service.getTotalReview(cri);
+		model.addAttribute("pageMaker", new PageVO(cri, total));
+		
 	}
 	//리뷰 상세페이지
 	//jsp:reviewView.jsp
@@ -132,14 +136,38 @@ public class AdminController {
 	//상품문의
 	//전체  qna 출력 -게시판 형식
 	@GetMapping("/qna.do")
-	public void qnaList(Model model) {
-		List<QnaVO> qnaList = service.qnaList();
+	public void qnaList(Model model, Criteria cri) {
+		List<QnaVO> qnaList = service.GetQnaListPaging(cri);
+		
+		int total = service.GetTotalQuestion(cri);
+		
 		model.addAttribute("qnaList", qnaList);
+		model.addAttribute("pageMaker", new PageVO(cri, total));
+		
 	}
 	//상세 qna뷰
 	@GetMapping("/qnaview.do")
 	public void QnaView(@RequestParam("qbno") int qbno, Model model) {
 		QnaVO qvo = service.getQnaOne(qbno);
+		
+		String kind = qvo.getKind();
+		
+		if(kind.equals("1")) {
+			qvo.setKind("샐러드");
+		}else if(kind.equals("2")) {
+			qvo.setKind("닭가슴살");
+		}else if(kind.equals("3")) {
+			qvo.setKind("다이어트도시락");
+		}else if(kind.equals("4")) {
+			qvo.setKind("샌드위치");
+		}else if(kind.equals("5")) {
+			qvo.setKind("프로틴");
+		}else if(kind.equals("6")) {
+			qvo.setKind("저칼로리간식");
+		}else {
+			qvo.setKind("무설탕음료");
+		}
+		//System.out.println("qvo: "+qvo);
 		model.addAttribute("qvo", qvo);
 	}
 	//question 수정 폼
@@ -162,9 +190,8 @@ public class AdminController {
 	}
 	//answer 등록 폼(상세 qna 뷰에서 답글등록 버튼 눌렀을 때 컨트롤러)
 	@GetMapping("/answerwrite.do")
-	public void answerWriteForm(@RequestParam("qbno") int qbno, @RequestParam("pseq") int pseq, @RequestParam("ref") int ref, Model model) {
+	public void answerWriteForm(@RequestParam("qbno") int qbno, @RequestParam("ref") int ref, Model model) {
 		model.addAttribute("qbno", qbno);
-		model.addAttribute("pseq", pseq);
 		model.addAttribute("ref", ref);
 		
 	}
@@ -253,12 +280,16 @@ public class AdminController {
 	public void StatisticsPage(Model model) {
 		//전체기간 판매량 도넛 그래프(상위 10위)
 		List<OrderVO> AllSales = service.allSales();
+		
+		
 		model.addAttribute("AllSales", AllSales);
 		//오늘 판매량 TOP5 (번호, 카테고리, 상품명, 판매량)
 		List<OrderVO> todayBest = service.todayBest();
 		model.addAttribute("todayBest", todayBest);
 		//3일간 수익 비교 막대그래프
 		List<OrderVO> today = service.TodaySales();
+		
+		
 		int totalToday1 = 0;
 		int totalToday2 = 0;
 		int totalToday3 = 0;
@@ -283,7 +314,6 @@ public class AdminController {
 			totalAdayAgo3 += ovo.getPrice3();
 		}
 		
-		
 //		String yesterday = aDayAgo.get(0).getIndate().substring(0, 10);
 //		model.addAttribute("yesterday", yesterday);
 		model.addAttribute("totalAdayAgo1", totalAdayAgo1);
@@ -291,6 +321,7 @@ public class AdminController {
 		model.addAttribute("totalAdayAgo3", totalAdayAgo3);
 		//
 		List<OrderVO> twoDaysAgo = service.TwoDaysAgoSales();
+		
 		int totalTwoDaysAgo1 = 0;
 		int totalTwoDaysAgo2 = 0;
 		int totalTwoDaysAgo3 = 0;
@@ -299,8 +330,8 @@ public class AdminController {
 			totalTwoDaysAgo2 += ovo.getPrice2();
 			totalTwoDaysAgo3 += ovo.getPrice3();
 		}
-		String towDaysago = twoDaysAgo.get(0).getIndate().substring(5, 10);
-		model.addAttribute("towDaysago", towDaysago);
+//		String towDaysago = twoDaysAgo.get(0).getIndate().substring(5, 10);
+//		model.addAttribute("towDaysago", towDaysago);
 		model.addAttribute("totalTwoDaysAgo1", totalTwoDaysAgo1);
 		model.addAttribute("totalTwoDaysAgo2", totalTwoDaysAgo2);
 		model.addAttribute("totalTwoDaysAgo3", totalTwoDaysAgo3);

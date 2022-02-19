@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.midori.mapper.AdminMapper">
+	<sql id="criteria"><!-- 검색 -->
+		<trim prefix="(" suffix=") and " prefixOverrides="OR"><!-- where 다음에 or가 오면 지움 -->
+			<foreach collection="typeArr" item="type"><!--  collection="typeArr": item에 type에 저장된 값을 쓸 수 있게 된다 -->
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							title like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'C'.toString()">
+							content like '%'||#{keyword}||'%'
+						</when>
+						<when test="type == 'W'.toString()">
+							writer like '%'||#{keyword}||'%'
+						</when>
+						
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+	<sql id="jwCri">
+		<trim>
+			<choose>
+				<when test="kind != null">
+					kind=#{kind} and 
+				</when>
+				<when test="kind == null">
+					
+				</when>
+			</choose>
+		</trim>
+	</sql>
 	<!-- 홈 -->
 	<select id="monthlyTop10Pie" resultType="com.midori.domain.OrderVO">
 		<![CDATA[ 
@@ -38,6 +70,30 @@
 
 
 	<!-- 리뷰 -->
+	<select id="getReviewListPaging" resultType="com.midori.domain.ReviewVO">
+		<![CDATA[ 
+			select 
+				rbno, title, content, writer, regdate, star, pname, kind
+			from (
+				select rownum rn, rbno, title, r.content, writer, regdate, star, p.name as pname, p.kind 
+				from review r, product p 
+				where 
+		]]>		
+			<include refid="jwCri"></include>
+				
+		<![CDATA[		
+				r.pseq = p.pseq and rownum <= #{pageNum} * #{amount} order by regdate desc
+			)
+			where rn > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+	<select id="getTotalReview" resultType="int">
+		select count(*) from review r, product p where
+			<include refid="jwCri"></include>
+		<![CDATA[ 
+		r.pseq = p.pseq and rbno > 0 
+		]]>
+	</select>
 	<select id="reviewSelectOne" resultType="com.midori.domain.ReviewVO">
 		select * from review where rbno = #{rbno}
 	</select>
@@ -50,16 +106,39 @@
 		delete from review where rbno=#{rbno}
 	</delete>
 	
-	<select id="reviewList" resultType="com.midori.domain.ReviewVO">
-		select * from review order by rbno desc
-	</select>
 	
 	<!-- 상품문의 -->
-	<select id="qnaList" resultType="com.midori.domain.QnaVO">
-		select * from qna_view
+	<select id="getQnaListPaging" resultType="com.midori.domain.QnaVO">
+		<![CDATA[ 
+			select 
+				ref, qbno, secret, qtitle, qcontent, qwriter, qregdate, category, 
+				abno, atitle, acontent, awriter, aregdate, pseq, pname, kind , status 
+			from (select 
+				rownum rn, ref, qbno, secret, qtitle, qcontent, qwriter, qregdate, category, 
+				abno, atitle, acontent, awriter, aregdate, p.pseq, p.name as pname, kind, status 
+				from qna_view q, product p 
+				where 
+		]]>		
+			<include refid="jwCri"></include>
+				
+		<![CDATA[		
+				q.pseq = p.pseq and rownum <= #{pageNum} * #{amount} order by qregdate desc
+			)
+			where rn > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+	<select id="getTotalQuestion" resultType="int">
+		select count(*) from qna_view q, product p where
+			<include refid="jwCri"></include>
+		<![CDATA[ 
+		q.pseq = p.pseq and qbno > 0 
+		]]>
 	</select>
 	<select id="getQnaOne" resultType="com.midori.domain.QnaVO">
-		select * from qna_view where qbno=#{qbno}
+		select ref, qbno, secret, qtitle, qcontent, qwriter, qregdate, category, abno, atitle, 
+		acontent, awriter, aregdate, p.pseq, p.name as pname, p.kind, status 
+		from qna_view q, product p 
+		where q.pseq = p.pseq and qbno=#{qbno}
 	</select>
 	<update id="QuestionModify">
 		update question set qtitle=#{qtitle}, qwriter=#{qwriter} , qcontent=#{qcontent}, category=#{category} where qbno = #{qbno} 

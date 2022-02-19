@@ -13,7 +13,6 @@ function question_save() {
 		//theForm.encoding = "multipart/form-data";
 		
 		theForm.action = "/qna/questionwritepro.do";
-		alert("먹음");
 		theForm.submit();
 	}
 }
@@ -33,7 +32,6 @@ function question_modify(){
 		//theForm.encoding = "multipart/form-data";
 		theForm.action = "/qna/questionmodifypro.do";
 		theForm.submit();
-		alert("서브밋까지 실행됨");
 	}
 }
 

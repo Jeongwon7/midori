@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.midori.domain.Criteria;
 import com.midori.domain.OrderVO;
 import com.midori.domain.QnaVO;
 import com.midori.domain.ReviewVO;
@@ -21,7 +22,11 @@ public interface AdminMapper {
 	public List<ReviewVO> ReviewListNew();
 	
 	
-	
+	//리뷰
+	//리뷰 리스트 출력
+	public List<ReviewVO> getReviewListPaging(Criteria cri);
+	//총 게시글 수
+	public int getTotalReview(Criteria cri);
 	//리뷰 수정시 출력, 리뷰 상세 출력
 	public ReviewVO reviewSelectOne(int rbno);
 	//리뷰 수정
@@ -29,12 +34,13 @@ public interface AdminMapper {
 	//리뷰 삭제
 	public void reviewDelete(int rbno);
 	
-	//리뷰 리스트 출력
-	public List<ReviewVO> reviewList();
+
 	
 	//상품문의
 	//전체  qna 출력 -게시판 형식
-	public List<QnaVO> qnaList();
+	public List<QnaVO> getQnaListPaging(Criteria cri);
+	//qna 총 건수
+	public int getTotalQuestion(Criteria cri);
 	//상세 qna뷰, question 수정 페이지
 	public QnaVO getQnaOne(int qbno);
 	//question 수정

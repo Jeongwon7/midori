@@ -21,4 +21,8 @@ public class QnaVO {
 	private String awriter;
 	private String aregdate;
 	
+	//추가(0219)
+	private String kind;
+	private String pname;
+	
 }

@@ -128,21 +128,18 @@
 																		</div>
 																		<sec:authorize access="isAuthenticated()">
 																		<sec:authentication property="principal.member.id" var="pinfo"/>
-																			<c:if test="${rlist.writer eq pinfo || principal.member.authorities eq '[ROLE_ADMIN, ROLE_USER]'}">
+																			<c:if test="${rlist.writer eq pinfo}">
 																				<div class="review_btn">
 																					<span><input type="button" onclick="location.href='/review/reviewmodify.do?rbno=${rlist.rbno}'" value="수정"></span>
 																					<span><input type="button" onclick="review_delete(${rlist.rbno}, ${pseq}, '${pinfo}' );" value="삭제"></span>
 																				</div>
 																			</c:if>
-																		</sec:authorize>
-																			<%-- <sec:authorize access="isAnonymous()">
+																			<c:if test="${pinfo eq 'admin'}">
 																				<div class="review_btn">
-																					<span><input type="button" onclick="alert('로그인이 필요한 기능입니다');" value="수정"></span>
-																					<span><input type="button" onclick="alert('로그인이 필요한 기능입니다');" value="삭제"></span>
+																					<span><input type="button" onclick="review_delete(${rlist.rbno}, ${pseq}, '${pinfo}' );" value="삭제"></span>
 																				</div>
-																			</sec:authorize> --%>
-																				
-																				
+																			</c:if>
+																		</sec:authorize>
 																	</div>
 																</td>
 															</tr>

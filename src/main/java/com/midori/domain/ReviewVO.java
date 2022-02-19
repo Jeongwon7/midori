@@ -11,4 +11,8 @@ public class ReviewVO {
 	private String content;
 	private int star;
 	private String regdate;
+	
+	//추가(0219)
+	private String kind;
+	private String pname;
 }

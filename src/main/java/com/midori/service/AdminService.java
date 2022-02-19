@@ -2,6 +2,7 @@ package com.midori.service;
 
 import java.util.List;
 
+import com.midori.domain.Criteria;
 import com.midori.domain.OrderVO;
 import com.midori.domain.QnaVO;
 import com.midori.domain.ReviewVO;
@@ -29,11 +30,17 @@ public interface AdminService {
 		
 		//관리자
 		//리뷰 리스트 출력
-		public List<ReviewVO> reviewList();
+		public List<ReviewVO> GetReviewListPaging(Criteria cri);
+		//리뷰 총 건수
+		public int getTotalReview(Criteria cri);
+		
+		
 		
 		//상품문의
 		//전체  qna 출력 -게시판 형식
-		public List<QnaVO> qnaList();
+		public List<QnaVO> GetQnaListPaging(Criteria cri);
+		//qna 총 건수
+		public int GetTotalQuestion(Criteria cri);
 		//상세 qna뷰, question 수정 페이지
 		public QnaVO getQnaOne(int qbno);
 		//question 수정

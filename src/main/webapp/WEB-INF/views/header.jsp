@@ -25,6 +25,7 @@
 	<link rel="stylesheet" href="../resources/assets/css/all.min.css">
 	<!-- bootstrap -->
 	<link rel="stylesheet" href="../resources/assets/bootstrap/css/bootstrap.min.css">
+	<!-- summernote -->
 	<link rel="stylesheet" href="../resources/assets/css/summernote.min.css">
 	<!-- owl carousel -->
 	<link rel="stylesheet" href="../resources/assets/css/owl.carousel.css">

@@ -6,7 +6,56 @@
 		<!-- 전체기간  판매량 top10 -->
 		<div id="AllSales"></div>
 		<!-- 오늘 판매량 top5 -->
-		<div id="TodaysBest"></div>
+		<div id="TodaysBest">
+			<c:choose>
+				<c:when test="${empty todayBest}">
+		
+				</c:when>
+				<c:otherwise>
+					<table>
+						<tr>
+							<th>순위</th>
+							<th>카테고리</th>
+							<th>상품명</th>
+							<th>판매량</th>
+						</tr>
+				<c:set var="rank" value="${todayBest.size() - 4}" />
+				<c:forEach var="list" items="todayBest">
+					<tr>
+						<td>${rank}</td>
+						<c:choose>
+							<c:when test="${list.kind == '1'}">
+								<td>샐러드</td>
+							</c:when>
+							<c:when test="${list.kind == '2'}">
+								<td>닭가슴살</td>
+							</c:when>
+							<c:when test="${list.kind == '3'}">
+								<td>다이어트도시락</td>
+							</c:when>
+							<c:when test="${list.kind == '4'}">
+								<td>샌드위치</td>
+							</c:when>
+							<c:when test="${list.kind == '5'}">
+								<td>프로틴</td>
+							</c:when>
+							<c:when test="${list.kind == '6'}">
+								<td>저칼로리간식</td>
+							</c:when>
+							<c:otherwise>
+								<td>무설탕음료</td>
+							</c:otherwise>
+						</c:choose>
+						<td>${list.pname}</td>
+						<td>${list.sales_count}</td>
+					</tr>
+					<c:set var="num" value="${num+1}" />
+				</c:forEach>
+			</table>
+				</c:otherwise>
+			</c:choose>
+			
+		</div>
 		<!-- 3일간 매출, 수익, 원가 정보 -->
 		<div id="3DaysSales"></div>
 		<!-- 3개월간 매출, 수익, 원가 정보 -->

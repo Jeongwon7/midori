@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
+import com.midori.domain.Criteria;
 import com.midori.domain.OrderVO;
 import com.midori.domain.QnaVO;
 import com.midori.domain.ReviewVO;
@@ -62,13 +63,24 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<ReviewVO> reviewList() {
-		return mapper.reviewList();
+	public List<ReviewVO> GetReviewListPaging(Criteria cri) {
+		return mapper.getReviewListPaging(cri);
 	}
 	
 	@Override
-	public List<QnaVO> qnaList() {
-		return mapper.qnaList();
+	public int getTotalReview(Criteria cri) {
+		return mapper.getTotalReview(cri);
+	}
+	
+	
+	@Override
+	public List<QnaVO> GetQnaListPaging(Criteria cri) {
+		return mapper.getQnaListPaging(cri);
+	}
+	
+	@Override
+	public int GetTotalQuestion(Criteria cri) {
+		return mapper.getTotalQuestion(cri);
 	}
 	
 	@Override
