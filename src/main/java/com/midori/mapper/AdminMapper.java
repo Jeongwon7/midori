@@ -63,6 +63,9 @@ public interface AdminMapper {
 	
 	//주문관리 전체 조회, 헤더 주소에 status 값을 각각 줘,그걸 컨트롤러 값으로 받아서 메서드 매개변수로 넣기
 	public List<OrderVO> orderList(int status);
+	public List<OrderVO> orderListWithPaging(Criteria cri, int status);
+	//주문번호 리스트(상품명 ~외 ~건 처리)
+	public List<Integer> oseqListPaging(Criteria cri);
 	//주문관리 상세 조회
 	public List<OrderVO> orderDetailList(int oseq);
 	//주문관리 단계 status 값 변경, jsp에서 각 단계별 버튼에 form으로 status값과 oseq, track 값을 보내고 status+1한 값을 메서드 매개변수로 넣기

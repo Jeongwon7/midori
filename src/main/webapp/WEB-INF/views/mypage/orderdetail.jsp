@@ -26,7 +26,7 @@
 								<td>${od.oseq}</td>
 								<td>${od.mname}</td>
 								<td>${od.oname}</td>
-								<td>${totalPrice}</td>
+								<td>${totalPrice}&#x20a9;</td>
 								<td>${od.address1} ${od.address2} ${od.zip_num}</td>
 								<td>
 										<c:choose>
@@ -71,7 +71,7 @@
 									<td><img src="/upload/${list.image}" alt="상품 사진"></td>
 									<td>${list.odseq}</td>
 									<td>${list.quantity}</td>
-									<td>${list.price2}</td>
+									<td>${list.price2}&#x20a9;</td>
 									
 								</tr>
 							</c:forEach>

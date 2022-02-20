@@ -131,12 +131,11 @@
 																			<c:if test="${rlist.writer eq pinfo}">
 																				<div class="review_btn">
 																					<span><input type="button" onclick="location.href='/review/reviewmodify.do?rbno=${rlist.rbno}'" value="수정"></span>
-																					<span><input type="button" onclick="review_delete(${rlist.rbno}, ${pseq}, '${pinfo}' );" value="삭제"></span>
 																				</div>
 																			</c:if>
-																			<c:if test="${pinfo eq 'admin'}">
+																			<c:if test="${rlist.writer eq pinfo || pinfo eq 'admin'}">
 																				<div class="review_btn">
-																					<span><input type="button" onclick="review_delete(${rlist.rbno}, ${pseq}, '${pinfo}' );" value="삭제"></span>
+																					<span><input type="button" onclick="review_delete(${rlist.rbno}, ${pseq}, '${pinfo}');" value="삭제"></span>
 																				</div>
 																			</c:if>
 																		</sec:authorize>
@@ -173,6 +172,7 @@
 												</tr>
 											</thead>
 											<tbody class="qna_box">
+											<sec:authentication property="principal.member.id" var="pinfo"/>
 												<c:set var="num" value="${qnalist.size()}"/>
 													<c:forEach var="list" items="${qnalist}">
 														<c:if test="${list.secret == true }">
@@ -206,15 +206,13 @@
 																				</div>
 																					<sec:authorize access="isAuthenticated()">
 																						<sec:authentication property="principal.member.id" var="pinfo"/>
-																						<c:if test="${list.qwriter eq pinfo || principal.member.authorities eq '[ROLE_ADMIN, ROLE_USER]'}">
+																						<c:if test="${list.qwriter eq pinfo}">
 																							<span><input type="button" onclick="location.href='/qna/questionmodify.do?qbno=${list.qbno}'" value="수정"></span>
+																						</c:if>
+																						<c:if test="${list.qwriter eq pinfo || pinfo eq 'admin'}">
 																							<span><input type="button" onclick="question_deleteOpen(${list.qbno}, ${pseq}, '${pinfo}');" value="삭제"></span>
 																						</c:if>
 																					</sec:authorize>
-																						<div class="review_btn">
-																								<span><input type="button" onclick="location.href='/adm/answerwrite.do?qbno=${list.qbno}&pseq=${pseq}&ref=${list.ref}'" value="답글작성"></span>
-																						</div>
-																				
 																			</div>
 																		</td>
 																	</tr>
@@ -242,11 +240,12 @@
 																					<div class="review_content">
 																						${list.acontent}
 																					</div>
+																						<c:if test="${pinfo eq 'admin'}">
 																							<div class="review_btn">
-																									<span><input type="button" onclick="location.href='answermodifyform.do?abno=${list.abno}&pseq=${pvo.pseq}'" value="수정"></span>
-																									<span><input type="button" onclick="answer_deleteOpen(${list.abno}, ${pvo.pseq}, '${loginUser.id}', '${adminid}');" value="삭제"></span>
+																									<span><input type="button" onclick="location.href='/adm/answermodify.do?abno=${list.abno}'" value="수정"></span>
+																									<span><input type="button" onclick="answer_delete(${list.abno}, ${list.qbno})" value="삭제"></span>
 																							</div>
-																					
+																						</c:if>
 																				</div>
 																			</td>
 																		</tr>
@@ -333,15 +332,14 @@
 																				</div>
 																					<sec:authorize access="isAuthenticated()">
 																						<sec:authentication property="principal.member.id" var="pinfo"/>
-																						<c:if test="${list.qwriter eq pinfo || principal.member.authorities eq '[ROLE_ADMIN, ROLE_USER]'}">
+																						<c:if test="${list.qwriter eq pinfo}">
 																							<span><input type="button" onclick="location.href='/qna/questionmodify.do?qbno=${list.qbno}'" value="수정"></span>
+																							
+																						</c:if>
+																						<c:if test="${list.qwriter eq pinfo || pinfo eq 'admin'}">
 																							<span><input type="button" onclick="question_deleteOpen(${list.qbno}, ${pseq}, '${pinfo}');" value="삭제"></span>
 																						</c:if>
 																					</sec:authorize>
-																						<div class="review_btn">
-																								<span><input type="button" onclick="location.href='/adm/answerwrite.do?qbno=${list.qbno}&pseq=${pseq}&ref=${list.ref}'" value="답글작성"></span>
-																						</div>
-																				
 																			</div>
 																		</td>
 																	</tr>
@@ -369,10 +367,12 @@
 																					<div class="review_content">
 																						${list.acontent}
 																					</div>
+																						<c:if test="${pinfo eq 'admin'}">
 																							<div class="review_btn">
-																									<span><input type="button" onclick="location.href='answermodifyform.do?abno=${list.abno}&pseq=${pvo.pseq}'" value="수정"></span>
-																									<span><input type="button" onclick="answer_deleteOpen(${list.abno}, ${pvo.pseq}, '${loginUser.id}', '${adminid}');" value="삭제"></span>
+																									<span><input type="button" onclick="location.href='/adm/answermodify.do?abno=${list.abno}'" value="수정"></span>
+																									<span><input type="button" onclick="answer_delete(${list.abno}, ${list.qbno})" value="삭제"></span>
 																							</div>
+																						</c:if>
 																					
 																				</div>
 																			</td>
@@ -467,5 +467,12 @@
      
 });  
 
+	function answer_delete(abno, qbno){
+		var msg = confirm("답변을 삭제하시겠습니까?");
+		if(msg){
+			alert("삭제되었습니다");
+			location.href="/adm/answerdelete.do?qbno="+qbno+"&abno="+abno;
+		}
+	}
 	</script>
 <%@ include file = "../footer.jsp" %>

@@ -1,5 +1,6 @@
 package com.midori.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,30 +100,7 @@ public class AdminController {
 		model.addAttribute("pageMaker", new PageVO(cri, total));
 		
 	}
-	//리뷰 상세페이지
-	//jsp:reviewView.jsp
-	@GetMapping("/reviewView.do")
-	public void reviewView(@RequestParam("rbno") int rbno, Model model) {
-		System.out.println("rbno: "+rbno);
-		ReviewVO rvo = service.reviewSelectOne(rbno);
-		model.addAttribute("rvo", rvo);
-	}
-	//리뷰 수정 셀렉트
-	//jsp:reviewmodify.jsp
-	@GetMapping("/reviewmodify.do")
-	public void reviewModify(@RequestParam("rbno") int rbno, Model model) {
-		System.out.println("rbno: "+rbno);
-		ReviewVO rvo = service.reviewSelectOne(rbno);
-		model.addAttribute("rvo", rvo);
-		
-	}
-	//리뷰 수정
-	@PostMapping("/reviewmodifypro.do")
-	public String reviewModify(ReviewVO rvo) {
-		System.out.println("rvo: "+rvo);
-		service.reviewModify(rvo);
-		return "redirect:/adm/review.do";
-	}
+
 	//리뷰 삭제
 	@GetMapping("/reviewdelete.do")
 	public String reviewDelete(@RequestParam("rbno") int rbno) {
@@ -170,18 +148,7 @@ public class AdminController {
 		//System.out.println("qvo: "+qvo);
 		model.addAttribute("qvo", qvo);
 	}
-	//question 수정 폼
-	@GetMapping("/questionmodify.do")
-	public void questionMdofiyForm(@RequestParam("qbno") int qbno, Model model) {
-		QnaVO qvo = service.getQnaOne(qbno);
-		model.addAttribute("qvo", qvo);
-	}
-	//question 수정
-	@PostMapping("/questionmodifypro.do")
-	public String questionModify(QnaVO qvo) {
-		service.QuestionModify(qvo);
-		return "redirect:/adm/qna.do";
-	}
+
 	//question 삭제
 	@GetMapping("/questiondelete.do")
 	public String qeustionDelete(@RequestParam("qbno") int qbno) {
@@ -216,7 +183,7 @@ public class AdminController {
 		return "redirect:/adm/qna.do";
 	}
 	//answer 삭제
-	@GetMapping("/answerdelete")
+	@GetMapping("/answerdelete.do")
 	public String answerDelete(@RequestParam("abno") int abno, @RequestParam("qbno") int qbno) {
 		service.AnswerDelete(abno);
 		service.updateStatusDelete(qbno);//삭제하면 status 다시 1로
@@ -226,34 +193,61 @@ public class AdminController {
 	
 	//주문관리 전체 페이지
 	@GetMapping("/orderlist.do")
-	public void orderList(@RequestParam("status") int status, Model model) {
-		List<OrderVO> olist = service.orderList(status);
-		int count = service.OrderCount(status);
-		//int Sstatus = olist.get(0).getStatus();
+	public void orderList(Criteria cri , Model model) {
+		
+		List<Integer> oseqlist = service.OseqListPaging(cri);
+		System.out.println("oseqlist: "+oseqlist);
+		
+		List<OrderVO> olist = new ArrayList<OrderVO>();
+		
+		for(int oseq : oseqlist) {
+			List<OrderVO> orderList = service.orderDetailList(oseq);
+			OrderVO orderVO = orderList.get(0);
+			if(orderList.size() > 1) {
+				orderVO.setPname(orderVO.getPname()+" 외 "+(orderList.size()-1)+" 건");
+			}
+			olist.add(orderVO);
+		}
+		
+		int status = cri.getStatus();
+		int total = service.OrderCount(status);
 		
 		if(status == 1) {
-			model.addAttribute("title", "주문관리(입금 확인 목록)");
+			model.addAttribute("title", "주문관리(입금 확인)");
 		}else if(status == 2) {
-			model.addAttribute("title", "주문관리(배송 대기 목록)");
+			model.addAttribute("title", "주문관리(배송 대기)");
 		}else if(status == 3) {
 			model.addAttribute("title", "주문관리(배송중)");
 		}else if(status == 4) {
 			model.addAttribute("title", "주문관리(배송 완료)");
 		}
 		
-		model.addAttribute("count", count);
 		model.addAttribute("olist", olist);
+		model.addAttribute("pageMaker", new PageVO(cri, total));
 	}
 	//주문관리 상세 페이지
 	@GetMapping("/orderview.do")
 	public void orderView(@RequestParam("oseq") int oseq, Model model) {
 		List<OrderVO> odlist = service.orderDetailList(oseq);
 		
+		OrderVO od = odlist.get(0);
+		
+		int totalPrice = 0;//주문당 총액 구하기
+		for(OrderVO ovo : odlist) {
+			totalPrice += ovo.getPrice2()*ovo.getQuantity();
+		}
+		
 		int status = odlist.get(0).getStatus();
-	
+		
+		System.out.println("totalPrice: "+totalPrice);
+		System.out.println("status: "+status);
+		System.out.println("odlist: "+odlist);
+		System.out.println("od: "+od);
+		
+		model.addAttribute("totalPrice", totalPrice);
 		model.addAttribute("status", status);//jsp로 보내서 choose when으로 버튼에 쓸 내용 나누기
 		model.addAttribute("odlist", odlist);
-		
+		model.addAttribute("od", od);
 	}
 	//주문 단계별 스테이터스 처리(2의 경우 운송장까지 처리), form으로 받을 것이야
 	@PostMapping("/orderstatuspro.do")

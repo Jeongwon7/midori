@@ -12,7 +12,7 @@
 				<p>${qvo.qcontent}</p>
 			</div>
 			<div>
-				<input type="button" onclick="QuestionDel(${qvo.qbno})" value="삭제">
+				<input type="button" onclick="QuestionDel()" value="삭제">
 				<input type="button" onclick="javascript:history.back();" value="목록">
 				<c:choose>
 					<c:when test="${qvo.status == 1}">
@@ -44,14 +44,15 @@
 	</div>
 </body>
 <script>
-function QuestionDel(qbno){
+//질문 삭제
+function QuestionDel(){
 	var msg = confirm("삭제하시겠습니까?");
 	if(msg){
 		alert("삭제되었습니다");
-		location.href="/adm/questiondelete.do?qbno="+qbno;
+		location.href="/adm/questiondelete.do?qbno="+${qvo.qbno};
 	}
 }
-
+//답변 작성
 function answer_write(){
 	var theForm = document.qaform;
 	
@@ -59,6 +60,17 @@ function answer_write(){
 	
 	theForm.submit();
 }
-
+//답변수정
+function AnswerModify(){
+	location.href="/adm/answermodify.do?abno="+${qvo.abno};
+}
+//답변삭제//abno, qbno
+function AnswerDel(){
+	var msg = confirm("삭제하시겠습니까?");
+	if(msg){
+		alert("삭제되었습니다");
+		location.href="/adm/answerdelete.do?qbno="+${qvo.qbno}+"&abno="+${qvo.abno};
+	}
+}
 </script>
 </html>

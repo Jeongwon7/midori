@@ -54,23 +54,7 @@ function answer_save(){
 	}
 }
 
-function answer_modify(){
-	var theForm = document.afrm;
-	
-	if(!theForm.title.value){
-		alert("제목 입력하세요");
-		theForm.title.focus();
-	}else if(!theForm.writer.value){
-		alert("작성자 입력하세요");
-	}else if(!theForm.content.value){
-		alert("내용 입력하세요");
-		theForm.content.focus();
-	}else{
-		//theForm.encoding = "multipart/form-data";
-		theForm.action = "/adm/answermodify.do";
-		theForm.submit();
-	}
-}
+
 
 
 function question_deleteOpen(qbno, pseq, logId){
@@ -152,12 +136,10 @@ function getQnaList(pseq, logId){
 								output += '<div class="review_content_wrap">';
 								output += '<div class="review_content">'+result[i].qcontent+'</div>';
 								output += '<div class="review_btn">';
-								//if(adminId == 'admin'){
-								//	output += '<span><input type="button" '+'onclick='+'"'+'location.href='+"'"+'answerwriteform.do?qbno='+
-								//	result[i].qbno+'&pseq='+result[i].pseq+'&ref='+result[i].ref+"'"+'"'+' value="답글작성"></span>';
-								//}
-								if(result[i].qwriter == logId){
+								if(result[i].qwriter == logId ){
 									output += '<span><input type="button" '+'onclick='+'"'+'location.href='+"'"+'/qna/questionmodify.do?qbno='+result[i].qbno+"'"+'"'+' value="수정"></span>';
+								}
+								if(result[i].qwriter == logId || logId == 'admin'){
 									output += '<span><input type="button" '+'onclick='+'"'+'question_deleteOpen('+result[i].qbno+', '+result[i].pseq+', '+"'"+logId+"'"+');'+ '"'+'value="삭제"></span>';
 								}
 								output += '</div>';
@@ -181,10 +163,10 @@ function getQnaList(pseq, logId){
 									output += '<div class="review_content_wrap">';
 									output += '<div class="review_content">'+result[i].acontent+'<div>';
 									output += '<div class="review_btn">';
-									//if(adminId == 'admin'){
-										//output += '<span><input type="button" '+'onclick='+'" '+'location.href='+"'"+'answermodifyform.do?abno='+result[i].abno+'&pseq='+result[i].pseq+"'"+'"'+' value="수정"></span>';
-										//output += '<span><input type="button" '+'onclick='+'" '+'answer_deleteOpen('+result[i].abno+', '+ result[i].pseq+', '+ "'"+logId+"'"+', '+ "'"+adminId+"'"+');" value="삭제"></span>';
-									//}
+									if(logId == 'admin'){
+										output += '<span><input type="button" '+'onclick='+'" '+'location.href='+"'"+'/adm/answermodify.do?abno='+result[i].abno+"'"+'"'+' value="수정"></span>';
+										output += '<span><input type="button" '+'onclick='+'" '+'answer_delete('+result[i].abno+', '+ result[i].qbno+');" value="삭제"></span>';
+									}
 									
 									output += '</div>';
 									output += '</div>';
@@ -246,12 +228,10 @@ function getQnaList(pseq, logId){
 							output += '<div class="review_content_wrap">';
 							output += '<div class="review_content">'+result[i].qcontent+'</div>';
 							output += '<div class="review_btn">';
-							//if(adminId == 'admin'){
-							//	output += '<span><input type="button" '+'onclick='+'"'+'location.href='+"'"+'answerwriteform.do?qbno='+
-							//	result[i].qbno+'&pseq='+result[i].pseq+'&ref='+result[i].ref+"'"+'"'+' value="답글작성"></span>';
-							//}
-							if(result[i].qwriter == logId){
+							if(result[i].qwriter == logId ){
 								output += '<span><input type="button" '+'onclick='+'"'+'location.href='+"'"+'/qna/questionmodify.do?qbno='+result[i].qbno+"'"+'"'+' value="수정"></span>';
+							}
+							if(result[i].qwriter == logId || logId == 'admin'){
 								output += '<span><input type="button" '+'onclick='+'"'+'question_deleteOpen('+result[i].qbno+', '+result[i].pseq+', '+"'"+logId+"'"+');'+ '"'+'value="삭제"></span>';
 							}
 							output += '</div>';
@@ -275,10 +255,10 @@ function getQnaList(pseq, logId){
 								output += '<div class="review_content_wrap">';
 								output += '<div class="review_content">'+result[i].acontent+'<div>';
 								output += '<div class="review_btn">';
-								//if(adminId == 'admin'){
-									//output += '<span><input type="button" '+'onclick='+'" '+'location.href='+"'"+'answermodifyform.do?abno='+result[i].abno+'&pseq='+result[i].pseq+"'"+'"'+' value="수정"></span>';
-									//output += '<span><input type="button" '+'onclick='+'" '+'answer_deleteOpen('+result[i].abno+', '+ result[i].pseq+', '+ "'"+logId+"'"+', '+ "'"+adminId+"'"+');" value="삭제"></span>';
-								//}
+								if(logId == 'admin'){
+										output += '<span><input type="button" '+'onclick='+'" '+'location.href='+"'"+'/adm/answermodify.do?abno='+result[i].abno+"'"+'"'+' value="수정"></span>';
+										output += '<span><input type="button" '+'onclick='+'" '+'answer_delete('+result[i].abno+', '+ result[i].qbno+');" value="삭제"></span>';
+								}
 								
 								output += '</div>';
 								output += '</div>';

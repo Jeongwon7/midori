@@ -11,7 +11,10 @@ public class Criteria {
 	private String type;// 제목, 내용
 	private String keyword;// 검색 내용
 	
+	//추가 0219
 	private String kind;//상품종류 검색(관리자 리뷰, 관리자 상품문의)
+	//추가 0220
+	private int status;
 	
 	public Criteria() {//객체가 호출되면 생성자 호출, 기본적으로 pageNum에는 1, amount 에는 10이 저장된다
 		this(1, 10);//같은 클래스 내의 매개변수가 있는 생성자 호출

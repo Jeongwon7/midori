@@ -173,6 +173,24 @@
 	<select id="orderList" resultType="com.midori.domain.OrderVO">
 		select * from order_view where status=#{status}
 	</select>
+	<select id="orderListWithPaging" resultType="com.midori.domain.OrderVO">
+		<![CDATA[ 
+			select odseq, oseq, id, indate, pseq, quantity, status, mname, oname, phone, zip_num, address1, 
+			address2, pname, image, price1, price2, price3, track 
+			from (select rownum rn, odseq, oseq, id, indate, pseq, quantity, status, mname, oname, phone, zip_num, address1, 
+			address2, pname, image, price1, price2, price3, track 
+			from order_view 
+			where status=#{status} and rownum <= #{pageNum} * #{amount}) 
+			where rn  > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+	<select id="oseqListPaging" resultType="int">
+		<![CDATA[ 
+			select oseq from(select distinct rownum rn, oseq from order_view 
+			where status=#{status} and rownum <= #{pageNum} * #{amount} order by oseq desc) 
+			where rn  > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
 	<select id="orderDetailList" resultType="com.midori.domain.OrderVO">
 		select * from order_view where oseq=#{oseq}
 	</select>
@@ -183,7 +201,7 @@
 		update orders set track=#{track} where oseq=#{oseq}
 	</insert>
 	<select id="OrderCount" resultType="int">
-		select count(*) from orders where status=#{status}
+		select count(distinct oseq) as count from order_view where status=#{status}
 	</select>
 	
 	<!-- 통계 -->

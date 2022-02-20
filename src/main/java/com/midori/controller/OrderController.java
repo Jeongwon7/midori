@@ -88,7 +88,7 @@ public class OrderController {
 //		cvo.setCseq(ovo.getCseq());
 		
 		if(cvo.getCseq() == 0) {
-			System.out.println("cartvo: "+cvo);//출력되는 변수값들로 디벨로퍼에서 직접 order_detail에 insert 했을 땐 됨
+			System.out.println("cartvo: "+cvo);
 			service.orderDInsert(cvo);
 			System.out.println("뇬냐");
 		}else {
@@ -103,45 +103,5 @@ public class OrderController {
 		return "redirect:/";
 	}
 
-	
-//	@GetMapping("/orderinfo.do")
-//	public void orderInfo() {
-//
-//	}
-	
-	//장바구니에서 결제하는 경우
-//	@PostMapping("/orderinfoCart.do")
-//	public String orderInfoCart(Principal principal, Model model) {
-//		String id = principal.getName();
-//		List<CartVO> cartlist = service.getCartList(id);
-//		
-//		int totalPrice = 0;
-//		for(CartVO cvo : cartlist) {
-//			totalPrice += cvo.getPrice2()*cvo.getQuantity();
-//		}
-//		
-//		MemberVO mvo = service.memberSelect(id);
-//		
-//		model.addAttribute("cartlist", cartlist);
-//		model.addAttribute("mvo", mvo);
-//		model.addAttribute("totalPrice", totalPrice);
-//		return "redirect:/order/orderinfo.do";
-//	}
-//	@PostMapping("/orderInsertOne.do")//return 진행중인 주문 페이지로
-//	public String orderInsertOne(Principal principal, OrderVO ovo) {
-//		String id = principal.getName();
-//		ovo.setId(id);
-//		
-//		service.orderInsert(ovo);
-//		int oseqMax = service.getMaxOseq();
-//		
-//		CartVO cvo = new CartVO();
-//		cvo.setPseq(ovo.getPseq());
-//		cvo.setQuantity(ovo.getQuantity());
-//		
-//		service.orderDetailInsert(cvo, oseqMax);
-//		return "redirect:/order/orderlisting.do";//id만 있으면 됨
-//	}
-//	
 	
 }

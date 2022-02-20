@@ -145,6 +145,16 @@ public class AdminServiceImpl implements AdminService {
 	}
 	
 	@Override
+	public List<OrderVO> OrderListWithPaging(Criteria cri, int status) {
+		return mapper.orderListWithPaging(cri, status);
+	}
+	
+	@Override
+	public List<Integer> OseqListPaging(Criteria cri) {
+		return mapper.oseqListPaging(cri);
+	}
+	
+	@Override
 	public void orderStatusUpdate(OrderVO ovo) {
 		mapper.orderStatusUpdate(ovo);
 	}

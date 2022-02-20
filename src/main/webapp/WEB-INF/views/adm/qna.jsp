@@ -95,7 +95,14 @@
 					</c:choose>
 					<td>${list.pname }</td>
 					<td class="title"><a href="/adm/qnaview.do?qbno=${list.qbno}">${list.qtitle}</a></td>
-					<td>${list.status} </td>
+					<c:choose>
+						<c:when test="${list.status == 1}">
+							<td>답변대기</td>
+						</c:when>
+						<c:otherwise>
+							<td>답변완료</td>
+						</c:otherwise>
+					</c:choose>
 					<td>${list.qwriter}</td>
 					<td>
 						<fmt:parseDate var="regdate" value="${list.qregdate}" pattern="yyyy-MM-dd"/><!-- String에서 Date타입으로 -->

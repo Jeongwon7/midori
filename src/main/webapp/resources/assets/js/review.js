@@ -91,17 +91,18 @@ function getReview(pseq, logId){
 						output += '<td colspan="5">';
 						output += '<div class="review_content_wrap">';
 						output += '<div class="review_content">'+result[i].content+'</div>';
+						output += '<div class="review_btn">';
 						if(result[i].writer == logId){
-							output += '<div class="review_btn">';
 							output += '<span>';
 							output += '<input type="button" value="수정" onclick="review_modifyOpen('+result[i].rbno+');">';
 							output += '</span>';
-							output += '<span>';
-							output += '<input type="button" value="삭제" onclick="review_delete('+result[i].rbno +','+ result[i].pseq +', '+');" >';
-							output += '</span>';
-							output += '</div>';
 						}
-					
+						if(result[i].writer == logId || logId == 'admin'){
+							output += '<span>';
+							output += '<input type="button" value="삭제" onclick="review_delete('+result[i].rbno +','+ result[i].pseq +', '+"'"+logId+"'"+');" >';
+							output += '</span>';
+						}
+						output += '</div>';
 						output += '</div>';
 						output += '</td>';
 						output += '</tr>'

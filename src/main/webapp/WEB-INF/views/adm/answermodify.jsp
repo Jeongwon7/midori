@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file = "../header.jsp" %>
+<%@ include file = "adminheader.jsp" %>
 	<!-- contents -->
 	<section class="product">
 		<div class="container">
@@ -33,24 +33,23 @@
 				  <h2>Answer Modify</h2>
 					<form class="form-horizontal" name="afrm" method="post">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-					<input type="hidden" name="abno" value="${abno}">
-					<input type="hidden" name="pseq" value="${pseq}">
+					<input type="hidden" name="abno" value="${avo.abno}">
 					 <div class="form-group">
-					    <label for="title" class="col-sm-2 control-label">제목</label>
+					    <label for="atitle" class="col-sm-2 control-label">제목</label>
 					    <div class="col-sm-10">
-					      <input type="text" name="title" class="form-control" id="title" value="${avo.title}">
+					      <input type="text" name="atitle" class="form-control" id="atitle" value="${avo.atitle}">
 					    </div>
 					  </div>
 					  <div class="form-group">
-					    <label for="writer" class="col-sm-2 control-label">작성자</label>
+					    <label for="awriter" class="col-sm-2 control-label">작성자</label>
 					    <div class="col-sm-10">
-					      <input type="text" name="writer" class="form-control" id="writer" value="${avo.writer}">
+					      <input type="text" name="awriter" class="form-control" id="awriter" value="${avo.awriter}">
 					    </div>
 					  </div>
 					   <div class="form-group">
-					    <label for="content" class="col-sm-2 control-label">내용</label>
+					    <label for="acontent" class="col-sm-2 control-label">내용</label>
 					    <div class="col-sm-10">
-					      <textarea name="content" id="summernote" class="form-control" rows="10">${avo.content }</textarea>
+					      <textarea name="acontent" id="summernote" class="form-control" rows="10">${avo.acontent }</textarea>
 					    </div>
 					  </div>
 					    <div class="form-group">
@@ -64,6 +63,7 @@
 			</div><!-- row end -->
 		</div>
 	</section>
+	</body>
 	<!-- contents end-->
 	<script>
 	//썸머노트
@@ -113,5 +113,22 @@
          })
     }
 	
+    function answer_modify(){
+    	var theForm = document.afrm;
+    	
+    	if(!theForm.atitle.value){
+    		alert("제목 입력하세요");
+    		theForm.atitle.focus();
+    	}else if(!theForm.awriter.value){
+    		alert("작성자 입력하세요");
+    		theForm.awriter.focus();
+    	}else if(!theForm.acontent.value){
+    		alert("내용 입력하세요");
+    		theForm.acontent.focus();
+    	}else{
+    		//theForm.encoding = "multipart/form-data";
+    		theForm.action = "/adm/answermodifypro.do";
+    		theForm.submit();
+    	}
+    }
 	</script>
-<%@ include file = "../footer.jsp" %>
