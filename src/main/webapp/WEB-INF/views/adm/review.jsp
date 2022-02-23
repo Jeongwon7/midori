@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "adminheader.jsp" %>
 <body>
-	<div style="margin-top:100px; margin-left:300px;">
-	<h2>상품리뷰 관리</h2>
+	<div style="margin-top:100px; margin-left:300px; width:1200px;">
+	<h2 style="margin-bottom: 30px;">상품리뷰 관리</h2>
 	<!-- <div class="container"> -->
 	  <div class="search_wrap">
 		<div class="record_group">
@@ -28,14 +28,15 @@
 			</form>
 		</div>
 	  </div> <!-- search end -->
-	 <div class="my_review">
-		<table class="table table-hover my_reviewtbl">
+	 <div class="my_review" style="margin-top:100px;">
+		<table class="table table-hover my_reviewtbl jw_table">
 			<caption class="sr-only">리뷰 리스트</caption>
 			<colgroup>
 				<col width="10%">
 				<col width="10%">
 				<col width="10%">
 				<col width="*">
+				<col width="5%">
 				<col width="10%">
 				<col width="10%">
 				<col width="10%">
@@ -49,6 +50,7 @@
 					<th>별점</th>
 					<th>아이디</th>
 					<th>등록일</th>
+					<th>관리</th>
 				</tr>
 			</thead>
 			<tbody class="review_box">
@@ -91,11 +93,11 @@
 						<fmt:formatDate value="${regdate }" pattern="yyyy-MM-dd"/><!-- 날짜 형식을 출력 -->
 					</td>
 					<td>
-						<input type="button" onclick="review_deleteOpen(${list.rbno})" value="삭제">
+						<input type="button" onclick="review_deleteOpen(${list.rbno})" value="삭제" style="border: none; background: green; color:white;">
 					</td>
 				</tr>
 				<tr class="hide">
-					<td colspan="7">
+					<td colspan="8">
 						<div class="review_content_wrap">
 							<div class="review_content">
 								${list.content}
@@ -107,7 +109,7 @@
 				<c:set var="num" value="${num-1}" />
 			</c:forEach>
 			<c:if test="${empty rlist }">
-				<tr><td colspan="7">상품 후기가 없습니다</td></tr>
+				<tr><td colspan="8" style="text-align:center;">상품 후기가 없습니다</td></tr>
 			</c:if>
 			</tbody>
 		</table>

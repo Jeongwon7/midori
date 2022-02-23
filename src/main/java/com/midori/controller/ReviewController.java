@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.JsonObject;
+import com.midori.domain.MemberVO;
 import com.midori.domain.ReviewVO;
 import com.midori.service.ReviewService;
 
@@ -53,7 +54,7 @@ public class ReviewController {//컨트롤러 테스트 다 하고 테이블 제
 		System.out.println("rvo: "+rvo);
 		System.out.println("id: "+rvo.getWriter());
 		service.reviewInsert(rvo);
-		return "redirect:/product/productview.do?pseq="+rvo.getPseq();
+		return "redirect:/product/product_view.do?pseq="+rvo.getPseq();
 	}
 	
 	//유저: 리뷰 수정 셀렉트
@@ -71,7 +72,7 @@ public class ReviewController {//컨트롤러 테스트 다 하고 테이블 제
 	public String reviewModify(ReviewVO rvo) {
 		System.out.println("rvo: "+rvo);
 		service.reviewModify(rvo);
-		return "redirect:/product/productview.do?pseq="+rvo.getPseq();
+		return "redirect:/product/product_view.do?pseq="+rvo.getPseq();
 	}
 	//유저: 리뷰 삭제
 	@ResponseBody

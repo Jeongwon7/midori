@@ -2,17 +2,20 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "adminheader.jsp" %>
 <body>
-	<div style="margin-top:100px; margin-left:300px;">
+	<div style="margin-top:100px; margin-left:300px; margin-bottom:100px;">
+	<h3 style="font-weight: bold;">통계 분석</h3>
+		<div class="jw-charts-2wrap">
 		<!-- 전체기간  판매량 top10 -->
 		<div id="AllSales"></div>
 		<!-- 오늘 판매량 top5 -->
-		<div id="TodaysBest">
+		<div id="TodaysBest" style="margin-top:30px; width: 500px;">
 			<c:choose>
 				<c:when test="${empty todayBest}">
 		
 				</c:when>
 				<c:otherwise>
-					<table>
+				<h4 style="margin:30px; font-weight: bold;">일일 판매량 Top5</h4>
+					<table class="table jw_table" >
 						<tr>
 							<th>순위</th>
 							<th>카테고리</th>
@@ -54,21 +57,62 @@
 			</table>
 				</c:otherwise>
 			</c:choose>
-			
+			<h4 style="margin:30px; font-weight: bold;">일일 판매량 Top5</h4>
+			<table class="table jw_table" >
+				<tr>
+					<th>순위</th>
+					<th>카테고리</th>
+					<th>상품명</th>
+					<th>판매량</th>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td>닭가슴살</td>
+					<td>닭베스트</td>
+					<td>47</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>닭가슴살</td>
+					<td>닭베스트</td>
+					<td>47</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>닭가슴살</td>
+					<td>닭베스트</td>
+					<td>47</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>닭가슴살</td>
+					<td>닭베스트</td>
+					<td>47</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>닭가슴살</td>
+					<td>닭베스트</td>
+					<td>47</td>
+				</tr>
+			</table>
 		</div>
-		<!-- 3일간 매출, 수익, 원가 정보 -->
-		<div id="3DaysSales"></div>
-		<!-- 3개월간 매출, 수익, 원가 정보 -->
-		<div id="3MonthsSales"></div>
-		<!-- 3년간 매출, 수익, 원가 정보 -->
-		<div id="3YearsSales"></div>
+		</div>
+		<div class="jw-charts-3wrap">
+			<!-- 3일간 매출, 수익, 원가 정보 -->
+			<div id="3DaysSales"></div>
+			<!-- 3개월간 매출, 수익, 원가 정보 -->
+			<div id="3MonthsSales"></div>
+			<!-- 3년간 매출, 수익, 원가 정보 -->
+			<div id="3YearsSales"></div>
+		</div>
 	</div>
 </body>
 <script>
 	google.charts.load('current', {'packages':['corechart']});
 	google.charts.load('current', {'packages':['bar']});
 	
-	//전체기간 판매량 top10
+	// 전체기간 판매량 top10
 	google.charts.setOnLoadCallback(AllSalesChart);
 	
 	// 3일간 매출, 수익, 원가 정보
@@ -102,8 +146,10 @@
 		
 		  // Set chart options
 		  var options = {'title':'전체기간 판매 순위 Top10',
-		                 'width':400,
-		                 'height':300};
+				   		'fontSize': 20,
+				   	   	'titlePosition': 'out',
+		                 'width':600,
+		                 'height':500};
 		
 		  // Instantiate and draw our chart, passing in some options.
 		  var chart = new google.visualization.PieChart(document.getElementById('AllSales'));

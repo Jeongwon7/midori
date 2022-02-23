@@ -12,7 +12,8 @@ pageEncoding="UTF-8"%>
 	<title>녹색식탁</title>
 	<!-- favicon -->
 	<link rel="shortcut icon" type="image/png" href="../assets/img/favicon.png">
-	<!-- bootstrap -->
+	<!-- bootstrap css -->
+	<link rel="stylesheet" href="/resources/assets/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="/resources/adminassets/css/styles.css">
 	
 	<link rel="stylesheet" href="/resources/adminassets/css/admin.css">
@@ -52,14 +53,13 @@ pageEncoding="UTF-8"%>
 	<script src="/resources/assets/js/my.js"></script>
 	<script src="/resources/assets/js/qna.js"></script>
 	 
-	<!-- bootstrap css -->
-	<link rel="stylesheet" href="../resources/assets/bootstrap/css/bootstrap.min.css">
+
 	<!-- summernote css -->
-	<link rel="stylesheet" href="../resources/assets/css/summernote.min.css">
+	<link rel="stylesheet" href="/resources/assets/css/summernote.min.css">
 	<!-- popper js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<!-- bootstrap js -->
-	<script src="../resources/assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/resources/assets/bootstrap/js/bootstrap.min.js"></script>
 	<!-- summernote js-->
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 	

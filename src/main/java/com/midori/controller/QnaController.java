@@ -38,7 +38,7 @@ public class QnaController {
 		qvo.setQwriter(principal.getName());
 		System.out.println("id: "+principal.getName());
 		service.questionInsert(qvo);
-		return "redirect:/product/productview.do?pseq="+qvo.getPseq();
+		return "redirect:/product/product_view.do?pseq="+qvo.getPseq();
 		
 	}
 	
@@ -53,7 +53,7 @@ public class QnaController {
 	public String questionModify(QnaVO qvo) {
 		System.out.println("질문 수정 컨트롤러");
 		service.questionModify(qvo);
-		return "redirect:/product/productview.do?pseq="+qvo.getPseq();
+		return "redirect:/product/product_view.do?pseq="+qvo.getPseq();
 	}
 	
 	//비동기식 삭제

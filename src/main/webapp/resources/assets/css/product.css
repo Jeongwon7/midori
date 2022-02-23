@@ -1,0 +1,340 @@
+@charset "EUC-KR";
+
+
+.goods_name{
+    width: 560px;
+    padding: 0px 0 29px;	
+}
+.short_desc{
+	display: block;
+    padding: 4px 60px 0 0;
+    font-size: 14px;
+    color: #999;
+    line-height: 20px;
+    word-break: break-all;
+}
+.name {
+	display: block;
+    padding-right: 60px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 34px;
+    word-break: break-all;
+}
+.goods_dcinfo {
+    width: 560px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 0px;
+}
+.dc{
+	padding-top:5px;
+}
+.dc_price{
+	font-weight: 700;
+    font-size: 28px;
+    line-height: 30px;
+    letter-spacing: 0;
+    word-break: break-all;
+}
+.won{
+	padding: 0 7px 0 2px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 30px;
+    vertical-align: 2px;
+    letter-spacing: 0;
+}
+.not_login{
+	display: block;
+    padding-top: 7px;
+    font-size: 14px;
+    color: #5f0080;
+    line-height: 20px;
+    float:right;
+    letter-spacing: 0;
+}
+.good_info {
+	width: 560px;
+    margin-top: 19px;
+    padding-bottom: 10px;
+    border-top: 1px solid #dedede;
+}
+.good_info .list{
+    overflow: hidden;
+    padding: 5px 0;
+    border-bottom:1px solid #dedede;
+    }
+.good_info .tit {
+	float: left;
+    width: 128px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+}
+.good_info .desc{
+	overflow: hidden;
+    font-size: 14px;
+    line-height: 20px;
+    word-break: break-all;
+}
+.cart_type2{
+	width: 560px;
+    padding-bottom: 50px;
+}
+.cart_type2 .tit_item{
+	float:left;
+    width: 128px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -.5px;
+    font-weight:700;
+}
+.count {
+	overflow: hidden;
+    float: left;
+    width: 88px;
+    height: 30px;
+    border:1px solid #dedede;
+    border-radius: 3px;
+}
+.down.on{
+	background-image: url(https://res.kurly.com/pc/ico/2010/ico_minus_on.svg);
+}
+.down{
+	background: #fff url(https://res.kurly.com/pc/ico/2010/ico_minus.svg) no-repeat 50% 50%;
+    background-size: 30px 30px;
+}
+.quantity{
+	float: left;
+    width: 30px;
+    height: 30px;
+    margin-right: -1px;
+    padding: 0 0 4px;
+    border: 0;
+    background-color: #fff;
+    font-size: 14px;
+    color: #000;
+    line-height: 18px;
+    text-align: center;
+}
+.up.on{
+    background-image: url(https://res.kurly.com/pc/ico/2010/ico_plus_on.svg);
+}
+.up{
+	float: right;
+    margin-left: -1px;
+    background: #fff url(https://res.kurly.com/pc/ico/2010/ico_plus.svg) no-repeat 50% 50%;
+    background-size: 30px 30px;
+}
+.btn7 {
+	overflow: hidden;
+    float: left;
+    width: 28px;
+    height: 28px;
+    border: 0;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
+.total{
+	width:560px;
+	padding: 10px 0 20px;
+    border-top:1px solid #dedede;
+}
+.total .price{
+	overflow: hidden;
+    text-align: right;
+}
+.total .tit{
+	font-weight: 700;
+    font-size: 13px;
+    line-height: 20px;
+    vertical-align: 2px;
+}
+.total .num{
+	padding-left: 8px;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+}
+.total .won{
+	padding-left: 2px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    vertical-align: -1px;
+}
+.cart_footer{
+	width:560px;
+	padding: 30px 0 10px;
+    border-top: 1px solid #dedede;
+    margin-top:10px;
+}
+.cart_footer .button_wrap{
+	margin: 0 0 15px;
+    text-align: left;
+    font-size: 0;
+    line-height: 0;
+}
+.cart_footer .button_wrap .buy{
+    min-width: 110px;
+    float: right;
+    text-align: center;
+    font-size: 0;
+}
+.cart_footer .button_wrap .buy a , .cart_footer .button_wrap .cart a{
+	width: 220px;
+    position: relative;
+    margin: 0 0 8px 0;
+    padding: 16px 0;
+    border-radius: 3px;
+    display: inline-block;
+    font-size: 10px;
+    background:#000;
+    border: 1px solid #000;
+    color: #fff;
+    transition-duration: .4s;
+    -webkit-transition-duration: .4s;
+    -moz-transition-duration: .4s;
+    -o-transition-duration: .4s;
+}
+.cart_footer .button_wrap .buy a:hover , .cart_footer .button_wrap .cart a:hover{
+	color: #000;
+    background: #fff;
+    border: 1px solid #000;
+    text-decoration: none;
+}
+.cart_footer .button_wrap .cart{
+	width: 45.6666%;
+    min-width: 110px;
+    float: right;
+    text-align: center;
+    margin: 0 0 0 1%;
+}
+
+.goods-view-infomation{
+	margin-top: 50px;
+}
+.infomation-tab-group{
+	display: flex;
+    flex-direction: row;
+    width: 1080px;
+    margin: 0 auto;
+}
+.infomation-tab{
+	display: flex;
+    flex: 1;
+    vertical-align: top;
+}
+.infomation-tab-anchor{
+	flex: 1;
+    position: relative;
+    top: 1px;
+    height: 60px;
+    line-height: 59px;
+    text-align: center;
+    display: block;
+    color: #666;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -.3px;
+    font-family: noto sans;
+    background-color: #fafafa;
+    border: 1px solid #eee;
+    border-left: none;
+}
+
+
+/* ------리뷰 css ------*/
+
+ .board h2{
+     font-size: 13px;
+    font-weight: 700;
+    margin:0 auto;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+ .sort-wrap{
+    position: relative;
+ }
+
+ .list_type1.old .txt{
+     overflow: hidden;
+    padding: 0;
+    font-size: 12px;
+    color: #666;
+    line-height: 18px;
+    letter-spacing: -.3px;
+    }
+.list_type1.old .ico{
+	float: left;
+    width: 4px;
+    height: 4px;
+    margin: 7px 8px 0 0;
+    background-color: #514859;
+    vertical-align: 2px;
+}
+.list_type1.old li {
+	display: block;
+}
+.list_type1.old .emph{
+	    font-weight: 700;
+    text-decoration: underline;
+}
+.board-listheader , .qna-listheader{
+	margin: 15px 0 0;
+    color: #353535;
+    font-size: 12px;
+    line-height: 140%;
+    table-layout: fixed;
+    border-top: 3px solid #49904E;
+    border-bottom: 3px solid #49904E;
+}
+.board-listheader th , .qna-listheader th{
+	padding: 25px 0 23px;
+    vertical-align: middle;
+    font-size: 15px;
+    text-align:center;
+    font-weight:550;
+}
+.board-listheader td , .qna-listheader td{
+	height: auto;
+    padding: 25px 3px 23px;
+    border-top: 1px solid #dedede;
+    text-align: center;
+    vertical-align: middle;
+    font-weight:550;
+}
+.board-listheader .subject , .qna-listheader .subjcet {
+	padding-left: 50px;
+    text-align: center;
+}
+.board-listheader .user-grade , .qna-listheader .user-grade{
+	padding: 22px 0 23px;
+    line-height: 19px;
+    text-align: left;
+}
+.board-listheader .time , .qna-listheader .time{
+	color: #939393;
+}
+
+/* ------문의 css ------*/
+
+.hide {display:none;} /*화면 상 영역을 차지하지 않고 삭제된 것처럼 보이게 한다*/ 
+.my_show {
+	display:table-row;
+	}  
+.item td {cursor:pointer;}  
+
+/*리뷰 버튼 플로트*/
+.review_content_wrap:after{
+	display:block;
+	content:"";
+	clear:both;
+}
+.review_content_wrap .review_btn{
+	float:right;
+}

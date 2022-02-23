@@ -16,34 +16,37 @@
 	<!-- title -->
 	<title>녹색식탁</title>
 
+ 	
+
 	<!-- favicon -->
 	<link rel="shortcut icon" type="image/png" href="../assets/img/favicon.png">
 	<!-- google font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
 	<!-- fontawesome -->
-	<link rel="stylesheet" href="../resources/assets/css/all.min.css">
+	<link rel="stylesheet" href="/resources/assets/css/all.min.css">
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="../resources/assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/resources/assets/bootstrap/css/bootstrap.min.css">
 	<!-- summernote -->
-	<link rel="stylesheet" href="../resources/assets/css/summernote.min.css">
+	<link rel="stylesheet" href="/resources/assets/css/summernote.min.css">
 	<!-- owl carousel -->
-	<link rel="stylesheet" href="../resources/assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="/resources/assets/css/owl.carousel.css">
 	<!-- magnific popup -->
-	<link rel="stylesheet" href="../resources/assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="/resources/assets/css/magnific-popup.css">
 	<!-- animate css -->
-	<link rel="stylesheet" href="../resources/assets/css/animate.css">
+	<link rel="stylesheet" href="/resources/assets/css/animate.css">
 	<!-- mean menu css -->
-	<link rel="stylesheet" href="../resources/assets/css/meanmenu.min.css">
+	<link rel="stylesheet" href="/resources/assets/css/meanmenu.min.css">
 	<!-- main style -->
-	<link rel="stylesheet" href="../resources/assets/css/main.css">
+	<link rel="stylesheet" href="/resources/assets/css/main.css">
 	<!-- responsive -->
-	<link rel="stylesheet" href="../resources/assets/css/responsive.css">
+	<link rel="stylesheet" href="/resources/assets/css/responsive.css">
 	
-	<link rel="stylesheet" href="../resources/assets/css/mycss.css">
+	<link rel="stylesheet" href="/resources/assets/css/mycss.css">
+	<!-- product css summernote 충돌 해결함 -->
+	<link rel="stylesheet" href="/resources/assets/css/product.css">
 	
-	
-
+   
 	<!-- jquery -->
 	<script src="/resources/assets/js/jquery-1.11.3.min.js"></script>
 	<!-- 다음 주소 api -->

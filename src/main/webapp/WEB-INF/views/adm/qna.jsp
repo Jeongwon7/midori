@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "adminheader.jsp" %>
 <body>
-	<div style="margin-top:100px; margin-left:300px;">
-	<h2>상품문의 관리</h2>
+	<div style="margin-top:100px; margin-left:300px; width:1200px;">
+	<h2 style="margin-bottom: 30px;">상품문의 관리</h2>
 	<!-- <div class="container"> -->
 	  <div class="search_wrap">
 		<div class="record_group">
@@ -28,15 +28,15 @@
 			</form>
 		</div>
 	  </div> <!-- search end -->
-	 <div class="my_review">
-		<table class="table table-hover my_reviewtbl">
+	 <div class="my_review" style="margin-top:100px;">
+		<table class="table table-hover my_reviewtbl jw_table">
 			<caption class="sr-only">상품문의 리스트</caption>
 			<colgroup>
+				<col width="5%">
 				<col width="10%">
 				<col width="10%">
 				<col width="10%">
 				<col width="*">
-				<col width="10%">
 				<col width="10%">
 				<col width="10%">
 				<col width="10%">
@@ -113,7 +113,7 @@
 				<c:set var="num" value="${num-1}" />
 			</c:forEach>
 			<c:if test="${empty qnaList }">
-				<tr><td colspan="8">상품 문의가 없습니다</td></tr>
+				<tr><td colspan="8" style="text-align:center;">상품 문의가 없습니다</td></tr>
 			</c:if>
 			</tbody>
 		</table>

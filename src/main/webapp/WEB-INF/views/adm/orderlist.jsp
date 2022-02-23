@@ -2,23 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "adminheader.jsp" %>
 <body>
-	<div style="margin-top:100px; margin-left:300px;">
-	<h2>${title}</h2>
-	<!-- <div class="container"> -->
+	<div style="margin-top:100px; margin-left:300px; width:1200px;">
+	
+	 <div class="container">
+	 <h2>${title}</h2>
 	  <div class="search_wrap">
-		<div class="record_group">
+		<div class="record_group float-right">
 			<p>총게시글<span>${pageMaker.total}</span>건</p>
 		</div>
 	  </div> <!-- search end -->
 	 <div class="my_review">
-		<table class="table table-hover my_reviewtbl">
+		<table class="table table-hover my_reviewtbl jw_table">
 			<caption class="sr-only">주문관리 리스트</caption>
 			<colgroup>
 				<col width="10%">
 				<col width="10%">
 				<col width="10%">
 				<col width="*">
-				<col width="10%">
+				<col width="20%">
 				<col width="10%">
 			</colgroup>
 			<thead>
@@ -71,7 +72,7 @@
 			</form>
 		</div>
 	  </div>
-	<!-- </div> -->
+	</div>
 	<!-- end contents -->
 </div>
 </body>

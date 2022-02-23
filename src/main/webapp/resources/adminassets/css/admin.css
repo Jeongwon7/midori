@@ -1,4 +1,4 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
 .admin_strong{
 	font-weight: 700;
@@ -49,7 +49,7 @@
     text-decoration: none;
 }
 
-/*-- ¾îµå¹Î ·Î±×ÀÎ --*/
+/*-- ì–´ë“œë¯¼ ë¡œê·¸ì¸ --*/
 
 .admin_login{
      width:1214px;

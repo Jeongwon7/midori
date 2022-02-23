@@ -2,13 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "adminheader.jsp" %>
 <body>
-	<div style="margin-top:100px; margin-left:300px;">
+	<div style="margin-top:100px; margin-left:250px; width:100%;">
 			<div class="container">
 			<div class="row">
 				<div class="col-md-12 newitem">
 					<h2>주문관리 (주문상세 정보)</h2>
-					<h3>주문자 정보</h3>
-						<table class="table">
+					<h3 class="jw_h3">주문자 정보</h3>
+						<table class="table jw_table">
 							<tr>
 								<th>주문일자</th>
 								<th>주문번호</th>
@@ -38,8 +38,8 @@
 								</c:if>
 							</tr>
 						</table>
-					<h3>배송 정보</h3>
-						<table class="table">
+					<h3 class="jw_h3">배송 정보</h3>
+						<table class="table jw_table">
 							<tr>
 								<th>수취인</th>
 								<th>우편번호</th>
@@ -53,8 +53,8 @@
 								<td>${od.address2}</td>
 							</tr>
 						</table>
-						<h3>주문 상품 정보</h3>
-						<table class="table">
+						<h3 class="jw_h3">주문 상품 정보</h3>
+						<table class="table jw_table">
 							<tr>
 								<th>상품별주문번호</th>
 								<th>상품명</th>
@@ -73,24 +73,28 @@
 								</tr>
 							</c:forEach>
 						</table>
-						<div class="col-md-12">
+						<div style="width:100%;">
+						<div class="col-md-12 jw_float" style="margin: 50px 50px 50px 300px; display:inline-block; text-align:center;">
 							<form name="opfrm" method="post">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 								<input type="hidden" name="status" value="${status}">
 								<input type="hidden" name="oseq" value="${od.oseq}">
 							<c:choose>
 								<c:when test="${status == 1}">
-									<input type="button" value="입금확인" onclick="orderPro1()">
+									<input type="button" class="form-control jw_btn" value="입금확인" onclick="orderPro1()" style="width:150px; margin-right:10px; margin-left:170px;">
+									<input type="button" class="form-control jw_btn" value="목록으로" onclick="history.back()" style="width:150px;">
 								</c:when>
 								<c:when test="${status == 2}">
-									<input type="text" name="track" placeholder="운송장번호 입력">
-									<input type="button" value="발송처리" onclick="orderPro2()">
+									<input type="text" class="form-control jw_btn" name="track" placeholder="운송장번호 입력" style="width:200px; margin-right:10px;  margin-left:80px;">
+									<input type="button" class="form-control jw_btn" value="발송처리" onclick="orderPro2()" style="width:150px; margin-right:10px;">
+									<input type="button" class="form-control jw_btn" value="목록으로" onclick="history.back()" style="width:150px;">
 								</c:when>
 								<c:otherwise>
+									<input type="button" class="form-control jw_btn" value="목록으로" onclick="history.back()" style="width:150px; margin-left:260px;">
 								</c:otherwise>
 							</c:choose>
 							</form>
-							<input type="button" value="목록으로" onclick="history.back()">
+						</div>
 						</div>
 				</div><!-- 9 end -->
 			</div><!-- row end -->

@@ -40,29 +40,30 @@ public class ProductController {
 	@Setter(onMethod_ = @Autowired)
 	private ProductService service ;
 	
-	//상품뷰페이지 리뷰 ,qna 출력
-	@GetMapping("/productview")
+	//상품뷰페이지
+	@GetMapping("/product_view.do")
 	public void productView(@RequestParam("pseq") int pseq, Model model) {
-		//System.out.println("pseq: "+pseq);
+		System.out.println("pseq: "+pseq);
 		List<ReviewVO> reviewList = service.reviewRead(pseq);
 		List<QnaVO> qnaList = service.QnaListByProduct(pseq);
 		
-		//System.out.println("reviewList: "+reviewList);
-		//System.out.println("qnaList: "+qnaList);
+		System.out.println("reviewList: "+reviewList);
+		System.out.println("qnaList: "+qnaList);
 		
 		model.addAttribute("rlist", reviewList);
 		model.addAttribute("qnalist",qnaList);
 		model.addAttribute("pseq", pseq);
+		
 	}
 	
-	
+	//리뷰 비동기식 삭제 후 리스트 뽑는 컨트롤러
 	@ResponseBody
 	@GetMapping("/getReviewAjax.do")
 	public List<ReviewVO> AjaxreviewList(@RequestParam("pseq") int pseq){
 		List<ReviewVO> rlist = service.reviewRead(pseq);
 		return rlist;
 	}
-	
+	//상품문의, 답변 비동기식 삭제 후 리스트 뽑는 컨트롤러
 	@ResponseBody
 	@GetMapping("/getQnaAjax.do")
 	public List<QnaVO> AjaxQnaList(@RequestParam("pseq") int pseq){
