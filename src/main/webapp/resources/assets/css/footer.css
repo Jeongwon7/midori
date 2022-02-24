@@ -1,0 +1,26 @@
+@charset "UTF-8";
+footer{
+	position: fixed;
+	background: beige;
+	width: 100%;
+	padding: 50px 70px;
+}
+.tel{
+	font-size: 30px;
+	color: #49904E;
+}
+.ti {
+	font-size: 10px;
+}
+.co{
+	font-size: 15px;
+}
+.b{
+	font-size: 25px;
+}
+a {
+	color: black;
+}
+a:hover{
+	color:black;
+}

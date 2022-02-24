@@ -22,10 +22,10 @@
 							<th>상품명</th>
 							<th>판매량</th>
 						</tr>
-				<c:set var="rank" value="${todayBest.size() - 4}" />
-				<c:forEach var="list" items="todayBest">
+				<c:set var="num" value="1" />
+				<c:forEach var="list" items="${todayBest}">
 					<tr>
-						<td>${rank}</td>
+						<td>${num}</td>
 						<c:choose>
 							<c:when test="${list.kind == '1'}">
 								<td>샐러드</td>
@@ -57,45 +57,6 @@
 			</table>
 				</c:otherwise>
 			</c:choose>
-			<h4 style="margin:30px; font-weight: bold;">일일 판매량 Top5</h4>
-			<table class="table jw_table" >
-				<tr>
-					<th>순위</th>
-					<th>카테고리</th>
-					<th>상품명</th>
-					<th>판매량</th>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>닭가슴살</td>
-					<td>닭베스트</td>
-					<td>47</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>닭가슴살</td>
-					<td>닭베스트</td>
-					<td>47</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>닭가슴살</td>
-					<td>닭베스트</td>
-					<td>47</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>닭가슴살</td>
-					<td>닭베스트</td>
-					<td>47</td>
-				</tr>
-				<tr>
-					<td>5</td>
-					<td>닭가슴살</td>
-					<td>닭베스트</td>
-					<td>47</td>
-				</tr>
-			</table>
 		</div>
 		</div>
 		<div class="jw-charts-3wrap">
@@ -146,7 +107,7 @@
 		
 		  // Set chart options
 		  var options = {'title':'전체기간 판매 순위 Top10',
-				   		'fontSize': 20,
+				   		'fontSize': 17,
 				   	   	'titlePosition': 'out',
 		                 'width':600,
 		                 'height':500};
@@ -159,16 +120,16 @@
 	 function ThreeDaysSalesChart() {
 	        var data = google.visualization.arrayToDataTable([
 	          ['일', '매출', '수익', '원가'],
-	          ['${toDay}', ${totalToday2}, ${totalToday3}, ${totalToday1}],
+	          ['${towDaysago}', ${totalTwoDaysAgo2}, ${totalTwoDaysAgo3}, ${totalTwoDaysAgo1}],
 	          ['${yesterday}', ${totalAdayAgo2}, ${totalAdayAgo3}, ${totalAdayAgo1}],
-	          ['${towDaysago}', ${totalTwoDaysAgo2}, ${totalTwoDaysAgo3}, ${totalTwoDaysAgo1}]
+	          ['${toDay}', ${totalToday2}, ${totalToday3}, ${totalToday1}]
 	        ]);
 
 	        var options = {
 	          chart: {
 	            title: '3일간 매출 정보',
-	            subtitle: 'Sales, Expenses, and Costs: for 3 days'
-	           
+	            subtitle: 'Sales, Expenses, and Costs: for 3 days',
+	            legend: { position: "none" }
 	          }
 	        };
 
@@ -180,15 +141,16 @@
 	 function ThreeMonthsSalesChart() {
 	        var data = google.visualization.arrayToDataTable([
 	          ['월', '매출', '수익', '원가'],
-	          ['${month}', ${totalThisMonth2}, ${totalThisMonth3}, ${totalThisMonth1}],
+	          ['${month2}', ${totalTwoMonthsAgo2}, ${totalTwoMonthsAgo3}, ${totalTwoMonthsAgo1}],
 	          ['${month1}', ${totalAMonthAgo2}, ${totalAMonthAgo3}, ${totalAMonthAgo1}],
-	          ['${month2}', ${totalTwoMonthsAgo2}, ${totalTwoMonthsAgo3}, ${totalTwoMonthsAgo1}]
+	          ['${month}', ${totalThisMonth2}, ${totalThisMonth3}, ${totalThisMonth1}]
 	        ]);
 
 	        var options = {
 	          chart: {
 	            title: '3개월간 매출 정보',
-	            subtitle: 'Sales, Expenses, and Costs: for 3 months'
+	            subtitle: 'Sales, Expenses, and Costs: for 3 months',
+	            legend: { position: "none" }
 	          }
 	        };
 
@@ -200,16 +162,16 @@
 	 function ThreeYearsSalesChart() {
 	        var data = google.visualization.arrayToDataTable([
 	          ['연', '매출', '수익', '원가'],
-	          ['${year}', ${totalThisYear2}, ${totalThisYear3}, ${totalThisYear1}],
-//	          ['${year1}', ${totalAYearAgo2}, ${totalAYearAgo3}, ${totalAYearAgo1}],
-//	          ['${year2}', ${totalTwoYearsAgo2}, $totalTwoYearsAgo3}, ${totalTwoYearsAgo1}]
+	          ['${year2}', ${totalTwoYearsAgo2}, ${totalTwoYearsAgo3}, ${totalTwoYearsAgo1}],
+	          ['${year1}', ${totalAYearAgo2}, ${totalAYearAgo3}, ${totalAYearAgo1}],
+	          ['${year}', ${totalThisYear2}, ${totalThisYear3}, ${totalThisYear1}]
 	        ]);
 
 	        var options = {
 	          chart: {
 	            title: '3년간 매출 정보',
 	            subtitle: 'Sales, Expenses, and Costs: for 3 years',
-	            legend: {position: 'none'}
+	            legend: { position: "none" }
 	          }
 	        };
 
@@ -217,6 +179,7 @@
 
 	        chart.draw(data, google.charts.Bar.convertOptions(options));
 	      }
+	
 	
 	
 	

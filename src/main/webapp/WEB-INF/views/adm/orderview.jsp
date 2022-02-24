@@ -2,11 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "adminheader.jsp" %>
 <body>
-	<div style="margin-top:100px; margin-left:250px; width:1200px;">
+	<div style="margin-top:100px; margin-left:300px; width:100%;">
 			<div class="container">
 			<div class="row">
 				<div class="col-md-12 newitem">
-					<h2>주문관리 (주문상세 정보)</h2>
+					<h2 style="font-weight:bold;">주문관리 (주문상세 정보)</h2>
 					<h3 class="jw_h3">주문자 정보</h3>
 						<table class="table jw_table">
 							<tr>
@@ -66,7 +66,7 @@
 								<tr>
 									<td>${list.odseq}</td>
 									<td>${list.pname}</td>
-									<td><img src="/upload/${list.image}" alt="상품 사진"></td>
+									<td><img src="/upload/${list.image}" alt="상품 사진" style="width:40px;"></td>
 									<td>${list.quantity}</td>
 									<td>${list.price2}&#x20a9;</td>
 									

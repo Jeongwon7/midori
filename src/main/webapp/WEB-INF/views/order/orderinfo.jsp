@@ -12,7 +12,7 @@
 		  <form name="form1" id="order_form" action="/order/orderinfo" method="post" >
            <h3>주문 정보</h3>
            <div class="tbl_order">
-            <table style="width:825px;">
+            <table class="jw_table"style="width:825px;">
 			      <colgroup>
 			       <col width="70">
 			       <col width="70">
@@ -160,7 +160,7 @@
 	    		  <a href="#" class="first" onclick="history.back();">뒤로가기</a>
 	    		  </p>
 	    		  <p class="cart">
-	    		  <a href="#" class="first" id="check_module" >결제하기</a><!-- onclick="orderInsert()" -->
+	    		  <a href="#" class="first" onclick="orderInsert()">결제하기</a><!-- id="check_module"  -->
 	    		  </p>
 	    		</div>
 	    	  </div>

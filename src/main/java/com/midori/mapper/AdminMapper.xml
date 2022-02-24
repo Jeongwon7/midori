@@ -53,17 +53,18 @@
 	</select>
 	<select id="QnaListNew" resultType="com.midori.domain.QnaVO">
 		<![CDATA[ 
-			select rownum, ref, qbno, secret, pseq, qtitle, qcontent, qwriter, qregdate, category, 
-			abno, atitle, acontent, aregdate, awriter 
-			from(select * from qna_view) 
+			    select ref, qbno, secret, pseq, qtitle, qwriter, qregdate, category, pname, kind
+   			 from(select rownum, ref, qbno, secret, p.pseq, qtitle, qwriter, qregdate, category, p.kind, p.name as pname 
+			from qna_view q, product p where p.pseq=q.pseq order by qregdate desc) 
 			where rownum <7
 		 ]]>
 	</select>
 	<select id="ReviewListNew" resultType="com.midori.domain.ReviewVO">
 		<![CDATA[ 
-			select rownum, rbno, pseq, writer, title, content, star, regdate 
+			select rbno, pseq, writer, title, content, star, regdate, pname 
 			from(
-			select * from review order by rbno desc) 
+			select rownum, rbno, p.pseq, writer, title, r.content, star, regdate, p.name as pname
+			from review r, product p where r.pseq=p.pseq order by rbno desc) 
 			where rownum <7
 		]]>
 	</select>
@@ -207,23 +208,23 @@
 	<!-- 통계 -->
 	<select id="AllSales" resultType="com.midori.domain.OrderVO">
 		<![CDATA[ 
-			select rownum, pseq, pname, sales_count 
-			from (select pseq ,pname, sum(quantity) as sales_count 
-			from order_view 
-			group by pname, pseq 
-			order by sales_count desc) 
-			where rownum <11
+			select pseq, pname, sales_count 
+from (select rownum, pseq ,pname, sum(quantity) as sales_count 
+from order_view 
+group by pname, pseq, rownum 
+order by sales_count desc)
+where rownum <11
 		]]>
 	</select>
 	<select id="TodayBest" resultType="com.midori.domain.OrderVO">
 		<![CDATA[
-			select rownum, kind, pseq, pname, sales_count 
-			from (select p.kind, o.pseq, o.pname, sum(o.quantity) as sales_count 
-			from order_view o, product p 
-			where o.pseq = p.pseq and TO_CHAR(o.indate, 'YYYYMMDD') = to_char(sysdate, 'yyyymmdd') 
-			group by o.pname, o.pseq, p.kind 
-			order by sales_count desc) 
-			where rownum <6
+		select kind, pseq, pname, sales_count  
+from (select p.pseq, p.kind, o.pname, sum(o.quantity) as sales_count 
+from order_view o, product p
+where o.pseq = p.pseq and TO_CHAR(o.indate, 'YYYYMMDD') = to_char(sysdate, 'yyyymmdd') 
+group by o.pname, p.pseq, p.kind
+order by sales_count desc) 
+where rownum <6
 		 ]]>
 	</select>
 	<select id="todaySales" resultType="com.midori.domain.OrderVO">
@@ -268,9 +269,9 @@
 		order by indate
 	</select>
 	<select id="twoYearsAgoSales" resultType="com.midori.domain.OrderVO">
-		select * from benefit_view 
-		where to_number(to_char(indate, 'yyyymmdd')) between to_number(to_char(sysdate,'yyyy')-2)||'0101' 
-		and to_number(to_char(sysdate,'yyyy')-2)||'1231' 
-		order by indate
+		select * from benefit_view
+where to_number(to_char(indate, 'yyyymmdd')) between to_number(to_char(sysdate,'yyyy')-2)||'0101' 
+and to_number(to_char(sysdate,'yyyy')-2)||'1231' 
+order by indate
 	</select>
 </mapper>

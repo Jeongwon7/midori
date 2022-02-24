@@ -2,45 +2,46 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "adminheader.jsp" %>
 <body>
-	<div style="margin-top:100px; margin-left:300px; width:1200px;">
-	<h2 style="margin-bottom: 30px;">상품문의 관리</h2>
-	<!-- <div class="container"> -->
-	  <div class="search_wrap">
-		<div class="record_group">
-			<p>총게시글<span>${pageMaker.total}</span>건</p>
-		</div>
-		<div class="search_group">
-			<form name="myform" method="get" action="/adm/qna.do" id="searchForm">
-				<select name="kind" class="select">
-					<option value="">선택</option>
-					<option value="1">샐러드</option>
-					<option value="2">닭가슴살</option>
-					<option value="3">다이어트도시락</option>
-					<option value="4">샌드위치</option>
-					<option value="5">프로틴</option>
-					<option value="6">저칼로리간식</option>
-					<option value="7">무설탕음료</option>
-				</select>
-				<!-- <input type="text" name="keyword" class="search_word"> -->
-				<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-            	<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-				<button class="btn_search" type="submit"><i class="fa fa-search"></i><span class="sr-only">검색버튼</span></button>
-			</form>
-		</div>
-	  </div> <!-- search end -->
-	 <div class="my_review" style="margin-top:100px;">
-		<table class="table jw_table">
-			<caption class="sr-only">상품문의 리스트</caption>
-			<colgroup>
-				<col width="5%">
-				<col width="10%">
-				<col width="10%">
-				<col width="10%">
-				<col width="*">
-				<col width="10%">
-				<col width="10%">
-				<col width="10%">
-			</colgroup>
+   <div class="col-md-12" style="margin-top:100px; margin-left:300px; width:1150px;">
+            <div class="col-md-12">
+   <h2>상품문의 관리</h2>
+   <!-- <div class="container"> -->
+     <div class="search_wrap">
+      <div class="record_group">
+         <p>총게시글<span>${pageMaker.total}</span>건</p>
+      </div>
+      <div class="search_group">
+         <form name="myform" method="get" action="/adm/qna.do" id="searchForm">
+            <select name="kind" class="select">
+               <option value="">선택</option>
+               <option value="1">샐러드</option>
+               <option value="2">닭가슴살</option>
+               <option value="3">다이어트도시락</option>
+               <option value="4">샌드위치</option>
+               <option value="5">프로틴</option>
+               <option value="6">저칼로리간식</option>
+               <option value="7">무설탕음료</option>
+            </select>
+            <!-- <input type="text" name="keyword" class="search_word"> -->
+            <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+               <input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+            <button class="btn_search" type="submit"><i class="fa fa-search"></i><span class="sr-only">검색버튼</span></button>
+         </form>
+      </div>
+     </div> <!-- search end -->
+    <div class="my_review">
+      <table class="table table-hover my_reviewtbl">
+         <caption class="sr-only">상품문의 리스트</caption>
+         <colgroup>
+            <col width="50">
+            <col width="110">
+            <col width="140">
+            <col width="*">
+            <col width="*">
+            <col width="110">
+            <col width="90">
+            <col width="110">
+         </colgroup>
 			<thead>
 				<tr>
 					<th>번호</th>

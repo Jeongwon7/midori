@@ -63,7 +63,7 @@ public class AdminController {
     }
 	
 	//어드민 홈이 될 아이입니다
-	@GetMapping("/admindex")
+	@GetMapping("/admindex.do")
 	public void adminIndex(Model model) {
 		//주문단계별 건수
 		for(int i = 1; i<5; i++) {
@@ -91,6 +91,8 @@ public class AdminController {
 		}
 		
 		model.addAttribute("monthly10", monthly10);
+		
+		//totalPrice들은 주간 매출(매출액, 원가, 수익)
 		model.addAttribute("totalPrice1", totalPrice1);
 		model.addAttribute("totalPrice2", totalPrice2);
 		model.addAttribute("totalPrice3", totalPrice3);
@@ -268,6 +270,14 @@ public class AdminController {
 		return "redirect:/adm/review.do";
 		
 	}
+	
+	@GetMapping("/reviewdeleteindex.do")
+	public String reviewDeleteIndex(@RequestParam("rbno") int rbno) {
+		System.out.println("rbno: "+rbno);
+		service.reviewDelete(rbno);
+		return "redirect:/adm/admindex.do";
+		
+	}
 		
 		
 	//상품문의
@@ -434,11 +444,11 @@ public class AdminController {
 		//전체기간 판매량 도넛 그래프(상위 10위)
 		List<OrderVO> AllSales = service.allSales();
 		
-		
 		model.addAttribute("AllSales", AllSales);
 		//오늘 판매량 TOP5 (번호, 카테고리, 상품명, 판매량)
 		List<OrderVO> todayBest = service.todayBest();
 		model.addAttribute("todayBest", todayBest);
+		System.out.println("tobe: "+todayBest);
 		//3일간 수익 비교 막대그래프
 		List<OrderVO> today = service.TodaySales();
 		
@@ -451,12 +461,12 @@ public class AdminController {
 			totalToday2 += ovo.getPrice2();
 			totalToday3 += ovo.getPrice3();
 		}
-//		String toDay = today.get(0).getIndate().substring(0, 10);
-//		model.addAttribute("toDay", toDay);
+		String toDay = today.get(0).getIndate().substring(5, 10);
+		model.addAttribute("toDay", toDay);
 		model.addAttribute("totalToday1", totalToday1);
 		model.addAttribute("totalToday2", totalToday2);
 		model.addAttribute("totalToday3", totalToday3);
-		//
+		
 		List<OrderVO> aDayAgo = service.ADayAgoSales();
 		int totalAdayAgo1 = 0;
 		int totalAdayAgo2 = 0;
@@ -467,8 +477,8 @@ public class AdminController {
 			totalAdayAgo3 += ovo.getPrice3();
 		}
 		
-//		String yesterday = aDayAgo.get(0).getIndate().substring(0, 10);
-//		model.addAttribute("yesterday", yesterday);
+		String yesterday = aDayAgo.get(0).getIndate().substring(5, 10);
+		model.addAttribute("yesterday", yesterday);
 		model.addAttribute("totalAdayAgo1", totalAdayAgo1);
 		model.addAttribute("totalAdayAgo2", totalAdayAgo2);
 		model.addAttribute("totalAdayAgo3", totalAdayAgo3);
@@ -483,8 +493,8 @@ public class AdminController {
 			totalTwoDaysAgo2 += ovo.getPrice2();
 			totalTwoDaysAgo3 += ovo.getPrice3();
 		}
-//		String towDaysago = twoDaysAgo.get(0).getIndate().substring(5, 10);
-//		model.addAttribute("towDaysago", towDaysago);
+		String towDaysago = twoDaysAgo.get(0).getIndate().substring(5, 10);
+		model.addAttribute("towDaysago", towDaysago);
 		model.addAttribute("totalTwoDaysAgo1", totalTwoDaysAgo1);
 		model.addAttribute("totalTwoDaysAgo2", totalTwoDaysAgo2);
 		model.addAttribute("totalTwoDaysAgo3", totalTwoDaysAgo3);
@@ -513,8 +523,8 @@ public class AdminController {
 			totalAMonthAgo2 += ovo.getPrice2();
 			totalAMonthAgo3 += ovo.getPrice3();
 		}
-//		String month1 = aMonthAgo.get(0).getIndate().substring(5, 7)+"월";
-//		model.addAttribute("month1", month1);
+		String month1 = aMonthAgo.get(0).getIndate().substring(5, 7)+"월";
+		model.addAttribute("month1", month1);
 		model.addAttribute("totalAMonthAgo1", totalAMonthAgo1);
 		model.addAttribute("totalAMonthAgo2", totalAMonthAgo2);
 		model.addAttribute("totalAMonthAgo3", totalAMonthAgo3);
@@ -528,8 +538,8 @@ public class AdminController {
 			totalTwoMonthsAgo2 += ovo.getPrice2();
 			totalTwoMonthsAgo3 += ovo.getPrice3();
 		}
-//		String month2 = twoMonthsAgo.get(0).getIndate().substring(5, 7)+"월";
-//		model.addAttribute("month2", month2);
+		String month2 = twoMonthsAgo.get(0).getIndate().substring(5, 7)+"월";
+		model.addAttribute("month2", month2);
 		model.addAttribute("totalTwoMonthsAgo1", totalTwoMonthsAgo1);
 		model.addAttribute("totalTwoMonthsAgo2", totalTwoMonthsAgo2);
 		model.addAttribute("totalTwoMonthsAgo3", totalTwoMonthsAgo3);
@@ -558,8 +568,8 @@ public class AdminController {
 			totalAYearAgo2 += ovo.getPrice2();
 			totalAYearAgo3 += ovo.getPrice3();
 		}
-//		String year1 = aYearAgo.get(0).getIndate().substring(0, 4);
-//		model.addAttribute("year1", year1);
+		String year1 = aYearAgo.get(0).getIndate().substring(0, 4);
+		model.addAttribute("year1", year1);
 		model.addAttribute("totalAYearAgo1", totalAYearAgo1);
 		model.addAttribute("totalAYearAgo2", totalAYearAgo2);
 		model.addAttribute("totalAYearAgo3", totalAYearAgo3);
@@ -573,8 +583,8 @@ public class AdminController {
 			totalTwoYearsAgo2 += ovo.getPrice2();
 			totalTwoYearsAgo3 += ovo.getPrice3();
 		}
-//		String year2 = twoYearsAgo.get(0).getIndate().substring(0, 4);
-//		model.addAttribute("year2", year2);
+		String year2 = twoYearsAgo.get(0).getIndate().substring(0,4);
+		model.addAttribute("year2", year2);
 		model.addAttribute("totalTwoYearsAgo1", totalTwoYearsAgo1);
 		model.addAttribute("totalTwoYearsAgo2", totalTwoYearsAgo2);
 		model.addAttribute("totalTwoYearsAgo3", totalTwoYearsAgo3);

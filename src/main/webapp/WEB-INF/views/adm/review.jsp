@@ -59,7 +59,6 @@
 			<c:if test ="${not empty list}">
 				<tr class="item">
 					<td>${num}</td>
-				
 						<c:choose>
 							<c:when test="${list.kind eq '1'}">
 								<td>샐러드</td>

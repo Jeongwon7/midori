@@ -40,6 +40,9 @@
 	
 	<link rel="stylesheet" href="../resources/assets/css/mycss.css">
 
+	<!--  <link rel="stylesheet" href="/resources/assets/css/footer.css">-->
+
+
 	<!-- jquery -->
 	<script src="/resources/assets/js/jquery-1.11.3.min.js"></script>
 	<!-- bootstrap -->
@@ -71,7 +74,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-sm-4">
-					<a href="index.do">
+					<a href="/">
 						<img src="assets/img/logo.png" style="width: 100px;" alt="">
 					</a>
 				</div>
@@ -277,7 +280,7 @@
 						<div class="col-lg-4 col-md-6 text-center">
 							<div class="single-product-item">
 								<div class="product-image">
-									<a href="/product/product_view?pseq=${blist.pseq}"><img src="/upload/${blist.image}" alt=""></a>
+									<a href="/product/product_view.do?pseq=${blist.pseq}"><img src="/upload/${blist.image}" alt=""></a>
 								</div>
 								<h4>${blist.name}</h4>
 								<p class="product-price">${blist.price2} 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
@@ -291,7 +294,7 @@
 						<div class="col-lg-4 col-md-6 text-center">
 							<div class="single-product-item">
 								<div class="product-image">
-									<a href="/product/product_view?pseq=${nlist.pseq}"><img src="/upload/${nlist.image}" alt=""></a>
+									<a href="/product/product_view.do?pseq=${nlist.pseq}"><img src="/upload/${nlist.image}" alt=""></a>
 								</div>
 								<h4>${nlist.name}</h4>
 								<p class="product-price">${nlist.price2} 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>

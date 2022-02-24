@@ -48,6 +48,8 @@
 	
 	<link rel="stylesheet" href="/resources/assets/css/order.css">
 	
+	<!-- <link rel="stylesheet" href="/resources/assets/css/footer.css"> -->
+	
    
 	<!-- jquery -->
 	<script src="/resources/assets/js/jquery-1.11.3.min.js"></script>

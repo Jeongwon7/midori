@@ -15,7 +15,7 @@
     					</div>
     					<div class="col-md-5" style="padding-left:40px;">
     					<form id="ofrm" method="post" name="formm" action="/order/orderinfo.do">
-						<input type="hidden" name="pseq" value="1">
+						<input type="hidden" name="pseq" value="${pseq}">
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     						<div class="goods_name">
     							<strong class="name">메밀국수</strong>

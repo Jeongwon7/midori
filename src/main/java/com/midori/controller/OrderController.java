@@ -30,6 +30,7 @@ public class OrderController {
 	//주문정보 페이지
 	@PostMapping("/orderinfo.do")
 	public void orderInfoOne(CartVO cvo, Model model, Principal principal) {
+		System.out.println("cvo: "+cvo);
 		String id = principal.getName();
 		List<CartVO> cartlist = null;
 		MemberVO mvo = null;
@@ -44,7 +45,7 @@ public class OrderController {
 			
 			mvo = service.memberSelect(id);
 			
-		}else {//상품뷰페이지에서 결제하는 경우(얘는 form을 날려서 와야 함
+		}else {//상품뷰페이지에서 결제하는 경우(얘는 form을 날려서 와야 함 pseq, quantity
 			ProductVO pvo = service.productSelect(cvo.getPseq());
 			totalPrice = cvo.getQuantity()* pvo.getPrice2();
 			mvo = service.memberSelect(id);
