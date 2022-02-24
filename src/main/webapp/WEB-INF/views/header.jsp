@@ -46,6 +46,8 @@
 	<!-- product css summernote 충돌 해결함 -->
 	<link rel="stylesheet" href="/resources/assets/css/product.css">
 	
+	<link rel="stylesheet" href="/resources/assets/css/order.css">
+	
    
 	<!-- jquery -->
 	<script src="/resources/assets/js/jquery-1.11.3.min.js"></script>
@@ -89,7 +91,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-sm-4">
-					<a href="index.do">
+					<a href="/">
 						<img src="../assets/img/logo.png" style="width: 100px;" alt="">
 					</a>
 				</div>

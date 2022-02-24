@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "../header.jsp" %>
-
-	<!-- contents -->
-	<section class="product">
 				<div class="col-md-9">
-				  <h2>Question Writing</h2>
+				  <h3>Question Writing</h3>
 					<form class="form-horizontal" name="qafrm" method="post"> 
 					  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 					<input type="hidden" name="pseq" value="${pseq}">
@@ -42,15 +39,16 @@
 					  </div>
 					    <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10">
-					      <button type="button" class="btn btn-default" onclick="question_save()">문의등록</button>
-					       <button type="button" class="btn btn-default" onclick="history.back();">목록으로</button>
+					      <button type="button" onclick="question_save()">문의등록</button>
+					       <button type="button" onclick="history.back();">목록으로</button>
 					    </div>
 					  </div>
 					</form>
 				</div>
-	
-		
-	</section>
+			</div>
+		</div>
+	</div>
+	</body>
 	<!-- contents end-->
 	<script>
 	//썸머노트

@@ -273,117 +273,31 @@
 				<div class="col-md-9 newitem">
     				<h3>베스트 상품</h3>
     				<div class="row">
+    					<c:forEach var="blist" items="${bestlist}">
 						<div class="col-lg-4 col-md-6 text-center">
 							<div class="single-product-item">
 								<div class="product-image">
-									<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
+									<a href="/product/product_view?pseq=${blist.pseq}"><img src="/upload/${blist.image}" alt=""></a>
 								</div>
-								<h4>Strawberry</h4>
-								<p class="product-price"> 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
+								<h4>${blist.name}</h4>
+								<p class="product-price">${blist.price2} 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
 							</div>
 						</div>
-						<div class="col-lg-4 col-md-6 text-center">
-							<div class="single-product-item">
-								<div class="product-image">
-									<a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
-								</div>
-								<h4>Berry</h4>
-								<p class="product-price"> 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-							<div class="single-product-item">
-								<div class="product-image">
-									<a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
-								</div>
-								<h4>Lemon</h4>
-								<p class="product-price"> 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 text-center">
-							<div class="single-product-item">
-								<div class="product-image">
-									<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
-								</div>
-								<h4>Strawberry</h4>
-								<p class="product-price"> 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 text-center">
-							<div class="single-product-item">
-								<div class="product-image">
-									<a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
-								</div>
-								<h4>Berry</h4>
-								<p class="product-price"> 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-							<div class="single-product-item">
-								<div class="product-image">
-									<a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
-								</div>
-								<h4>Lemon</h4>
-								<p class="product-price"> 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
-							</div>
-						</div>
+						</c:forEach>
 					</div>
 					<h3>신상품</h3>
     				<div class="row">
+    				<c:forEach var="nlist" items="${newlist}">
 						<div class="col-lg-4 col-md-6 text-center">
 							<div class="single-product-item">
 								<div class="product-image">
-									<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
+									<a href="/product/product_view?pseq=${nlist.pseq}"><img src="/upload/${nlist.image}" alt=""></a>
 								</div>
-								<h4>Strawberry</h4>
-								<p class="product-price"> 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
+								<h4>${nlist.name}</h4>
+								<p class="product-price">${nlist.price2} 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
 							</div>
 						</div>
-						<div class="col-lg-4 col-md-6 text-center">
-							<div class="single-product-item">
-								<div class="product-image">
-									<a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
-								</div>
-								<h4>Berry</h4>
-								<p class="product-price"> 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-							<div class="single-product-item">
-								<div class="product-image">
-									<a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
-								</div>
-								<h4>Lemon</h4>
-								<p class="product-price"> 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 text-center">
-							<div class="single-product-item">
-								<div class="product-image">
-									<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
-								</div>
-								<h4>Strawberry</h4>
-								<p class="product-price"> 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 text-center">
-							<div class="single-product-item">
-								<div class="product-image">
-									<a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
-								</div>
-								<h4>Berry</h4>
-								<p class="product-price"> 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-							<div class="single-product-item">
-								<div class="product-image">
-									<a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
-								</div>
-								<h4>Lemon</h4>
-								<p class="product-price"> 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
-							</div>
-						</div>
+					</c:forEach>
 					</div>
 				</div>
 			</div>

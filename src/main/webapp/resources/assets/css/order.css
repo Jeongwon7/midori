@@ -1,0 +1,246 @@
+@charset "EUC-KR";
+
+.order {
+	width:825px;
+}
+.order h2{
+    padding-bottom: 5px;
+    border-bottom: 2px solid #000;
+    color: #333;
+    font-family: 'malgun gothic';
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: -3px;
+}
+.order h3{
+	position: relative;
+    margin-top: 40px;
+    color: #000;
+    font-family: 'malgun gothic';
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -2px;
+}
+.order .tbl_order{
+	position: relative;
+    margin-top: 10px;
+    border-top: 2px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+.address_table {
+	width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    word-wrap: break-word;
+    word-break: keep-all;
+}
+.order .tbl_order tbody th {
+	text-align: center;
+}
+.order .tbl_order .txt-1{
+	padding: 0 15px;
+	text-align: left;
+}
+.order .tbl_order td, .order .tbl_order th{
+	padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    color: #222;
+}
+.order input[type=text] , .order input[type=password] {
+	width: 168px;
+    height: 23px;
+    line-height: 23px;
+    padding: 0 5px;
+    border: 1px solid #ddd;
+}
+.order .btn-white {
+	    display: inline-block;
+    height: 23px;
+    line-height: 25px;
+    padding: 0 5px;
+    border: 1px solid #ddd;
+    color: #000;
+    font-weight: bold;
+    letter-spacing: -1px;
+    border-radius: 3px;
+}
+.order .w60{
+	width: 75px !important;
+	height: 23px;
+    line-height: 23px;
+    margin: 0;
+    padding: 0 5px;
+}
+.address{
+	padding-top:10px;
+}
+.address1{
+	float: left;
+    padding-right: 10px;
+}
+.address2{
+	float: left;
+    padding-left: 10px;
+}
+.w240{
+	width: 240px !important;
+}
+
+/* ----orderlist css ----*/
+
+.orderlist{
+	width:1120px;
+	padding-top:50px
+}
+.orderlist_head{
+	height: 44px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgb(221, 221, 221);
+}
+.orderlist_head strong{
+	font-size: 24px;
+    font-weight: 700;
+    color: rgb(51, 51, 51);
+}
+.orderlist_sub{
+	margin-top: 11px;
+    float: right;
+}
+.orderlist_sub1{
+	font-size: 15px;
+    font-weight: 700;
+    margin-left: 12px;
+    color: rgb(170, 170, 170);
+}
+.orderlist_sub2{
+	font-size: 15px;
+    font-weight: 700;
+    margin-left: 12px;
+    color: rgb(51, 51, 51);
+}
+.orderlist_head1{
+	border-bottom: 2px solid rgb(221, 221, 221);
+    padding: 30px;
+    font-size: 1.5625rem;
+    color: rgb(85, 85, 85);
+    text-align: center;
+}
+.orderlist_table{
+	width: 825px;
+    margin:0 auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+    word-break: break-all;
+}
+.orderlist_table > tbody > tr >td {
+    vertical-align: top;
+    text-align:center;
+}
+.orderlist_address{
+	padding-top:20px;
+}
+.orderlist_left {
+	border-right: 1px solid rgb(221, 221, 221);
+}
+.fvfloj{
+	font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    padding-right: 90px;
+}
+.orderaddress_table{
+	width: 100%;
+    color: rgb(17, 17, 17);
+    font-size: 1.00rem;
+}
+.orderaddress_table td{
+	height: 23px;
+    vertical-align: top;
+}
+.address_td {
+	font-weight: 700;
+}
+.orderlist_right {
+	border-left: 1px solid rgb(221, 221, 221);
+}
+.jadivt{
+	font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+.orderlist_price{
+	padding-top:20px;
+}
+.orderprice_table{
+	width: 100%;
+    color: rgb(17, 17, 17);
+    font-size: 1.00rem;
+}
+.orderprice_table td{
+	height: 23px;
+    vertical-align: top;
+}
+.price_td{
+	text-align: right;
+    font-weight: 700;
+    color: rgb(17, 17, 17);
+}
+.total_td1{
+	    width: 120px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    padding-top: 20px;
+    padding-bottom:10px;
+}
+.total_td{
+	text-align: right;
+	padding-top: 15px;
+	padding-bottom: 10px;
+}
+.orderlist_price tfoot{
+	vertical-align: bottom;
+    border-top: 1px solid rgb(236, 236, 236);
+}
+.orderlist_footer{
+	height: 79px;
+    border-top: 2px solid rgb(221, 221, 221);
+    padding: 20px 0px 10px;
+    text-align: center;
+}
+.list_orderdetail{
+	    width: 160px;
+    height: 35px;
+    font-size: 14px;
+    margin-right: 2px;
+    border-color: rgb(52, 106, 255);
+    text-align: center;
+    height: 100%;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2px;
+    padding: 8px;
+    background: rgb(255, 255, 255);
+    cursor: pointer;
+    overflow: visible;
+    box-sizing: border-box;
+    color: rgb(52, 106, 255);
+}
+.list_continue{
+	    text-align: center;
+    height: 100%;
+    border: none;
+    border-radius: 2px;
+    padding: 8px;
+    background-color: rgb(61, 130, 247);
+    cursor: pointer;
+    overflow: visible;
+    box-sizing: border-box;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+        width: 160px;
+    height: 100%;
+    font-size: 14px;
+    margin-left: 2px;
+}

@@ -1,57 +1,178 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file = "../header.jsp" %>
-<body>
-	<h3>주문정보</h3>
-	<table>
-		<tr>
-			<th>번호</th>
-			<th>상품이미지</th>
-			<th>상품명</th>
-			<th>가격</th>
-			<th>수량</th>
-		</tr>
-		<c:forEach var="list" items="${cartlist}">
-			<tr>
-				<td>${list.pseq}</td>
-				<td><img src="/upload/${list.image}" alt="상품 사진" class="w100"></td>
-				<td>${list.pname}</td>
-				<td>${list.price2}</td>
-				<td>${list.quantity}</td>
-			</tr>
-		</c:forEach>
-		<tr>
-			<td>총액: ${totalPrice} 원</td>
-		</tr>
-	</table>
-	<h3>배송 정보</h3>
-	
-		<span>받는 사람</span>
-		<input type="text" name="oname" value="${mvo.name}">
-		<br>
-		<span>휴대폰</span>
-		<input type="text" name="phone" value="${mvo.phone}">
-		<br>
-		<span>우편번호</span>
-		<input type="text" name="zip_num"  id="member_post" onclick="findAddr()" value="${mvo.zip_num}" readonly>
-	    <input type="button" value="우편번호 찾기" onclick="findAddr()">
-	    <br>
-	    <span>주소</span>
-	    <input type="text" name="address1" class="form-control" id="member_addr" value="${mvo.address1}">
-	    <br>
-	    <span>상세주소</span>
-	    <input type="text" name="address2" id="address2" class="form-control"  value="${mvo.address2}">
-	    <br>
-	
-	 <input type="button" id="check_module" value="결제하기"><!--  -->
-	 
-		<form method="post" name="orderfrm">
+
+<%@ include file="../header.jsp" %>
+
+  <div class="col-md-9">
+     <div class="container">
+	   <div class="row">
+		<div class="order">
+		 <h2>주문/결제</h2>
+		 <div class="order_body">
+		  <form name="form1" id="order_form" action="/order/orderinfo" method="post" >
+           <h3>주문 정보</h3>
+           <div class="tbl_order">
+            <table style="width:825px;">
+			      <colgroup>
+			       <col width="70">
+			       <col width="70">
+			       <col width="*">
+			       <col width="90">
+			       <col width="90">
+			      </colgroup>
+			      <thead>
+			       <tr>
+			       <th scope="col">
+                     <div class="tb_center">
+                                                   번호
+                     </div>			        
+			        </th>
+			        <th scope="col">
+                     <div class="tb_center">
+                                                   사진
+                     </div>			        
+			        </th>
+			        <th scope="col">
+			         <div class="tb_center">
+			                         상품명
+			         </div>
+			        <th scope="col">
+			         <div class="tb_center">
+			                        가격
+			         </div>
+			        </th>
+			        <th scope="col">
+			         <div class="tb_center">
+			                         수량
+			         </div>
+			        </th>
+			       </tr>
+			      </thead>
+			        <tbody><!-- 티바디 시작 -->
+			        <c:set var="num" value="${cartlist.size()-(cartlist.size()-1)}"/>
+			        <c:forEach var="list" items="${cartlist}">
+			         <tr>	
+			         <td>
+			           <div class="tb_center">
+			             ${num}
+			           </div>
+			          </td>
+			          <td>
+			           <div class="tb_center">
+			            <div class="thumb">
+			             <a href="">
+			              <img src="/upload/${list.image}">
+			             </a>
+			            </div>
+			           </div>
+			          </td>
+			          <td>
+			           <div class="tb_center">
+			            <a href="">${list.pname}</a>
+			           </div>
+			          </td>
+			          <td>
+			           <div class="tb_center">
+			            <span>${list.price2}</span>원
+			           </div>
+			          </td>
+			          <td>
+			           <div class="tb_center">
+			             <span>${list.quantity}</span>
+			           </div>
+			          </td>
+			         </tr>
+			         <c:set var="num" value="${num-1}" />
+			         </c:forEach>
+			        </tbody><!-- tbody end -->
+			        <tfoot class="tfoot_right">
+			         <tr>
+			          <td colspan="10">
+			                           총금액
+			            <strong>
+			            	<fmt:formatNumber value="${totalPrice}"/>
+			            <span class="displaynone">()</span>
+		                </strong>
+		                 <span class="displaynone"></span>
+		                 + 배송비 3,000
+		                 <span class="displaynone"></span>
+		                 = 합계 : 
+		                 <strong class="txtEm">
+		                  <span class="txt18"><fmt:formatNumber value="${totalPrice+3000}"/></span>
+		                                       원
+		                 </strong>
+		                  <span class="displaynone"></span>             
+			          </td>
+			         </tr>
+			        </tfoot>
+			     </table>
+			    </div>
+			    <h3>배송정보 </h3>
+			    <div class="tbl_order">
+			     <table class="address_table">
+			      <colgroup>
+			       <col width="130">
+			       <col>
+			       <col width="100">
+			       <col>
+			      </colgroup>
+			      <tbody>
+			       <tr>
+			        <th scope="row">
+			         <div class="txt-1">받는사람</div>
+			        </th>
+			        <td colspan="3">
+			         <input type="text" name="oname" id="oname" style="margin:0;" value="${mvo.name}">
+			        </td>
+			       </tr>
+			       <tr>
+			        <th scope="row">
+			         <div class="txt-1">연락처</div>
+			        </th>
+			        <td colspan="3">
+			         <input type="text" name="phone" id="phone" style="margin:0;" value="${mvo.phone}">
+			        </td>
+			       </tr>
+			       <tr>
+			        <th scope="row">
+			         <div class="txt-1">배송지</div>
+			        </th>
+			        <td colspan="3">
+			          <input id="member_post" class="w60" name="zip_num"  type="text"  value="${mvo.zip_num}" readonly >
+					  <input type="button"  value="우편번호" onclick="findAddr()" class="btn-white"><br>
+					 <div class="address">
+					  <strong class="address1">주소</strong>
+	  				  <input id="member_addr" name="address1" type="text" class="form-control w240" style="float:left;" value="${mvo.address1}" readonly>
+	 				  <strong class="address2">상세 주소</strong>
+	 				  <input type="text" name="address2" class="form-control w240" value="${mvo.address2}" style="position: relative;left: 10px;">
+			         </div>
+			        </td>
+			       </tr>
+			      </tbody>
+			     </table>
+			    </div>
+		     </form>
+		 </div>
+		   <div class="order_footer" style="float:left;">
+	    		<div class="button_wrap">
+	    		  <p class="buy">
+	    		  <!-- 뷰페이지에서 바로 결제할 경우까지 생각해야 돼서 온클릭을 뒤로가기 함수로 바꿨어요!-->
+	    		  <a href="#" class="first" onclick="history.back();">뒤로가기</a>
+	    		  </p>
+	    		  <p class="cart">
+	    		  <a href="#" class="first" id="check_module" >결제하기</a><!-- onclick="orderInsert()" -->
+	    		  </p>
+	    		</div>
+	    	  </div>
+		</div>      
+	   </div>
+	 </div>   
+  </div>
+  <form method="post" name="orderfrm">
 		 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		 	<!--<c:forEach var="list" items="${cartlist}">-->
-		 		<input type="hidden" name="cseq" value="${cartlist[0].cseq}"><!--  -->
+		 		<input type="hidden" name="cseq" value="${cartlist[0].cseq}">
 		 		<input type="hidden" name="pseq" value="${cartlist[0].pseq}">
 		 		<input type="hidden" name="quantity" value="${cartlist[0].quantity}">
-		 	<!--</c:forEach>-->
 		 		<input type="hidden" name="oname" value="${mvo.name}">
 		 		<input type="hidden" name="phone" value="${mvo.phone}">
 		 		<input type="hidden" name="zip_num" value="${mvo.zip_num}">
@@ -59,48 +180,19 @@
 		 		<input type="hidden" name="address2" value="${mvo.address2}">
 		 </form>
 </body>
-	
 <script type="text/javascript">
 $(function(){
 
     $("#check_module").click(function () {
     	var IMP = window.IMP; // 생략가능
     	IMP.init('imp78738453');
-    	// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
-    	// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
     	IMP.request_pay({
     	pg: 'inicis', // version 1.1.0부터 지원.
-    	/*
-    	'kakao':카카오페이,
-    	html5_inicis':이니시스(웹표준결제)
-    	'nice':나이스페이
-    	'jtnet':제이티넷
-    	'uplus':LG유플러스
-    	'danal':다날
-    	'payco':페이코
-    	'syrup':시럽페이
-    	'paypal':페이팔
-    	*/
     	pay_method: 'card',
-    	/*
-    	'samsung':삼성페이,
-    	'card':신용카드,
-    	'trans':실시간계좌이체,
-    	'vbank':가상계좌,
-    	'phone':휴대폰소액결제
-    	*/
     	merchant_uid: 'merchant_' + new Date().getTime(),
-    	/*
-    	merchant_uid에 경우
-    	https://docs.iamport.kr/implementation/payment
-    	위에 url에 따라가시면 넣을 수 있는 방법이 있습니다.
-    	참고하세요.
-    	나중에 포스팅 해볼게요.
-    	*/
-    	//정보 수정 해야함!!
     	name: "${cartlist[0].pname}"+" 외"+"${cartlist.size()-1}"+"건",
     	//결제창에서 보여질 이름
-    	amount: "${totalPrice}",
+    	amount: "${totalPrice+3000}",
     	//가격
     	buyer_email: '${mvo.email}',
     	buyer_name: '${mvo.name}',
@@ -137,4 +229,3 @@ function orderInsert(){
 	document.orderfrm.submit();
 }
 </script>
-</html>

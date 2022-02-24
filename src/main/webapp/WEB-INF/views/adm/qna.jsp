@@ -29,7 +29,7 @@
 		</div>
 	  </div> <!-- search end -->
 	 <div class="my_review" style="margin-top:100px;">
-		<table class="table table-hover my_reviewtbl jw_table">
+		<table class="table jw_table">
 			<caption class="sr-only">상품문의 리스트</caption>
 			<colgroup>
 				<col width="5%">

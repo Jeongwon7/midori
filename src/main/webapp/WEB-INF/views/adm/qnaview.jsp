@@ -39,7 +39,7 @@
 					<div class="btn_3wrap" style="margin:30px auto 30px 515px;">
 							<input type="button" onclick="AnswerDel()" value="삭제">
 							<input type="button" onclick="AnswerModify()" value="수정">
-						</div>
+					</div>
 				</c:if>
 				<c:if test="${qvo.status == 1}">
 					<div>
@@ -70,7 +70,7 @@ function answer_write(){
 }
 //답변수정
 function AnswerModify(){
-	location.href="/adm/answermodify.do?abno="+${qvo.abno};
+	location.href="/adm/answermodify.do?qbno="+${qvo.qbno}+"&abno="+${qvo.abno};
 }
 //답변삭제//abno, qbno
 function AnswerDel(){

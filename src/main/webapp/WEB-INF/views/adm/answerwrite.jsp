@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "adminheader.jsp" %>
-	<!-- contents -->
-	<section class="product" style="margin-top:100px; margin-left:300px;">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-9 newitem">
-				  <h2>Answer Writing</h2>
+			<div style="margin-top:100px; margin-left:300px; width:1200px;">
+				<div class="col-md-10">
+				  <h3 style="font-weight:bold;">Answer Writing</h3>
 					<form class="form-horizontal" name="qafrm" method="post">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 					<input type="hidden" name="qbno" value="${qbno}">
@@ -31,15 +28,16 @@
 					  </div>
 					    <div class="form-group">
 					    <div class="col-sm-offset-2 col-sm-10">
-					      <button type="button" class="btn btn-default" onclick="answer_save()">답변등록</button>
-					       <button type="button" class="btn btn-default" onclick="history.back();">목록으로</button>
+					      <button type="button" onclick="answer_save()">답변등록</button>
+					       <button type="button" onclick="history.back();">목록으로</button>
 					    </div>
 					  </div>
 					</form>
 				</div>
+				</div>
 			</div><!-- row end -->
 		</div>
-	</section>
+	</div>
 	</body>
 	<!-- contents end-->
 	<script>

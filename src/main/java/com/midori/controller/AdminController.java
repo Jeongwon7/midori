@@ -1,7 +1,11 @@
 package com.midori.controller;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,24 +14,38 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.midori.domain.Criteria;
 import com.midori.domain.OrderVO;
 import com.midori.domain.PageVO;
+import com.midori.domain.ProductVO;
 import com.midori.domain.QnaVO;
 import com.midori.domain.ReviewVO;
 import com.midori.service.AdminService;
+import com.midori.service.MainService;
+import com.midori.service.ProductService;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
+import lombok.extern.log4j.Log4j;
 
 @Controller
 @RequestMapping("/adm/*")//폴더 이름 review
 @AllArgsConstructor
+@Log4j
 public class AdminController {
 	
 	@Setter(onMethod_ = @Autowired)
 	private AdminService service;
+	
+	@Setter(onMethod_ = @Autowired)
+	private MainService Mservice;
+	   
+    @Setter(onMethod_ = @Autowired)
+    private ProductService Pservice;
+
 	
 	@GetMapping("/cunstomlogin")
 	public void customLogin(String error,String logout, Model model) {
@@ -38,6 +56,11 @@ public class AdminController {
 	public void adminLoginForm() {
 		
 	}
+	
+    @GetMapping("/adminLogout")
+     public String adminLogout() {
+        return "redirect:/";
+    }
 	
 	//어드민 홈이 될 아이입니다
 	@GetMapping("/admindex")
@@ -75,20 +98,156 @@ public class AdminController {
 		model.addAttribute("reviewList", reviewList);
 	}
     
-	@GetMapping("/adminmanager")
-	public void adminManager() {
-		
-	}
 	
 	@GetMapping("/customlogin")
 	public void customlogin(String error,String logout, Model model) {
 		
 	}
 	
-	@GetMapping("/adminLogout") 
-	public String adminLogout() {
-		 return "redirect:/";
-	}
+	//상품관리
+	  @GetMapping("/product/productlist.do")
+	   public void adminManager(Model model, Criteria cri) {
+	      List<ProductVO> list = Pservice.getProductAll(cri);
+	      
+	      int total = Pservice.getTotalProduct(cri);
+	      
+	      model.addAttribute("list",list);
+	      model.addAttribute("pageMaker", new PageVO(cri,total));
+	   }
+	   
+	   @GetMapping("/product/productModify.do")
+	   public void read(@RequestParam("pseq") int pseq, Criteria cri, Model model) { 
+	      //System.out.println(Pservice.selectOneProduct(pseq));
+	      ProductVO pvo = Pservice.selectOneProduct(pseq);
+	      String[] kind = {"모든제품","샐러드","닭가슴살","다이어트 도시락","샌드위치","프로틴","저칼로리 간식","무설탕 음료"};
+	      //System.out.println("kind"+kind);
+	      model.addAttribute("kindList", kind);
+	      model.addAttribute("view", Pservice.selectOneProduct(pseq));
+	   }
+	   
+	   @PostMapping("/product/productModify.do")
+	   public String modify(ProductVO product, Criteria cri, RedirectAttributes rttr,@RequestParam("uploadFile") MultipartFile upload) {
+	      String uploadFolder = "c:\\upload";
+	      System.out.println("product: "+product);
+	      
+	      log.info("file name : "+upload.getOriginalFilename());
+	      log.info("file size : "+upload.getSize());
+	      
+	      String uploadFileName = upload.getOriginalFilename(); 
+	      
+	      //ie
+	      uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("//")+1);
+	      log.info("ie only file name : "+uploadFileName);
+	      
+	      
+	      UUID uuid = UUID.randomUUID(); 
+	      uploadFileName = uuid.toString()+"_"+uploadFileName; 
+	      log.info("uuid : "+uploadFileName);
+	      
+	      File uploadPath = new File(uploadFolder, getFolder());
+	      log.info("upload path :"+uploadPath);
+	      
+	      if(uploadPath.exists() == false) {
+	         uploadPath.mkdirs();
+	      }
+	      
+	      File saveFile = new File(uploadPath,uploadFileName); 
+	      log.info("save file :"+saveFile);
+	      String saveURL = saveFile.toString().substring(10); 
+	      log.info("save url : "+ saveURL);
+	      
+	      try {
+	         upload.transferTo(saveFile); 
+	         product.setImage(saveURL);
+	      }catch(Exception e) {
+	         e.printStackTrace();
+	      }
+	      
+	      System.out.println("dsklhjosdfj");
+	      if(Pservice.productUpdate(product)) {
+	         System.out.println("lsdkhslssdsdsssssssss");
+	         rttr.addAttribute("result", "success");
+	         System.out.println("sdlkjhso;hsf");
+	      }
+	      rttr.addAttribute("pageNum",cri.getPageNum());
+	      rttr.addAttribute("amount", cri.getAmount());
+	      return "redirect:/adm/product/productlist.do";
+	   }
+	   
+	   @GetMapping("/product/productWrite.do")
+	   public void productWriteForm(Model model) {
+	      String[] kind = {"모든제품","샐러드","닭가슴살","다이어트 도시락","샌드위치","프로틴","저칼로리 간식","무설탕 음료"};
+	      model.addAttribute("kindList", kind);
+	   }
+	   
+	   private String getFolder() {
+	      SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+	      Date date = new Date();
+	      String str = sdf.format(date);
+	      
+	      return str.replace("-", File.separator);
+	   }
+	   
+	   @PostMapping("/admin_product_write.do")
+	   public String productWrite(ProductVO product,@RequestParam("uploadFile") MultipartFile upload) {
+		   System.out.println("product: "+product);
+	      
+	      String uploadFolder = "c:\\upload";
+	      
+	      log.info("file name : "+upload.getOriginalFilename());
+	      log.info("file size : "+upload.getSize());
+	      
+	      String uploadFileName = upload.getOriginalFilename(); 
+	      
+	      //ie
+	      uploadFileName = uploadFileName.substring(uploadFileName.lastIndexOf("//")+1);
+	      log.info("ie only file name : "+uploadFileName);
+	      
+	      
+	      UUID uuid = UUID.randomUUID(); 
+	      uploadFileName = uuid.toString()+"_"+uploadFileName; 
+	      log.info("uuid : "+uploadFileName);
+	      
+	      File uploadPath = new File(uploadFolder, getFolder());
+	      log.info("upload path :"+uploadPath);
+	      
+	      if(uploadPath.exists() == false) {
+	         uploadPath.mkdirs();
+	      }
+	      
+	      File saveFile = new File(uploadPath,uploadFileName); 
+	      log.info("save file :"+saveFile);
+	      String saveURL = saveFile.toString().substring(10); 
+	      log.info("save url : "+ saveURL);
+	      
+	      try {
+	         upload.transferTo(saveFile); 
+	         product.setImage(saveURL);
+	         Pservice.register(product);
+	      }catch(Exception e) {
+	         e.printStackTrace();
+	      }
+	      
+	      return "redirect:/adm/product/productlist.do";
+	      
+	   }
+	   
+	   @GetMapping("/productDelete.do")
+	   public String productDelete(@RequestParam("pseq") int pseq, RedirectAttributes rttr) {
+	      System.out.println("lsdkjf "+pseq);
+	      if(Pservice.productDelete(pseq)) {
+	         rttr.addAttribute("result", "success");
+	      }
+	      return "redirect:/adm/product/productlist.do";
+	      
+	   }
+	   
+	 
+	
+	
+	
+	
+	
 	
 	//리뷰
 	//리뷰 리스트
@@ -167,11 +326,11 @@ public class AdminController {
 	public String answerWrite(QnaVO avo) {
 		service.AnswerInsert(avo);
 		service.updateStatus(avo.getQbno());//답변 등록시 스테이터스 2로 변경
-		return "redirect:/adm/qna.do";
+		return "redirect:/adm/qnaview.do?qbno="+avo.getQbno();
 	}
 	//answer 수정 폼
 	@GetMapping("/answermodify.do")
-	public void answerModifyForm(@RequestParam("abno") int abno, Model model) {
+	public void answerModifyForm(@RequestParam("abno") int abno, @RequestParam("qbno") int qbno, Model model) {
 		QnaVO avo = service.getAnswer(abno);
 		model.addAttribute("avo", avo);
 		
@@ -180,14 +339,14 @@ public class AdminController {
 	@PostMapping("/answermodifypro.do")
 	public String answerModify(QnaVO avo) {
 		service.AnswerModify(avo);
-		return "redirect:/adm/qna.do";
+		return "redirect:/adm/qnaview.do?qbno="+avo.getQbno();
 	}
 	//answer 삭제
 	@GetMapping("/answerdelete.do")
 	public String answerDelete(@RequestParam("abno") int abno, @RequestParam("qbno") int qbno) {
 		service.AnswerDelete(abno);
 		service.updateStatusDelete(qbno);//삭제하면 status 다시 1로
-		return "redirect:/adm/qna.do";
+		return "redirect:/adm/qnaview.do?qbno="+qbno;
 	}
 	
 	

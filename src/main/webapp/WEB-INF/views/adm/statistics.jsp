@@ -168,6 +168,7 @@
 	          chart: {
 	            title: '3일간 매출 정보',
 	            subtitle: 'Sales, Expenses, and Costs: for 3 days'
+	           
 	          }
 	        };
 
@@ -207,7 +208,8 @@
 	        var options = {
 	          chart: {
 	            title: '3년간 매출 정보',
-	            subtitle: 'Sales, Expenses, and Costs: for 3 years'
+	            subtitle: 'Sales, Expenses, and Costs: for 3 years',
+	            legend: {position: 'none'}
 	          }
 	        };
 

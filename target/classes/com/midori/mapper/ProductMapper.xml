@@ -1,10 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.midori.mapper.ProductMapper">
+	<sql id="jwCri">
+		<trim>
+			<choose>
+				<when test="kind != null">
+					kind=#{kind} and 
+				</when>
+				<when test="kind == null">
+					
+				</when>
+			</choose>
+		</trim>
+	</sql>
 	<select id="reviewList" resultType="com.midori.domain.ReviewVO">
 		select * from review where pseq = #{pseq} order by rbno desc
 	</select>
 	<select id="QnaListByProduct" resultType="com.midori.domain.QnaVO">
 		select * from qna_view where pseq=#{pseq}
 	</select>
+	
+	
+	<insert id="insertProduct">
+		<selectKey keyProperty="pseq" order="BEFORE" resultType="int">
+			select product_seq.nextval from dual
+		</selectKey>
+		insert into product (pseq, name, kind, price1, price2, price3, content, image, bestyn) 
+		values(#{pseq}, #{name}, #{kind}, #{price1}, #{price2}, #{price3}, #{content}, #{image}, #{bestyn})
+	</insert>  
+	
+	<select id="selectProduct" resultType="com.midori.domain.ProductVO">
+		<![CDATA[ 
+			select 
+				pseq, name, kind, price1, price2, price3, content, image, bestyn, indate 
+			from (
+				select rownum rn, pseq, name, kind, price1, price2, price3, content, image, bestyn, indate 
+				from product 
+				where 
+		]]>		
+			<include refid="jwCri"></include>
+				
+		<![CDATA[		
+				rownum <= #{pageNum} * #{amount} order by pseq desc
+			)
+			where rn > (#{pageNum} - 1) * #{amount}
+		]]>
+	</select>
+	
+	<select id="selectOneProduct" resultType="com.midori.domain.ProductVO">
+		select * from product where pseq = #{pseq}
+	</select>
+	
+	<select id="getTotalProduct" resultType="int">
+		select count(*) from product where
+			<include refid="jwCri"></include>
+		<![CDATA[ 
+			pseq > 0 
+		]]>
+	</select>
+	<update id="productUpdate">
+  		update product set kind=#{kind},name=#{name},price1=#{price1},price2=#{price2},price3=#{price3},content=#{content},image=#{image}, bestyn=#{bestyn} 
+  		 where pseq=#{pseq}
+  	</update>
+	<delete id="productDelete">
+  		delete from product where pseq=#{pseq}
+  	</delete>
 </mapper>

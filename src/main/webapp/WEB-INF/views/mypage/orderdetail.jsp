@@ -7,10 +7,10 @@
 			<div class="row">
 			
 				<div class="col-md-12 newitem">
-					<h2>MyPage (주문상세 정보)</h2>
+					<h3>MyPage (주문상세 정보)</h3>
 					<form method="post" name="formm">
-					<h3>주문자 정보</h3>
-						<table class="table">
+					<h4>주문 정보</h4>
+						<table class="table jw_table">
 							<tr>
 								<th>주문일자</th>
 								<th>주문번호</th>
@@ -26,7 +26,7 @@
 								<td>${od.oseq}</td>
 								<td>${od.mname}</td>
 								<td>${od.oname}</td>
-								<td>${totalPrice}&#x20a9;</td>
+								<td><fmt:formatNumber value="${totalPrice}"/>&#x20a9;</td>
 								<td>${od.address1} ${od.address2} ${od.zip_num}</td>
 								<td>
 										<c:choose>
@@ -49,15 +49,14 @@
 											</c:when>
 											<c:otherwise>
 												<span style="color:#f00;">배송 완료</span>
-												<span> / <a href="/review/reviewwrite.do?pseq=${list.pseq}">리뷰 작성</a></span>
+												<span> / <a href="/review/reviewwrite.do?pseq=${od.pseq}">리뷰 작성</a></span>
 											</c:otherwise>
 										</c:choose>
-												
 									</td>
 							</tr>
 						</table>
-						<h3>주문 상품 정보</h3>
-						<table class="table">
+						<h4>주문 상품 정보</h4>
+						<table class="table jw_table">
 							<tr>
 								<th>상품명</th>
 								<th>상품이미지</th>
@@ -71,13 +70,13 @@
 									<td><img src="/upload/${list.image}" alt="상품 사진"></td>
 									<td>${list.odseq}</td>
 									<td>${list.quantity}</td>
-									<td>${list.price2}&#x20a9;</td>
+									<td><fmt:formatNumber value="${list.price2}"/>&#x20a9;</td>
 									
 								</tr>
 							</c:forEach>
 						</table>
 						<div class="col-md-12">
-							<input type="button" class="btn btn-default" value="쇼핑계속하기" onclick="location.href='/'">
+							<input type="button"  value="쇼핑계속하기" onclick="location.href='/'" style="display:block; margin:0 auto;">
 						</div>
 					</form>
 						

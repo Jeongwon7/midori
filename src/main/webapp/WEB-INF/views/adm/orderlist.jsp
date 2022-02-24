@@ -12,7 +12,7 @@
 		</div>
 	  </div> <!-- search end -->
 	 <div class="my_review">
-		<table class="table table-hover my_reviewtbl jw_table">
+		<table class="table my_reviewtbl jw_table">
 			<caption class="sr-only">주문관리 리스트</caption>
 			<colgroup>
 				<col width="10%">

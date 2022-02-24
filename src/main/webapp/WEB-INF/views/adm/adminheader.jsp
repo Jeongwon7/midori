@@ -49,9 +49,12 @@ pageEncoding="UTF-8"%>
 	<script src="/resources/adminassets/js/main.js"></script>
 	<!-- google chart js -->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	
+	
 	<script src="/resources/assets/js/member.js"></script>
 	<script src="/resources/assets/js/my.js"></script>
 	<script src="/resources/assets/js/qna.js"></script>
+	<script src="/resources/adminassets/js/product.js"></script>
 	 
 
 	<!-- summernote css -->
@@ -122,7 +125,7 @@ pageEncoding="UTF-8"%>
                 </li>
             </ul>
         </nav>
-        <div id="layoutSidenav">
+      <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
@@ -134,14 +137,13 @@ pageEncoding="UTF-8"%>
                             <div>
                                 <nav class="navi">
                                   <ul>
-                                   <li class="category-record"><a href=""><i class="fas fa-store" style="padding-right:5px;"></i>상품관리<i class="fas fa-angle-right" style="font-size:20px;"></i></a>
+                                   <li class="category-record"><a href="/adm/product/productlist.do"><i class="fas fa-store" style="padding-right:5px;"></i>상품관리<i class="fas fa-angle-right" style="font-size:20px;"></i></a>
                                     <ul class="sub-category" style="display: none; left: 95px;">
-                                     <li><a class="nav-link" href="layout-staㅌtic.html">상품 등록</a></li>
-                                     <li><a class="nav-link" href="layout-sidenav-light.html">상품 수정</a></li>
-                                     <li><a class="nav-link" href="layout-sidenav-light.html">상품 삭제</a></li>
+                                     <li><a class="nav-link" href="/adm/product/productlist.do">상품 리스트</a></li>
+                                     <li><a class="nav-link" href="/adm/product/productWrite.do">상품 등록</a></li>
                                    </ul>
                                   </li>
-                                  <li class="category-record"><a href=""><i class="fas fa-shipping-fast" style="padding-right:5px;"></i>주문관리<i class="fas fa-angle-right" style="font-size:20px;"></i></a>
+                                  <li class="category-record"><a href="/adm/orderlist.do?status=1"><i class="fas fa-shipping-fast" style="padding-right:5px;"></i>주문관리<i class="fas fa-angle-right" style="font-size:20px;"></i></a>
                                     <ul class="sub-category" style="display: none; left: 95px;">
                                      <li><a class="nav-link" href="/adm/orderlist.do?status=1">입금 확인</a></li>
                                      <li><a class="nav-link" href="/adm/orderlist.do?status=2">배송 대기</a></li>

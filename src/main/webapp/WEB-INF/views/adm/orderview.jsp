@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "adminheader.jsp" %>
 <body>
-	<div style="margin-top:100px; margin-left:250px; width:100%;">
+	<div style="margin-top:100px; margin-left:250px; width:1200px;">
 			<div class="container">
 			<div class="row">
 				<div class="col-md-12 newitem">
@@ -73,7 +73,7 @@
 								</tr>
 							</c:forEach>
 						</table>
-						<div style="width:100%;">
+						<div >
 						<div class="col-md-12 jw_float" style="margin: 50px 50px 50px 300px; display:inline-block; text-align:center;">
 							<form name="opfrm" method="post">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">

@@ -10,10 +10,13 @@
 	<div class="single-product mt-150 mb-150">
 		<div class="container">
 			<div class="row">
-    					<div class="col-md-5">
+    					<div class="col-md-4">
     						<img src="" alt=""><!-- ../images/memil.jpg -->
     					</div>
     					<div class="col-md-5" style="padding-left:40px;">
+    					<form id="ofrm" method="post" name="formm" action="/order/orderinfo.do">
+						<input type="hidden" name="pseq" value="1">
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     						<div class="goods_name">
     							<strong class="name">메밀국수</strong>
 								<span class="short_desc">집에서 만나는 메밀 명가</span>
@@ -54,9 +57,9 @@
     						      구매수량
     						  </span>
 	    						<span class="count">
-	    							<button class="btn7 down on" type="button">-</button>
+	    							<button class="btn7 down on minus" type="button">-</button>
 	    							<input type="text" name="quantity" class="quantity" value="1" readonly>
-	    							<button class="btn7 up on" type="button">+</button>
+	    							<button class="btn7 up on plus" type="button">+</button>
 	    						</span>
     						</div>
     						<div class="total">
@@ -74,13 +77,14 @@
 	    					 <div class="cart_footer">
 	    					  <div class="button_wrap">
 	    					   <p class="buy">
-	    					     <a href="#" class="first" onclick="goOrder()">구매하기</a>
+	    					     <a href="#" class="first" onclick="return chk_form()">구매하기</a>
 	    					   </p>
 	    					   <p class="cart">
 	    						 <a href="#" class="first" onclick="goCart()">장바구니</a>
 	    				       </p>
 	    				     </div>
 	    				    </div>
+	    				    </form>
     					</div>
     				
 
@@ -579,4 +583,8 @@
 			location.href="/adm/answerdelete.do?qbno="+qbno+"&abno="+abno;
 		}
 	}
+	
+	function chk_form() {
+		document.getElementById('ofrm').submit();
+		}
 	</script>
