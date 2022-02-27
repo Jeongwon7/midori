@@ -6,87 +6,97 @@
    <link rel="stylesheet" href="../resources/assets/css/product.css">
 
 
-	<!-- single product -->
-	<div class="single-product mt-150 mb-150">
-		<div class="container">
-			<div class="row">
-    					<div class="col-md-4">
-    						<img src="" alt=""><!-- ../images/memil.jpg -->
-    					</div>
-    					<div class="col-md-5" style="padding-left:40px;">
-    					<form id="ofrm" method="post" name="formm" >
-						<input type="hidden" name="pseq" value="${pseq}">
-						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-    						<div class="goods_name">
-    							<strong class="name">메밀국수</strong>
-								<span class="short_desc">집에서 만나는 메밀 명가</span>
-    						</div>
-    						<p class="goods_dcinfo">판매가격</p>
-    						<span class="position">
-    					      <span class="dc">
-    					         <span class="dc_price">
-    					           8,900  
-    					           <span class="won">원</span>
-    					         </span>
-    					      </span>	
-    						</span>
-    						<div class="good_info">
-    						 <dl class="list fst">
-    						   <dt class="tit">판매 단위</dt>
-    						   <dd class="desc">1팩</dd>
-    						 </dl>
-    						 <dl class="list">
-    						   <dt class="tit">중량/용량</dt>
-    						   <dd class="desc">1,022g</dd>
-    						 </dl>
-    						 <dl class="list">
-    						   <dt class="tit">배송구분</dt>
-    						   <dd class="desc">택배배송</dd>
-    						 </dl>
-    						 <dl class="list">
-    						   <dt class="tit">포장타입</dt>
-    						   <dd class="desc">냉동/스티로폼</dd>
-    						 </dl>
-    						 <dl class="list">
-    						   <dt class="tit">유통기한</dt>
-    						   <dd class="desc">출고일 기준,유통기한 만기 185일 이상 남은 상품을 보내드립니다.</dd>
-    						 </dl>
-    						</div>
-    						<div class="cart_type2">
-    						  <span class="tit_item">
-    						      구매수량
-    						  </span>
-	    						<span class="count">
-	    							<button class="btn7 down on minus" type="button">-</button>
-	    							<input type="text" name="quantity" class="quantity" value="1" readonly>
-	    							<button class="btn7 up on plus" type="button">+</button>
-	    						</span>
-    						</div>
-    						<div class="total">
-    						 <div class="price">
-	    					   <strong class="tit">총 상품금액 : </strong>
-	    					   <span class="sum">
-	    					    <span class="num">8,900</span>
-	    					    <span class="won">원</span>
-	    					   </span>
-	    				     </div>
-	    				     <span class="not_login">
-    						  <span>비회원인 경우, 회원가입후 구매해주시기 바랍니다.</span>
-    						</span>
-	    				    </div>
-	    					 <div class="cart_footer">
-	    					  <div class="button_wrap">
-	    					   <p class="buy">
-	    					     <a href="#" class="first" onclick="return chk_form()">구매하기</a>
-	    					   </p>
-	    					   <p class="cart">
-	    						 <a href="#" class="first" onclick="goCart()">장바구니</a>
-	    				       </p>
-	    				     </div>
-	    				    </div>
-	    				    </form>
-    					</div>
-    				
+   <!-- single product -->
+         <div class="col-md-9 newitem" >
+          <form id="ofrm" method="post" name="formm" >
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+            <input type="hidden" name="pseq" value="${plist.pseq}">
+            <sec:authorize access="isAuthenticated()">
+                  <sec:authentication property="principal.member.id" var="pinfo"/>
+               </sec:authorize>
+               <input type="hidden" name="id" value="${pinfo}">
+             <div class="container">
+                <div class="row">
+                   <div class="col-md-5">
+                    <img src="${pageContext.request.contextPath}/upload/${plist.image}" alt="">
+                   </div>
+                   <div class="col-md-5" style="padding-left:40px;">
+                      <div class="goods_name">
+                         <strong class="name">${plist.name}</strong>
+                        <!-- <span class="short_desc">${plist.content}</span> -->
+                      </div>
+                      <p class="goods_dcinfo">판매가격</p>
+                       <span class="position">
+                         <span class="dc">
+                            <span class="dc_price information">
+                              <span class="${plist.price2}"></span>  
+                              <fmt:formatNumber value="${plist.price2}"/>
+                              <span class="won">원</span>
+                            </span>
+                         </span>   
+                       </span>
+                      <div class="good_info">
+                       <dl class="list fst">
+                         <dt class="tit">판매 단위</dt>
+                         <dd class="desc">1팩</dd>
+                       </dl>
+                       <dl class="list">
+                         <dt class="tit">중량/용량</dt>
+                         <dd class="desc">1,022g</dd>
+                       </dl>
+                       <dl class="list">
+                         <dt class="tit">배송구분</dt>
+                         <dd class="desc">택배배송</dd>
+                       </dl>
+                       <dl class="list">
+                         <dt class="tit">포장타입</dt>
+                         <dd class="desc">냉동/스티로폼</dd>
+                       </dl>
+                       <dl class="list">
+                         <dt class="tit">유통기한</dt>
+                         <dd class="desc">출고일 기준,유통기한 만기 185일 이상 남은 상품을 보내드립니다.</dd>
+                       </dl>
+                      </div>
+                      <div class="cart_type2">
+                        <span class="tit_item">
+                            구매수량
+                        </span>
+                         <span class="count">
+                             <button class="btn7 down on minus" type="button">-</button>
+                            <input type="text" name="quantity" class="quantity" value="1" readonly>
+                            <button class="btn7 up on plus" type="button">+</button>
+
+                         </span>
+                      </div>
+                      <div class="total1">
+                       <div class="price">
+                         <strong class="tit">총 상품금액 : </strong>
+                         <span class="sum">
+                          <span class="num">
+                           <span class="total"></span>
+                          </span>
+                          <span class="won">원</span>
+                         </span>
+                        </div>
+                        <span class="not_login">
+                        <span>비회원인 경우, 회원가입후 구매해주시기 바랍니다.</span>
+                      </span>
+                       </div>
+                       <div class="cart_footer">
+                        <div class="button_wrap">
+                         <p class="buy">
+                           <a href="#" class="first" onclick="return chk_form()">구매하기</a>
+                         </p>
+                         <p class="cart">
+                          <a href="#" class="first" onclick="goCart()">장바구니</a>
+                          </p>
+                        </div>
+                       </div>
+                   </div>
+                </div>
+                  </div>
+                 </form>
+                 </div>
 
     			 <div class="goods-view-area">
     			  <div class="goods-view-infomation">
@@ -108,7 +118,7 @@
     			    <div class="tab-content">
 					    <div role="tabpanel" class="tab-pane active" id="productview">
 					    	<div>
-					                   좋은 식품
+					                   ${plist.content}
 					    	</div>
 					    </div>
 					    <div role="tabpanel" class="tab-pane" id="kcal">

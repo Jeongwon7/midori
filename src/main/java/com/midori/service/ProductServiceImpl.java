@@ -60,4 +60,8 @@ public class ProductServiceImpl implements ProductService {
 		return mapper.selectOneProduct(pseq);
 	}
 	
+	@Override
+	   public ProductVO getProductOne(int pseq) {
+	      return mapper.selectProductOne(pseq);
+	}
 }

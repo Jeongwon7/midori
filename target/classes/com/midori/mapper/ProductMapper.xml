@@ -13,6 +13,10 @@
 			</choose>
 		</trim>
 	</sql>
+	<select id="selectProductOne" resultType="com.midori.domain.ProductVO">
+      select * from product where pseq=#{pseq}
+   </select>
+	
 	<select id="reviewList" resultType="com.midori.domain.ReviewVO">
 		select * from review where pseq = #{pseq} order by rbno desc
 	</select>

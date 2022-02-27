@@ -12,6 +12,8 @@ public interface ProductService {
 	public List<ReviewVO> reviewRead(int pseq);
 	//상품별 qna 리스트
 	public List<QnaVO> QnaListByProduct(int pseq);
+	//프로덕트 뷰
+	public ProductVO getProductOne(int pseq);
 	
 	//admin
 	//상품 등록

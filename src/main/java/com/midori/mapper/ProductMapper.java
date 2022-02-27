@@ -13,6 +13,9 @@ public interface ProductMapper {
 	public List<ReviewVO> reviewList(int pseq);
 	//상품별 qna 출력
 	public List<QnaVO> QnaListByProduct(int pseq);
+
+	//product view
+    public ProductVO selectProductOne(int pseq);
 	
 	//admin
 	//상품 등록
