@@ -163,6 +163,10 @@ pageEncoding="UTF-8"%>
                                     <ul class="sub-category" style="display: none; left: 95px;">
                                    </ul>
                                   </li>	
+                                  <li class="category-record"><a href="/adm/notice/admnotice"><i class="fa fa-info-circle" style="padding-right:5px;"></i>공지관리</a>
+                                    <ul class="sub-category" style="display: none; left: 95px;">
+                                   </ul>
+                                  </li>	
                                   <li class="category-record"><a href="/adm/statistics.do"><i class="fas fa-calendar-week" style="padding-right:5px;"></i>통계</a>
                                     <ul class="sub-category" style="display: none; left: 95px;">
                                    </ul>

@@ -5,6 +5,7 @@
 
 			<div class="col-md-10" style="margin-top:100px; margin-left:300px; width:1200px;">
 				<div class="col-md-12">
+				<h3 style="font-weight: bold;"><a href="/adm/product/productlist.do">상품 관리</a></h3>
 					<div class="table-responsive">
 					 <div class="search_wrap">
 						<div class="record_group">

@@ -92,11 +92,11 @@
 		  data.addColumn('string', '상품명');
 		  data.addColumn('number', '판매량');
 		  data.addRows([
-		    ['${AllSales[0].pname}', ${AllSales[0].sales_count}]
-//		    ['${AllSales[1].pname}', ${AllSales[1].sales_count}],
-//		    ['${AllSales[2].pname}', ${AllSales[2].sales_count}],
-//		    ['${AllSales[3].pname}', ${AllSales[3].sales_count}],
-//		    ['${AllSales[4].pname}', ${AllSales[4].sales_count}],
+		    ['${AllSales[0].pname}', ${AllSales[0].sales_count}],
+		    ['${AllSales[1].pname}', ${AllSales[1].sales_count}],
+		    ['${AllSales[2].pname}', ${AllSales[2].sales_count}],
+		    ['${AllSales[3].pname}', ${AllSales[3].sales_count}],
+		    ['${AllSales[4].pname}', ${AllSales[4].sales_count}]
 //		    ['${AllSales[5].pname}', ${AllSales[5].sales_count}],
 //		    ['${AllSales[6].pname}', ${AllSales[6].sales_count}],
 //		    ['${AllSales[7].pname}', ${AllSales[7].sales_count}],
@@ -106,7 +106,7 @@
 		  ]);
 		
 		  // Set chart options
-		  var options = {'title':'전체기간 판매 순위 Top10',
+		  var options = {'title':'전체기간 판매 순위 Top5',
 				   		'fontSize': 17,
 				   	   	'titlePosition': 'out',
 		                 'width':600,

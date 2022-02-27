@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %> <!-- jstl의 core사용하기 위해 /core태그를 사용하기 위한 접두사 c로 지정 -->
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> <!-- jstl의 형식 지정(형식화) -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %><!-- jstl의 함수 사용하기위해 -->
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -16,56 +16,40 @@
 	<!-- title -->
 	<title>녹색식탁</title>
 
- 	
-
 	<!-- favicon -->
 	<link rel="shortcut icon" type="image/png" href="../assets/img/favicon.png">
 	<!-- google font -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
 	<!-- fontawesome -->
-	<link rel="stylesheet" href="/resources/assets/css/all.min.css">
+	<link rel="stylesheet" href="../resources/assets/css/all.min.css">
 	<!-- bootstrap -->
-	<link rel="stylesheet" href="/resources/assets/bootstrap/css/bootstrap.min.css">
-	<!-- summernote -->
-	<link rel="stylesheet" href="/resources/assets/css/summernote.min.css">
+	<link rel="stylesheet" href="../resources/assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../resources/assets/css/summernote.min.css">
 	<!-- owl carousel -->
-	<link rel="stylesheet" href="/resources/assets/css/owl.carousel.css">
+	<link rel="stylesheet" href="../resources/assets/css/owl.carousel.css">
 	<!-- magnific popup -->
-	<link rel="stylesheet" href="/resources/assets/css/magnific-popup.css">
+	<link rel="stylesheet" href="../resources/assets/css/magnific-popup.css">
 	<!-- animate css -->
-	<link rel="stylesheet" href="/resources/assets/css/animate.css">
+	<link rel="stylesheet" href="../resources/assets/css/animate.css">
 	<!-- mean menu css -->
-	<link rel="stylesheet" href="/resources/assets/css/meanmenu.min.css">
+	<link rel="stylesheet" href="../resources/assets/css/meanmenu.min.css">
 	<!-- main style -->
-	<link rel="stylesheet" href="/resources/assets/css/main.css">
+	<link rel="stylesheet" href="../resources/assets/css/main.css">
 	<!-- responsive -->
-	<link rel="stylesheet" href="/resources/assets/css/responsive.css">
+	<link rel="stylesheet" href="../resources/assets/css/responsive.css">
 	
-	<link rel="stylesheet" href="/resources/assets/css/mycss.css">
-	<!-- product css summernote 충돌 해결함 -->
-	<link rel="stylesheet" href="/resources/assets/css/product.css">
+	<link rel="stylesheet" href="../resources/assets/css/mycss.css">
 	
-	<link rel="stylesheet" href="/resources/assets/css/order.css">
-	
-	<link rel="stylesheet" href="/resources/assets/css/notice.css">
-	
-	<link rel="stylesheet" href="/resources/assets/css/cart.css">
-	
-	<!-- <link rel="stylesheet" href="/resources/assets/css/footer.css"> -->
-	
-   
+	<link rel="stylesheet" href="../resources/assets/css/cart.css">
+
 	<!-- jquery -->
 	<script src="/resources/assets/js/jquery-1.11.3.min.js"></script>
-	<!-- 다음 주소 api -->
+	
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<!-- 아임포트 결제 -->
-	<script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-	<!-- popper -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<!-- bootstrap -->
 	<script src="/resources/assets/bootstrap/js/bootstrap.min.js"></script>
-	<!-- summernote -->
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
 	<!-- count down -->
 	<script src="/resources/assets/js/jquery.countdown.js"></script>
@@ -85,10 +69,6 @@
 	<script src="/resources/assets/js/main.js"></script>
 	
 	<script src="/resources/assets/js/member.js"></script>
-	<script src="/resources/assets/js/my.js"></script>
-	<script src="/resources/assets/js/review.js"></script>
-	<script src="/resources/assets/js/qna.js"></script>
-	<script src="/resources/assets/js/purchase.js"></script>
 	
 </head>
 <body>
@@ -115,10 +95,10 @@
 		     					<a href="#" onclick="return chk_form()" class="shopping-cart" type="submit"><i class="fas fa-lock-open"></i></a>
 		     					</form>
 	     					</li>
-	     					<li><a class="shopping-cart" href=""><i class="fas fa-address-card" aria-hidden="true"></i></a><li>
+	     					<li><a class="shopping-cart" href="mypage.jsp"><i class="fas fa-address-card" aria-hidden="true"></i></a><li>
 			            </sec:authorize>	
-	     					<li><a class="shopping-cart" href="/mypage/cart_list"><i class="fas fa-shopping-cart"></i></a></li>
-							<li><a class="shopping-cart" href="/notice/notice"><i class="fa fa-info-circle" aria-hidden="true"></i></a></li>
+	     					<li><a class="shopping-cart" href="cart.jsp"><i class="fas fa-shopping-cart"></i></a></li>
+							<li><a class="shopping-cart" href="notice.jsp"><i class="fa fa-info-circle" aria-hidden="true"></i></a></li>
 						</ul>
 					</div>
 				</div>
@@ -131,13 +111,13 @@
 
 			<div class="row">
 				<div class="col-md-3" style="padding-bottom: 50px;">
-    				<h3>카테고리</h3>
+    				<h3>MY PAGE</h3>
     				<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-					  <div class="panel panel-default">
+    				  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					      	<a href=""><image src="../assets/img/all.png" class="icon-food">
-					         	모든제품
+					      	<a href="/mypage/cart_list">
+					         	장바구니
 					        </a>
 					      </h4>
 					    </div>
@@ -145,8 +125,8 @@
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					      	<a href=""><image src="../assets/img/salad.png" class="icon-food">
-					          	샐러드
+					      	<a href="">
+					         	진행중인 주문내역
 					        </a>
 					      </h4>
 					    </div>
@@ -154,8 +134,8 @@
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					      	<a href=""><image src="../assets/img/chicken.png" class="icon-food">
-					          	닭가슴살
+					      	<a href="">
+					          	주문 목록
 					        </a>
 					      </h4>
 					    </div>
@@ -163,50 +143,16 @@
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					        <a href=""><image src="../assets/img/lunch_box.png" class="icon-food">
-					          	다이어트 도시락
-					        </a>
-					      </h4>
-					    </div>
-					  </div>
-					  <div class="panel panel-default">
-					    <div class="panel-heading" role="tab">
-					      <h4 class="panel-title">
-					        <a href=""><image src="../assets/img/sandwich.png" class="icon-food">
-					          	샌드위치
-					        </a>
-					      </h4>
-					    </div>
-					  </div>
-					  <div class="panel panel-default">
-					    <div class="panel-heading" role="tab">
-					      <h4 class="panel-title">
-					        <a href=""><image src="../assets/img/protein.png" class="icon-food">
-					          	프로틴
-					        </a>
-					      </h4>
-					    </div>
-					  </div>
-					  <div class="panel panel-default">
-					    <div class="panel-heading" role="tab">
-					      <h4 class="panel-title">
-					        <a href=""><image src="../assets/img/snack.png" class="icon-food">
-					        	저칼로리 간식
-					        </a>
-					      </h4>
-					    </div>
-					  </div>
-					  <div class="panel panel-default">
-					    <div class="panel-heading" role="tab">
-					      <h4 class="panel-title">
-					        <a href=""><image src="../assets/img/drink.png" class="icon-food">
-					          	무설탕 음료
+					        <a href="">
+					          	개인정보변경
 					        </a>
 					      </h4>
 					    </div>
 					  </div>
 					</div>
-    			</div>
+				</div>
+   			
+    			
     			
 <script>
 	function chk_form() {

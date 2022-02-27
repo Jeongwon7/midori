@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.midori.domain.CartVO;
 import com.midori.domain.OrderVO;
 import com.midori.mapper.MypageMapper;
 
@@ -25,4 +26,19 @@ public class MypageServiceImpl implements MypageService {
 	public void orderConfirm(int oseq) {
 		mapper.orderConfirm(oseq);
 	}
+	
+	@Override
+    public void goCart(CartVO cvo) { //주석
+        mapper.goCart(cvo);
+    }
+	   
+    @Override
+    public List<CartVO> listCart(String id) {
+         return mapper.listCart(id);
+    }
+	   
+    @Override
+    public void deleteCart(String cseq) {
+       mapper.deleteCart(cseq);
+    }
 }

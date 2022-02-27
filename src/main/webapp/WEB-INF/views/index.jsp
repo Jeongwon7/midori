@@ -94,8 +94,8 @@
 	     					</li>
 	     					<li><a class="shopping-cart" href="mypage.jsp"><i class="fas fa-address-card" aria-hidden="true"></i></a><li>
 			            </sec:authorize>	
-	     					<li><a class="shopping-cart" href="cart.jsp"><i class="fas fa-shopping-cart"></i></a></li>
-							<li><a class="shopping-cart" href="notice.jsp"><i class="fa fa-info-circle" aria-hidden="true"></i></a></li>
+	     					<li><a class="shopping-cart" href="/mypage/cart_list"><i class="fas fa-shopping-cart"></i></a></li>
+							<li><a class="shopping-cart" href="/notice/notice"><i class="fa fa-info-circle" aria-hidden="true"></i></a></li>
 						</ul>
 					</div>
 				</div>

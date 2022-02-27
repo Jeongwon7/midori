@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.midori.domain.Criteria;
+import com.midori.domain.NoticeVO;
 import com.midori.domain.OrderVO;
 import com.midori.domain.PageVO;
 import com.midori.domain.ProductVO;
@@ -25,6 +27,7 @@ import com.midori.domain.QnaVO;
 import com.midori.domain.ReviewVO;
 import com.midori.service.AdminService;
 import com.midori.service.MainService;
+import com.midori.service.NoticeService;
 import com.midori.service.ProductService;
 
 import lombok.AllArgsConstructor;
@@ -45,7 +48,65 @@ public class AdminController {
 	   
     @Setter(onMethod_ = @Autowired)
     private ProductService Pservice;
+    
+    @Setter(onMethod_ = @Autowired)
+    private NoticeService Nservice;
+    
+    //공지사항
+    //노티스 게시판
+    @GetMapping("/notice/admnotice")
+    public void adminNotice(Criteria cri,Model model) {
+       model.addAttribute("list",Nservice.getListWithPaging(cri));
+       int total = Nservice.getTotal(cri);
+       model.addAttribute("pageMaker", new PageVO(cri, total));
+    }
+    
+    //노티스뷰, 수정폼
+    @GetMapping({"/notice/admnoticeview", "/notice/admnoticemodify"})
+    public void readNotice(@RequestParam("bno") int bno, @ModelAttribute("cri") Criteria cri,  Model model) {
 
+       model.addAttribute("nvo",Nservice.read(bno));
+       model.addAttribute("nextVO", Nservice.nextPage(bno));
+       model.addAttribute("prevVO", Nservice.prevPage(bno));
+     }
+    
+    //노티스 수정
+    @PostMapping("/notice/admnoticemodifypro.do")
+    public String modify(NoticeVO notice, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+       if(Nservice.update(notice)) { 
+          rttr.addFlashAttribute("result","success");
+       }
+       rttr.addAttribute("pageNum",cri.getPageNum());
+       rttr.addAttribute("amount",cri.getAmount());
+       return "redirect:/adm/notice/admnotice.do";
+    }
+    
+    //노티스 등록 폼
+    @GetMapping("/notice/admnoticewrite")
+    //@PreAuthorize("isAuthenticated()") //로그인이 성공한 사용자만이 글쓰기 할 수 있다
+    public void noticeWrite() {
+       
+    }
+    
+    //노티스 등록
+    @PostMapping("/notice/admnoticewritepro.do")
+    public String noticeList(NoticeVO notice, RedirectAttributes rttr) {
+       Nservice.register(notice);
+       rttr.addFlashAttribute("result",notice.getBno());
+       return "redirect:/adm/notice/admnotice.do";
+    }
+    
+    //노티스 삭제
+    @GetMapping("/notice/admnoticedelete")
+    public String delete(@RequestParam("bno") int bno, RedirectAttributes rttr) {
+       if(Nservice.delete(bno)) {
+          rttr.addFlashAttribute("result","success");
+       }
+       return "redirect:/adm/notice/admnotice.do";
+    } 
+    
+  
+    
 	
 	@GetMapping("/cunstomlogin")
 	public void customLogin(String error,String logout, Model model) {

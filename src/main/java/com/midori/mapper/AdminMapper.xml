@@ -209,11 +209,11 @@
 	<select id="AllSales" resultType="com.midori.domain.OrderVO">
 		<![CDATA[ 
 			select pseq, pname, sales_count 
-from (select rownum, pseq ,pname, sum(quantity) as sales_count 
-from order_view 
-group by pname, pseq, rownum 
-order by sales_count desc)
-where rownum <11
+			from (select pseq, pname, sum(quantity) as sales_count 
+			from order_view 
+			group by pname, pseq
+			order by sales_count desc)
+			where rownum <11
 		]]>
 	</select>
 	<select id="TodayBest" resultType="com.midori.domain.OrderVO">

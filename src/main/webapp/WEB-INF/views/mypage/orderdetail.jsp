@@ -1,14 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file = "../header.jsp" %>
-	<!-- contents -->
-	<section class="product">
-		<div class="container">
-			<div class="row">
-			
-				<div class="col-md-12 newitem">
+<%@ include file="mypageHeader.jsp" %>
+				<div class="col-md-9">
 					<h3>MyPage (주문상세 정보)</h3>
-					<form method="post" name="formm">
 					<h4>주문 정보</h4>
 						<table class="table jw_table">
 							<tr>
@@ -67,7 +61,7 @@
 							<c:forEach var="list" items="${odlist}">
 								<tr>
 									<td>${list.pname}</td>
-									<td><img src="/upload/${list.image}" alt="상품 사진"></td>
+									<td><img src="/upload/${list.image}" alt="상품 사진" style="width:40px;"></td>
 									<td>${list.odseq}</td>
 									<td>${list.quantity}</td>
 									<td><fmt:formatNumber value="${list.price2}"/>&#x20a9;</td>
@@ -78,13 +72,12 @@
 						<div class="col-md-12">
 							<input type="button"  value="쇼핑계속하기" onclick="location.href='/'" style="display:block; margin:0 auto;">
 						</div>
-					</form>
 						
 				</div><!-- 9 end -->
-			</div><!-- row end -->
+			</div>
 		</div>
-	</section>
-	<!-- contents end-->
+	</div>
+</body>
 <script>
 	$("#confirm").click(function(){
 		var msg = confirm("구매확정 하시겠습니까? (환불 교환 불가)");

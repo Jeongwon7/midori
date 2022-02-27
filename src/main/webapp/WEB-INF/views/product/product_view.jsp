@@ -14,7 +14,7 @@
     						<img src="" alt=""><!-- ../images/memil.jpg -->
     					</div>
     					<div class="col-md-5" style="padding-left:40px;">
-    					<form id="ofrm" method="post" name="formm" action="/order/orderinfo.do">
+    					<form id="ofrm" method="post" name="formm" >
 						<input type="hidden" name="pseq" value="${pseq}">
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
     						<div class="goods_name">
@@ -585,6 +585,14 @@
 	}
 	
 	function chk_form() {
-		document.getElementById('ofrm').submit();
-		}
+		var form = document.getElementById('ofrm');
+		form.action = "/order/orderinfo.do";
+		form.submit();
+	}
+	
+	function goCart(){
+		var form = document.getElementById('ofrm');
+		form.action = "/mypage/cartInsert.do";
+		form.submit();
+	}
 	</script>

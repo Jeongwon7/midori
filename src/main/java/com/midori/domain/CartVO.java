@@ -14,6 +14,6 @@ public class CartVO {
 	private int price2;
 	private String indate;
 	private String image;
-	
+	private int result;
 	private int oseq;
 }

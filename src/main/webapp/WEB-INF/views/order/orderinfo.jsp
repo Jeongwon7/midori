@@ -9,7 +9,11 @@
 		<div class="order">
 		 <h2>주문/결제</h2>
 		 <div class="order_body">
-		  <form name="form1" id="order_form" action="/order/orderinfo" method="post" >
+		  <form name="orderfrm" method="post" >
+		   		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+		 		<input type="hidden" name="cseq" value="${cartlist[0].cseq}">
+		 		<input type="hidden" name="pseq" value="${cartlist[0].pseq}">
+		 		<input type="hidden" name="quantity" value="${cartlist[0].quantity}">
            <h3>주문 정보</h3>
            <div class="tbl_order">
             <table class="jw_table"style="width:825px;">
@@ -82,7 +86,7 @@
 			           </div>
 			          </td>
 			         </tr>
-			         <c:set var="num" value="${num-1}" />
+			         <c:set var="num" value="${num+1}" />
 			         </c:forEach>
 			        </tbody><!-- tbody end -->
 			        <tfoot class="tfoot_right">
@@ -160,7 +164,7 @@
 	    		  <a href="#" class="first" onclick="history.back();">뒤로가기</a>
 	    		  </p>
 	    		  <p class="cart">
-	    		  <a href="#" class="first" onclick="orderInsert()">결제하기</a><!-- id="check_module"  -->
+	    		  <a href="#" class="first" id="check_module" >결제하기</a><!-- onclick="orderInsert()"  -->
 	    		  </p>
 	    		</div>
 	    	  </div>
@@ -168,20 +172,17 @@
 	   </div>
 	 </div>   
   </div>
-  <form method="post" name="orderfrm">
-		 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-		 		<input type="hidden" name="cseq" value="${cartlist[0].cseq}">
-		 		<input type="hidden" name="pseq" value="${cartlist[0].pseq}">
-		 		<input type="hidden" name="quantity" value="${cartlist[0].quantity}">
-		 		<input type="hidden" name="oname" value="${mvo.name}">
-		 		<input type="hidden" name="phone" value="${mvo.phone}">
-		 		<input type="hidden" name="zip_num" value="${mvo.zip_num}">
-		 		<input type="hidden" name="address1" value="${mvo.address1}">
-		 		<input type="hidden" name="address2" value="${mvo.address2}">
-		 </form>
+ 
 </body>
 <script type="text/javascript">
 $(function(){
+	var name = "";
+	
+	if("${cartlist.size()-1}" == 0){
+		name = "${cartlist[0].pname}";
+	}else{
+		name = "${cartlist[0].pname}"+" 외"+"${cartlist.size()-1}"+"건";
+	}
 
     $("#check_module").click(function () {
     	var IMP = window.IMP; // 생략가능
@@ -190,7 +191,7 @@ $(function(){
     	pg: 'inicis', // version 1.1.0부터 지원.
     	pay_method: 'card',
     	merchant_uid: 'merchant_' + new Date().getTime(),
-    	name: "${cartlist[0].pname}"+" 외"+"${cartlist.size()-1}"+"건",
+    	name: name,
     	//결제창에서 보여질 이름
     	amount: "${totalPrice+3000}",
     	//가격

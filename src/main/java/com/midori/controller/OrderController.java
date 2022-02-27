@@ -30,7 +30,8 @@ public class OrderController {
 	//주문정보 페이지
 	@PostMapping("/orderinfo.do")
 	public void orderInfoOne(CartVO cvo, Model model, Principal principal) {
-		System.out.println("cvo: "+cvo);
+		//System.out.println("컨트롤러 시작");
+		//System.out.println("cvo: "+cvo);
 		String id = principal.getName();
 		List<CartVO> cartlist = null;
 		MemberVO mvo = null;
@@ -43,12 +44,9 @@ public class OrderController {
 				totalPrice += cvo1.getPrice2()*cvo1.getQuantity();
 			}
 			
-			mvo = service.memberSelect(id);
-			
 		}else {//상품뷰페이지에서 결제하는 경우(얘는 form을 날려서 와야 함 pseq, quantity
 			ProductVO pvo = service.productSelect(cvo.getPseq());
 			totalPrice = cvo.getQuantity()* pvo.getPrice2();
-			mvo = service.memberSelect(id);
 			
 			cartlist = new ArrayList<CartVO>();
 			
@@ -56,8 +54,9 @@ public class OrderController {
 			cvo.setPname(pvo.getName());
 			cvo.setPrice2(pvo.getPrice2());
 			cartlist.add(cvo);
-			
 		}
+		
+		mvo = service.memberSelect(id);
 		
 		model.addAttribute("cartlist", cartlist);
 		model.addAttribute("mvo", mvo);
@@ -76,7 +75,7 @@ public class OrderController {
 		String id = principal.getName();
 		ovo.setId(id);	
 	
-		
+		System.out.println("ovo: "+ovo);
 		//orders 테이블 insert
 		service.orderInsert(ovo);
 		
@@ -95,9 +94,15 @@ public class OrderController {
 		}else {
 			System.out.println("옹냥냥뇽");
 			List<CartVO> cartList = service.getCartList(id);
+			System.out.println(cartList);
+			System.out.println("뇨뇨?");
 			for(CartVO cartVO : cartList) {
+				System.out.println("뇨뇨??");
+				cartVO.setOseq(oseqMax);
 				service.orderDInsert(cartVO);
+				System.out.println("뇨뇨???");
 				service.cartResultUpdate(cartVO.getCseq());
+				System.out.println("뇨뇨????");
 			}//for
 		}
 		System.out.println("end"+cvo);
