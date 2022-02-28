@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.midori.domain.Criteria9;
+import com.midori.domain.PageVO;
+import com.midori.domain.PageVO9;
 import com.midori.domain.ProductVO;
 import com.midori.domain.QnaVO;
 import com.midori.domain.ReviewVO;
@@ -58,6 +61,16 @@ public class ProductController {
 		List<QnaVO> qnalist = service.QnaListByProduct(pseq);
 		return qnalist;
 	}
-
+	
+	//상품 카테고리별 리스트 페이지
+	@GetMapping("/product_list")
+	   public void productList(Model model, Criteria9 cri9) {
+		  List<ProductVO> list = service.getProductListWithPaging(cri9);
+		  System.out.println("list: "+list);
+	      model.addAttribute("list", list);
+	      int total = service.getTotalCount(cri9);  
+	      model.addAttribute("pageMaker", new PageVO9(cri9, total));
+	   
+	   }
 	
 }

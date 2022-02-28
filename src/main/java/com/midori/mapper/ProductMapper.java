@@ -4,6 +4,7 @@ package com.midori.mapper;
 import java.util.List;
 
 import com.midori.domain.Criteria;
+import com.midori.domain.Criteria9;
 import com.midori.domain.ProductVO;
 import com.midori.domain.QnaVO;
 import com.midori.domain.ReviewVO;
@@ -30,4 +31,8 @@ public interface ProductMapper {
 	public ProductVO selectOneProduct(int pseq);
 	//상품 삭제
 	public int productDelete(int pseq);
+	
+	//상품리스트 페이지
+	public List<ProductVO> getProductListWithPaging(Criteria9 cri);
+    public int getTotalCount(Criteria9 cri);
 }

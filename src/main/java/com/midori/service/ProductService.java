@@ -3,6 +3,7 @@ package com.midori.service;
 import java.util.List;
 
 import com.midori.domain.Criteria;
+import com.midori.domain.Criteria9;
 import com.midori.domain.ProductVO;
 import com.midori.domain.QnaVO;
 import com.midori.domain.ReviewVO;
@@ -28,5 +29,9 @@ public interface ProductService {
 	public ProductVO selectOneProduct(int pseq);
 	//상품 삭제
 	public boolean productDelete(int pseq);
+	
+	//상품 리스트 페이지
+	public List<ProductVO> getProductListWithPaging(Criteria9 cri);
+	public int getTotalCount(Criteria9 cri);
 		
 }

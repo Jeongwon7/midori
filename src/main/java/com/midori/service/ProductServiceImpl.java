@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.midori.domain.Criteria;
+import com.midori.domain.Criteria9;
 import com.midori.domain.ProductVO;
 import com.midori.domain.QnaVO;
 import com.midori.domain.ReviewVO;
@@ -64,4 +65,16 @@ public class ProductServiceImpl implements ProductService {
 	   public ProductVO getProductOne(int pseq) {
 	      return mapper.selectProductOne(pseq);
 	}
+	
+	@Override
+    public List<ProductVO> getProductListWithPaging(Criteria9 cri) {
+       return mapper.getProductListWithPaging(cri);
+    }
+    
+    @Override
+    public int getTotalCount(Criteria9 cri) {
+       return mapper.getTotalCount(cri);
+    }
+	
+	
 }

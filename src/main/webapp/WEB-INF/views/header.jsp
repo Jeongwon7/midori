@@ -52,6 +52,7 @@
 	
 	<link rel="stylesheet" href="/resources/assets/css/cart.css">
 	
+	
 	<!-- <link rel="stylesheet" href="/resources/assets/css/footer.css"> -->
 	
    
@@ -136,7 +137,7 @@
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					      	<a href=""><image src="../assets/img/all.png" class="icon-food">
+					      	<a href="/product/product_list"><image src="../assets/img/all.png" class="icon-food">
 					         	모든제품
 					        </a>
 					      </h4>

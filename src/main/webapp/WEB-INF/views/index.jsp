@@ -34,11 +34,12 @@
 	<!-- mean menu css -->
 	<link rel="stylesheet" href="../resources/assets/css/meanmenu.min.css">
 	<!-- main style -->
-	<link rel="stylesheet" href="../resources/assets/css/main.css">
+	<link rel="stylesheet" href="/resources/assets/css/main.css">
 	<!-- responsive -->
 	<link rel="stylesheet" href="../resources/assets/css/responsive.css">
 	
 	<link rel="stylesheet" href="../resources/assets/css/mycss.css">
+	
 
 	<!--  <link rel="stylesheet" href="/resources/assets/css/footer.css">-->
 
@@ -92,7 +93,7 @@
 		     					<a href="#" onclick="return chk_form()" class="shopping-cart" type="submit"><i class="fas fa-lock-open"></i></a>
 		     					</form>
 	     					</li>
-	     					<li><a class="shopping-cart" href="mypage.jsp"><i class="fas fa-address-card" aria-hidden="true"></i></a><li>
+	     					<li><a class="shopping-cart" href="/mypage/cart_list"><i class="fas fa-address-card" aria-hidden="true"></i></a><li>
 			            </sec:authorize>	
 	     					<li><a class="shopping-cart" href="/mypage/cart_list"><i class="fas fa-shopping-cart"></i></a></li>
 							<li><a class="shopping-cart" href="/notice/notice"><i class="fa fa-info-circle" aria-hidden="true"></i></a></li>
@@ -200,7 +201,7 @@
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					      	<a href=""><image src="assets/img/all.png" class="icon-food">
+					      	<a href="/product/product_list"><image src="assets/img/all.png" class="icon-food">
 					         	모든제품
 					        </a>
 					      </h4>

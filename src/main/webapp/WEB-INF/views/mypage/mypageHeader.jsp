@@ -143,7 +143,7 @@
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					        <a href="">
+					        <a href="/member/email.do">
 					          	개인정보변경
 					        </a>
 					      </h4>

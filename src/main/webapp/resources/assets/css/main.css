@@ -1,8 +1,35 @@
-/*Template Name: Fruitkha - Responsive Bootstrap4 Shop TemplateTemplate URI: Description: Bootstrap template for fruits or any other kind of shopAuthor: Imran HossainAuthor URI: https://imransdesign.com/Version: 1.0*/
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@Jeongwon7 
+Jeongwon7
+/
+midori
+Public
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+midori/src/main/webapp/resources/assets/css/main.css
+@Jeongwon7
+Jeongwon7 first commit
+Latest commit 2b9fb36 16 days ago
+ History
+ 1 contributor
+2759 lines (2292 sloc)  43.8 KB
+   
+/*Template Name: Fruitkha - Responsive Bootstrap4 Shop TemplateTemplate URI: Description: Bootstrap template for fruits or any other kind of shopAuthor: Imran HossainAuthor URI: https://imransdesign.com/Version: 1.0*/
 /* -----------------------------------------------------------------------------
-
 # Base - Genral & Typography
-
 ----------------------------------------------------------------------------- */
 html {
   font-size: 14px;
@@ -30,7 +57,7 @@ a {
   text-decoration: none;
   -webkit-transition: all 0.2s ease-in-out;
   -o-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;  color: black;
+  transition: all 0.2s ease-in-out;  color: black;
 }
 
 a:hover {
@@ -149,11 +176,9 @@ p {
 
 p:last-child {
   margin: 0;
-}li{	list-style:none;	display:inline;	display:inline-block}
+}li{	list-style:none;	display:inline;	display:inline-block}
 /* -----------------------------------------------------------------------------
-
 # All Common Styles
-
 ----------------------------------------------------------------------------- */
 .loader {
   bottom: 0;
@@ -508,9 +533,7 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
 }
 
 /* -----------------------------------------------------------------------------
-
 # Header Styles
-
 ----------------------------------------------------------------------------- */
 ul.navbar-nav li.nav-item a.nav-link, ul.navbar-nav li.nav-item.active a.nav-link {
   color: #051922;
@@ -836,9 +859,7 @@ a.mobile-show {
 }
 
 /* -----------------------------------------------------------------------------
-
 # Footer Styles
-
 ----------------------------------------------------------------------------- */
 .single-logo-item img {
   max-width: 180px;
@@ -981,9 +1002,7 @@ h2.widget-title:after {
 }
 
 /* -----------------------------------------------------------------------------
-
 # Hover Styles
-
 ----------------------------------------------------------------------------- */
 a.navbar-brand {
   -webkit-transition: 0.3s;
@@ -1345,9 +1364,7 @@ a.mobile-show.search-bar-icon:hover {
 }
 
 /* -----------------------------------------------------------------------------
-
 # Hero Styles
-
 ----------------------------------------------------------------------------- */
 .hero-bg {
   background-image: url(../img/hero-bg.jpg);
@@ -1535,9 +1552,7 @@ div.owl-controls, .owl-controls div {
 }
 
 /* -----------------------------------------------------------------------------
-
 # List Styles
-
 ----------------------------------------------------------------------------- */
 .list-section {
   background-color: #f5f5f5;
@@ -1574,9 +1589,7 @@ div.owl-controls, .owl-controls div {
 }
 
 /* -----------------------------------------------------------------------------
-
 # News Styles
-
 ----------------------------------------------------------------------------- */
 .news-bg-1 {
   background-image: url(../img/latest-news/news-bg-1.jpg);
@@ -1879,9 +1892,7 @@ span.comment-date {
 }
 
 /* -----------------------------------------------------------------------------
-
 # Cart Banner Styles
-
 ----------------------------------------------------------------------------- */
 .cart-banner {
   background-color: #f5f5f5;
@@ -1984,9 +1995,7 @@ span.comment-date {
 }
 
 /* -----------------------------------------------------------------------------
-
 # Testimonial Styles
-
 ----------------------------------------------------------------------------- */
 .client-avater {
   margin-bottom: 20px;
@@ -2029,9 +2038,7 @@ p.testimonial-body {
 }
 
 /* -----------------------------------------------------------------------------
-
 # About Styles
-
 ----------------------------------------------------------------------------- */
 a.video-play-btn {
   position: absolute;
@@ -2099,9 +2106,7 @@ a.video-play-btn {
 }
 
 /* -----------------------------------------------------------------------------
-
 # Shop Banner Styles
-
 ----------------------------------------------------------------------------- */
 .shop-banner {
   position: relative;
@@ -2137,9 +2142,7 @@ a.video-play-btn {
 }
 
 /* -----------------------------------------------------------------------------
-
 # About Page Styles
-
 ----------------------------------------------------------------------------- */
 .feature-bg {
   position: relative;
@@ -2233,9 +2236,7 @@ ul.social-link-team li a {
 }
 
 /* -----------------------------------------------------------------------------
-
 # Contact Page Styles
-
 ----------------------------------------------------------------------------- */
 .form-title {
   margin-bottom: 25px;
@@ -2357,11 +2358,9 @@ ul.social-link-team li a {
 }
 
 /* -----------------------------------------------------------------------------
-
 # Shop Page Styles
-
 ----------------------------------------------------------------------------- */
-.icon-food{	width: 25px;    padding-bottom: 5px;}.product-filters {
+.icon-food{	width: 25px;    padding-bottom: 5px;}.product-filters {
   margin-bottom: 80px;
 }
 
@@ -2707,9 +2706,7 @@ table.order-details tbody td {
 }
 
 /* -----------------------------------------------------------------------------
-
 # 404 Page Styles
-
 ----------------------------------------------------------------------------- */
 .error-text i {
   font-size: 90px;
@@ -2738,3 +2735,19 @@ table.order-details tbody td {
   vertical-align: middle;
   width: 100%;
 }
+
+
+
+© 2022 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Loading complete
