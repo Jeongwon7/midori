@@ -151,7 +151,7 @@ public class MemberController {
 			service.memberUpdate(mvo);
 		}
 		System.out.println("성공");
-		return "redirect:/";
+		return "redirect:/member/memberModify.do";
 	}
 	
 	//회원삭제완료

@@ -259,7 +259,7 @@ function review_delete(rbno){
 	  ]);
 	
 	  // Set chart options
-	  var options = {'title':'월간 판매 순위 Top10',
+	  var options = {'title':'월간 판매 순위 Top5',
 			 		 'fontSize': 18,
 	                 'width':600,
 	                 'height':500};

@@ -6,12 +6,51 @@ function goJoin() {
    }else if(aaa.pwd.value != aaa.pwdcheck.value) {
       alert("패스워드 확인");
       aaa.pwd.focus;
-
+   }else if(aaa.pwd.value != aaa.pwdcheck.value) {
+      alert("패스워드 확인");
+      aaa.pwd.focus;
+   }else if(document.aaa.name.value == "") {
+      alert("이름 입력");
+      aaa.name.focus();
+   }else if(document.aaa.id.value == "") {
+      alert("아이디 입력");
+      aaa.id.focus();
+   }else if(document.aaa.email.value == "") {
+      alert("이메일 입력");
+      aaa.email.focus();
+   }else if(document.aaa.member_post.value == "") {
+      alert("우편번호 입력");
+      aaa.member_post.focus();
+   }else if(document.aaa.address2.value == "") {
+      alert("나머지주소 입력");
+      aaa.address2.focus();
+   }else if(document.aaa.phone.value == "") {
+      alert("전화번호 입력");
+      aaa.phone.focus();
    }else{
       aaa.action="/member/memberinsertpro.do";
       aaa.submit();
    }
 }
+
+function fn_login(){
+         
+      if(login.username.value == ""){
+         alert("아이디를 입력하세요.")
+         login.username.focus();
+         return false;
+      }
+      if(login.password.value == ""){
+         alert("비밀번호를 입력하세요.")
+         login.password.focus();
+         return false;
+      }
+      
+      var form = document.login;
+      form.action = "/login";
+      form.submit();
+}
+
 
 function findAddr(){
    new daum.Postcode({
@@ -41,27 +80,27 @@ $(function() {
 
    $("#id").blur(function() {
 
-               $.ajax({
-                  type:"get",
-                  url:"/member/checkUserid.do",
-                  data:{id:$("#id").val()},
-                  //contentType:"application/json; charset=utf8", 보내는 타입
-                  dataType:"json", //받는 타입
-                  success:function(data) {
-                     if(data != 1) {
-                        if($("#id").val() != "") {
-                           $("#msg").html("사용 가능한 아이디 입니다");
-                        }
-                     }else{
-                        if($("#id").val() != "") {
-                           $("#msg").html("사용 불가능한 아이디 입니다");
-                           $("#id").val("");
-                           $("#id").focus();
-                        }
-                     }
-                  }, error:function() {
-                     alert("통신에러");
-                  }
-               })
-            })
+      $.ajax({
+         type:"get",
+         url:"/member/checkUserid.do",
+         data:{id:$("#id").val()},
+         //contentType:"application/json; charset=utf8", 보내는 타입
+         dataType:"json", //받는 타입
+         success:function(data) {
+            if(data != 1) {
+               if($("#id").val() != "") {
+                  $("#msg").html("사용 가능한 아이디 입니다");
+               }
+            }else{
+               if($("#id").val() != "") {
+                  $("#msg").html("사용 불가능한 아이디 입니다");
+            //      $("#id").val("");
+                  $("#id").focus();
+               }
+            }
+         }, error:function() {
+            alert("통신에러");
+         }
+      })
+   })
 });

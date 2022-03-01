@@ -171,6 +171,9 @@ pageEncoding="UTF-8"%>
                                     <ul class="sub-category" style="display: none; left: 95px;">
                                    </ul>
                                   </li>	
+                                   <li class="category-record"><a href="/adm/adminLogout"><i class="fas fa-user fa-fw"></i>로그아웃</a>
+                                    <ul class="sub-category" style="display: none; left: 95px;"></ul>
+                                  </li>
                                  </ul>
                                 </nav>	
                             </div>

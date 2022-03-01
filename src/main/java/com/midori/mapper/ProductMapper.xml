@@ -79,7 +79,9 @@
             select rownum rn, pseq, name, kind, price2, content, image  
             from product
             where 
-
+      ]]>
+			<include refid="jwCri"></include>
+		<![CDATA[
             rownum <= #{pageNum} * #{amount} order by pseq desc
          )
          where rn > (#{pageNum}-1) * #{amount}
@@ -89,9 +91,10 @@
      <select id="getTotalCount" resultType="int">
 
       select count(*) from product where 
- 
+ 		<include refid="jwCri"></include>
+ 		<![CDATA[
       pseq > 0
-
+		]]>
    </select>
   	
 </mapper>

@@ -116,7 +116,7 @@
 		     					<a href="#" onclick="return chk_form()" class="shopping-cart" type="submit"><i class="fas fa-lock-open"></i></a>
 		     					</form>
 	     					</li>
-	     					<li><a class="shopping-cart" href=""><i class="fas fa-address-card" aria-hidden="true"></i></a><li>
+	     					<li><a class="shopping-cart" href="/member/email.do"><i class="fas fa-address-card" aria-hidden="true"></i></a><li>
 			            </sec:authorize>	
 	     					<li><a class="shopping-cart" href="/mypage/cart_list"><i class="fas fa-shopping-cart"></i></a></li>
 							<li><a class="shopping-cart" href="/notice/notice"><i class="fa fa-info-circle" aria-hidden="true"></i></a></li>
@@ -146,7 +146,7 @@
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					      	<a href=""><image src="../assets/img/salad.png" class="icon-food">
+					      	<a href="/product/product_list?kind=1"><image src="../assets/img/salad.png" class="icon-food">
 					          	샐러드
 					        </a>
 					      </h4>
@@ -155,7 +155,7 @@
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					      	<a href=""><image src="../assets/img/chicken.png" class="icon-food">
+					      	<a href="/product/product_list?kind=2"><image src="../assets/img/chicken.png" class="icon-food">
 					          	닭가슴살
 					        </a>
 					      </h4>
@@ -164,7 +164,7 @@
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					        <a href=""><image src="../assets/img/lunch_box.png" class="icon-food">
+					        <a href="/product/product_list?kind=3"><image src="../assets/img/lunch_box.png" class="icon-food">
 					          	다이어트 도시락
 					        </a>
 					      </h4>
@@ -173,7 +173,7 @@
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					        <a href=""><image src="../assets/img/sandwich.png" class="icon-food">
+					        <a href="/product/product_list?kind=4"><image src="../assets/img/sandwich.png" class="icon-food">
 					          	샌드위치
 					        </a>
 					      </h4>
@@ -182,7 +182,7 @@
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					        <a href=""><image src="../assets/img/protein.png" class="icon-food">
+					        <a href="/product/product_list?kind=5"><image src="../assets/img/protein.png" class="icon-food">
 					          	프로틴
 					        </a>
 					      </h4>
@@ -191,7 +191,7 @@
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					        <a href=""><image src="../assets/img/snack.png" class="icon-food">
+					        <a href="/product/product_list?kind=6"><image src="../assets/img/snack.png" class="icon-food">
 					        	저칼로리 간식
 					        </a>
 					      </h4>
@@ -200,7 +200,7 @@
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					        <a href=""><image src="../assets/img/drink.png" class="icon-food">
+					        <a href="/product/product_list?kind=7"><image src="../assets/img/drink.png" class="icon-food">
 					          	무설탕 음료
 					        </a>
 					      </h4>

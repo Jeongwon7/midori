@@ -16,7 +16,7 @@ public class MemberVO {
 	private String phone;
 	private String email;
 	private String useyn;
-	private Date indate;
+	private String indate;
 
 	private List<Member_authVO> authList;
 }
