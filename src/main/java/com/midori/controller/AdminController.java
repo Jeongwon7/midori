@@ -252,7 +252,7 @@ public class AdminController {
 	   }
 	   
 	   @PostMapping("/admin_product_write.do")
-	   public String productWrite(ProductVO product,@RequestParam("uploadFile") MultipartFile upload) {
+	   public String productWrite(ProductVO product, @RequestParam("uploadFile") MultipartFile upload) {
 		   System.out.println("product: "+product);
 	      
 	      String uploadFolder = "c:\\upload";

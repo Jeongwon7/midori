@@ -8,11 +8,22 @@
 					kind=#{kind} and 
 				</when>
 				<when test="kind == null">
-					
 				</when>
 			</choose>
 		</trim>
 	</sql>
+	<sql id="yhCri">
+         <trim>
+			<choose>
+				<when test="kind != null and keyword == null">
+					kind=#{kind} and 
+				</when>
+				<when test="kind == null and keyword != null">
+					name like '%' || #{keyword} || '%' and
+				</when>
+			</choose>
+		</trim>
+   </sql>
 	<select id="selectProductOne" resultType="com.midori.domain.ProductVO">
       select * from product where pseq=#{pseq}
    </select>
@@ -80,7 +91,7 @@
             from product
             where 
       ]]>
-			<include refid="jwCri"></include>
+			<include refid="yhCri"></include>
 		<![CDATA[
             rownum <= #{pageNum} * #{amount} order by pseq desc
          )
@@ -91,7 +102,7 @@
      <select id="getTotalCount" resultType="int">
 
       select count(*) from product where 
- 		<include refid="jwCri"></include>
+ 		<include refid="yhCri"></include>
  		<![CDATA[
       pseq > 0
 		]]>

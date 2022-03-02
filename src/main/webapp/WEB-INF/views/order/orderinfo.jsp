@@ -164,7 +164,7 @@
 	    		  <a href="#" class="first" onclick="history.back();">뒤로가기</a>
 	    		  </p>
 	    		  <p class="cart">
-	    		  <a href="#" class="first" id="check_module" >결제하기</a><!-- onclick="orderInsert()"  -->
+	    		  <a href="#" class="first" onclick="orderInsert()"  >결제하기</a><!-- id="check_module"  -->
 	    		  </p>
 	    		</div>
 	    	  </div>

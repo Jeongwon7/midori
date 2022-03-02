@@ -35,4 +35,6 @@ public interface ProductMapper {
 	//상품리스트 페이지
 	public List<ProductVO> getProductListWithPaging(Criteria9 cri);
     public int getTotalCount(Criteria9 cri);
+    
+    
 }

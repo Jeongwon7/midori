@@ -12,23 +12,15 @@
 		      <span>${pageMaker.total}</span>
 		      items
 		    </p>
-		    <ul class="list_sort">
-		     <li>
-		      <a href="">최신순</a>
-		     </li>
-		     <li>
-		      <a href="">높은 가격순</a>
-		     </li>
-		     <li>
-		      <a href="">낮은 가격순</a>
-		     </li>
-		     <li>
-		      <a href="">이름순</a>
-		     </li>
-		     <li>
-		      <a href="">인기순</a>
-		     </li>
-		    </ul>
+		  <div class="product_search">   
+              <form class="myform" action="/product/product_list.do" method="get" id="searchForm">
+                   <input type="hidden" name="pageNum" value="${pageMaker.cri9.pageNum}">
+                  <input type="hidden" name="amount" value="${pageMaker.cri9.amount}">
+                  <input type="text" name="keyword" placeholder="검색어를 입력해주세요." class="in_search">
+                  <input type="image" class="search_icon" src="../assets/img/search_icon.png">
+                 <button class="search_none" type="submit"><i class="fa fa-search"></i><span class="sr-only">검색버튼</span></button>
+              </form>
+             </div>
 		  </div>
           <div class="list_body">
            <div class="inner_listbody">

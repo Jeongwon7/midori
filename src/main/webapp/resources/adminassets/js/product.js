@@ -33,7 +33,6 @@ function go_save() {
       alert("대표이미지 삽입");
       theForm.image.focus;
    }else{
-      theForm.encoding = "multipart/form-data";
       theForm.price1.value = removeComma(theForm.price1); //콤마제거
       theForm.price2.value = removeComma(theForm.price2);
       theForm.price3.value = removeComma(theForm.price3);

@@ -40,10 +40,10 @@ public class CustomLoginFailHandler implements AuthenticationFailureHandler {
 			request.setAttribute("error", "잠긴 계정입니다..");
 			
 		} else if(accessException instanceof DisabledException) {
-			request.setAttribute("error", "비활성화된 계정입니다..");
+			request.setAttribute("error", "비활성화된 계정입니다.");
 			
 		} else if(accessException instanceof AccountExpiredException) {
-			request.setAttribute("error", "만료된 계정입니다..");
+			request.setAttribute("error", "만료된 계정입니다.");
 			
 		} else if(accessException instanceof CredentialsExpiredException) {
 			request.setAttribute("error", "비밀번호가 만료되었습니다.");

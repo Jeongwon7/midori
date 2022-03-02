@@ -6,7 +6,7 @@
   			<div class="col-md-10" style="margin-top:100px; margin-left:300px; width:1200px;">
   				<h2>상품등록</h2>
 				<div class="col-md-12">
-					<form class="form-horizontal" name="frm" method="post">
+					<form class="form-horizontal" name="frm" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 					  <div class="form-group">
 					    <label for="kind" class="col-sm-2 control-label">상품분류</label>
@@ -55,7 +55,7 @@
 							  <label class="form-check-label" for="bestyn" style="margin-right:50px;">
 							    Y
 						      </label>
-					 	  <input class="form-check-input" type="radio" name="bestyn" id="bestyn" value="n">
+					 	  <input class="form-check-input" type="radio" name="bestyn" id="bestyn" value="n" checked="checked">
 							  <label class="form-check-label" for="bestyn">
 							    N
 						  </label>

@@ -465,3 +465,43 @@
     line-height: 22px;
     vertical-align: middle;
 }
+
+.product_search{
+   position: absolute;
+    right: 50px;
+    top: -5px;
+    width: 242px;
+}
+.in_search{
+       width: 242px;
+    height: 36px;
+    padding: 0 60px 0 14px;
+    border: 1px solid #f7f7f6;
+    border-radius: 18px;
+    background-color: #f7f7f7;
+    font-family: 'Noto Sans';
+    font-weight: 400;
+    font-size: 12px;
+    color: #666;
+    line-height: 16px;
+    outline: none;
+}
+.search_none {
+   display:none;
+}
+.search_icon{
+       position: absolute;
+    right: 5px;
+    top: 3px;
+    width: 30px;
+    height: 30px;
+}
+.search_nono{
+    padding-bottom: 95px;
+    border-bottom: 2px solid #000;
+    color: #333;
+    font-family: 'malgun gothic';
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: -3px;
+}
