@@ -15,6 +15,7 @@
 					    <label for="userid" class="col-sm-2 control-label">아이디</label>
 					    <div class="col-sm-10">
 					      <input type="text" name="username" class="form-control" id="userid" placeholder="아이디 입력">
+					      <span id="msg">${requestScope.error}</span>
 					    </div>
 					  </div>
 					  

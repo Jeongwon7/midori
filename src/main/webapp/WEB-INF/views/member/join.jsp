@@ -21,6 +21,7 @@
 					    <label for="pwd" class="col-sm-2 control-label">패스워드</label>
 					    <div class="col-sm-10">
 					      <input type="password" name="pwd" class="form-control" id="pwd" placeholder="암호입력">
+					      <span id="pwmsg"><span></span></span>
 					    </div>
 					  </div>
 					  
@@ -76,5 +77,29 @@
     </section>
     <!-- contents end -->
 
-
+<script>
+	$(function (){
+		$("#pwd").blur(function(){
+			var pwd = $("#pwd").val();
+			var pwdcheck = $("#pwdcheck").val();
+			
+			if(pwd != pwdcheck){
+				$("#pwmsg").html('<span style="color: #f00;">비밀번호가 일치하지 않습니다.</span>');
+			}else{
+				$("#pwmsg").html('<span>비밀번호가 일치합니다.</span>');
+			}
+		})
+		
+		$("#pwdcheck").blur(function(){
+			var pwd = $("#pwd").val();
+			var pwdcheck = $("#pwdcheck").val();
+			
+			if(pwd != pwdcheck){
+				$("#pwmsg").html('<span style="color: #f00;">비밀번호가 일치하지 않습니다.</span>');
+			}else{
+				$("#pwmsg").html('<span>비밀번호가 일치합니다.</span>');
+			}
+		})
+	});
+</script>
 <%@ include file = "../footer.jsp"%>

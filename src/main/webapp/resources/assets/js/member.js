@@ -104,3 +104,28 @@ $(function() {
       })
    })
 });
+
+
+
+//$(function() {
+
+//   $("#userid").blur(function() {
+
+//      $.ajax({
+//         type:"get",
+//         url:"/member/checkUserid.do",
+//         data:{id:$("#userid").val()},
+         //contentType:"application/json; charset=utf8", 보내는 타입
+//         dataType:"json", //받는 타입
+//         success:function(data) {
+//            if(data != 1) {
+//               if($("#userid").val() != "") {
+//                  $("#msg").html("존재하지 않는 아이디입니다.");
+//               }
+//           }
+//         }, error:function() {
+//            alert("통신에러");
+//         }
+//      })
+//   })
+//});

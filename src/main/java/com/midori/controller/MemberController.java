@@ -62,7 +62,6 @@ public class MemberController {
 	//로그인 페이지
 	@GetMapping("/login.do")
 	public void customLogin() {
-		
 	}
 	
 	//아이디 체크

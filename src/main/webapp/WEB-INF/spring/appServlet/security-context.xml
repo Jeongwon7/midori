@@ -10,7 +10,8 @@
 	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 	<bean id="AdminLoginSuccess" class="com.midori.security.AdminLoginSuccessHandler"/>
 	<bean id="AdminUserDetailsService" class="com.midori.security.AdminUserDetailService"/>
-
+	<!-- 로그인 실패 처리 -->
+	<bean id="customLoginFail" class="com.midori.security.CustomLoginFailHandler"/>
 <!-- no bean named 'springSecurityFilterChain' available 오류 해결을 위한 최소한 의 설정 추가 -->
 
 	<security:http>
@@ -20,7 +21,8 @@
 
 		<!-- <security:intercept-url pattern="/sample/insert" access="hasRole({'ROLE_ADMIN','ROLE_USER'})"/> -->
 		<!-- 권한이 없는 사람이 접근하면  -->
-		<security:form-login login-page="/member/login.do" authentication-success-handler-ref="AdminLoginSuccess"/>
+		<security:form-login login-page="/member/login.do" authentication-failure-handler-ref="customLoginFail" authentication-success-handler-ref="AdminLoginSuccess" 
+		 />
 		<!-- logout 처리 -->
 		<security:logout logout-url="/adm/adminLogout" invalidate-session="true" logout-success-url="/"/>
 	</security:http>
@@ -30,4 +32,5 @@
 			<security:password-encoder ref="bcryptPasswordEncoder" />
 		</security:authentication-provider>
 	</security:authentication-manager>
+	
 </beans>
