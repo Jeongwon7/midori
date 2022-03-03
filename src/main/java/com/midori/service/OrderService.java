@@ -22,4 +22,9 @@ public interface OrderService {
 	public List<CartVO> getCartList(String id);
 	//카트 result 업데이트
 	public void cartResultUpdate(int cseq);
+	//주문 내역
+	public List<Integer> OrderListing(String id);
+	public List<Integer> SelectSeqOrdering(String id); 
+	public List<OrderVO> ListOrderByID(String id, String result, int oseq);
+	
 }

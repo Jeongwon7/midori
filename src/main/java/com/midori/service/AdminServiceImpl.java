@@ -3,10 +3,10 @@ package com.midori.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 
 import com.midori.domain.Criteria;
+import com.midori.domain.MemberVO;
 import com.midori.domain.OrderVO;
 import com.midori.domain.QnaVO;
 import com.midori.domain.ReviewVO;
@@ -225,5 +225,16 @@ public class AdminServiceImpl implements AdminService {
 	}
 	//통계 끝
 	
+	
+	//회원관리
+    public List<MemberVO> GetMemberWithPaging(Criteria cri){
+       return mapper.getMemberWithPaging(cri);
+    }
+    public int GetTotalMember(Criteria cri) {
+       return mapper.getTotalMember(cri);
+    }
+    public boolean AdmMemberDelete(String id) {
+        return mapper.admMemberDelete(id); 
+    }
 	
 }

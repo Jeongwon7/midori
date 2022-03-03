@@ -54,7 +54,7 @@
 	  </div>
 	  <div class="form-group">
  		<input type="submit" value="저장" class="btn_ok">&nbsp;&nbsp;
-		<input type="reset" value="다시쓰기" class="btn_reset">&nbsp;&nbsp;
+		<input type="button" value="홈으로" class="btn_reset" onclick="location.href='/'">&nbsp;&nbsp;
 		<input type="button" value="회원 탈퇴" class="btn_list" onclick="removeCheck()">
 	  </div>
 	</form>

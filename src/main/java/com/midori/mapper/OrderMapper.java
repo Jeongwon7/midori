@@ -2,6 +2,8 @@ package com.midori.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.midori.domain.CartVO;
 import com.midori.domain.MemberVO;
 import com.midori.domain.OrderVO;
@@ -22,4 +24,8 @@ public interface OrderMapper {
 	public List<CartVO> getCartList(String id);
 	//카트 result 업데이트
 	public void cartResultUpdate(int cseq);
+	//주문 목록
+	public List<Integer> orderListing(@Param("id") String id);
+	public List<Integer> selectSeqOrdering(@Param("id") String id); 
+	public List<OrderVO> listOrderByID(@Param("id") String id, @Param("status") String status, @Param("oseq") int oseq);
 }

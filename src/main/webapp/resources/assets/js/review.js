@@ -134,7 +134,7 @@ function review_save(){
 	//theForm.encoding = "multipart/form-data";
 	//	theForm.method = "post";
 		theForm.action = "/review/reviewwritepro.do";
-		alert("먹음");
+	//	alert("먹음");
 		theForm.submit();
 	}
 }

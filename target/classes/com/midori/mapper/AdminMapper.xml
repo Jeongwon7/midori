@@ -33,6 +33,28 @@
 			</choose>
 		</trim>
 	</sql>
+	<sql id="yhCri"><!-- 회원검색 -->
+      <trim prefix="(" suffix=") " prefixOverrides="OR"><!-- where 다음에 or가 오면 지움 -->
+         <foreach collection="typeArr" item="type"><!--  collection="typeArr": item에 type에 저장된 값을 쓸 수 있게 된다 -->
+            <trim prefix="OR">
+               <choose>
+                  <when test="type == 'I'.toString()">
+                     id like '%'||#{keyword}||'%'
+                  </when>
+                  <when test="type == 'N'.toString()">
+                     name like '%'||#{keyword}||'%'
+                  </when>
+                  <when test="type == 'F'.toString()">
+                     email like '%'||#{keyword}||'%'
+                  </when>
+                  <when test="type == 'P'.toString()">
+                     phone like '%'||#{keyword}||'%'
+                  </when>
+               </choose>
+            </trim>
+         </foreach>
+      </trim>
+   </sql>
 	<!-- 홈 -->
 	<select id="monthlyTop10Pie" resultType="com.midori.domain.OrderVO">
 		<![CDATA[ 
@@ -55,15 +77,15 @@
 		<![CDATA[ 
 			    select ref, qbno, secret, pseq, qtitle, qwriter, qregdate, category, pname, kind
    			 from(select rownum, ref, qbno, secret, p.pseq, qtitle, qwriter, qregdate, category, p.kind, p.name as pname 
-			from qna_view q, product p where p.pseq=q.pseq order by qregdate desc) 
+			from qna_view q, product p where p.pseq=q.pseq order by qbno desc) 
 			where rownum <7
 		 ]]>
 	</select>
 	<select id="ReviewListNew" resultType="com.midori.domain.ReviewVO">
 		<![CDATA[ 
-			select rbno, pseq, writer, title, content, star, regdate, pname 
+			select rbno, pseq, writer, title, content, star, regdate, pname, kind
 			from(
-			select rownum, rbno, p.pseq, writer, title, r.content, star, regdate, p.name as pname
+			select rownum, rbno, p.pseq, writer, title, r.content, star, regdate, p.name as pname, kind
 			from review r, product p where r.pseq=p.pseq order by rbno desc) 
 			where rownum <7
 		]]>
@@ -83,7 +105,7 @@
 			<include refid="jwCri"></include>
 				
 		<![CDATA[		
-				r.pseq = p.pseq and rownum <= #{pageNum} * #{amount} order by regdate desc
+				r.pseq = p.pseq and rownum <= #{pageNum} * #{amount} order by rbno desc
 			)
 			where rn > (#{pageNum} - 1) * #{amount}
 		]]>
@@ -123,7 +145,7 @@
 			<include refid="jwCri"></include>
 				
 		<![CDATA[		
-				q.pseq = p.pseq and rownum <= #{pageNum} * #{amount} order by qregdate desc
+				q.pseq = p.pseq and rownum <= #{pageNum} * #{amount} order by qbno desc
 			)
 			where rn > (#{pageNum} - 1) * #{amount}
 		]]>
@@ -219,12 +241,12 @@
 	<select id="TodayBest" resultType="com.midori.domain.OrderVO">
 		<![CDATA[
 		select kind, pseq, pname, sales_count  
-from (select p.pseq, p.kind, o.pname, sum(o.quantity) as sales_count 
-from order_view o, product p
-where o.pseq = p.pseq and TO_CHAR(o.indate, 'YYYYMMDD') = to_char(sysdate, 'yyyymmdd') 
-group by o.pname, p.pseq, p.kind
-order by sales_count desc) 
-where rownum <6
+		from (select p.pseq, p.kind, o.pname, sum(o.quantity) as sales_count 
+		from order_view o, product p 
+		where o.pseq = p.pseq and TO_CHAR(o.indate, 'YYYYMMDD') = to_char(sysdate, 'yyyymmdd') 
+		group by o.pname, p.pseq, p.kind 
+		order by sales_count desc) 
+		where rownum <6
 		 ]]>
 	</select>
 	<select id="todaySales" resultType="com.midori.domain.OrderVO">
@@ -269,9 +291,42 @@ where rownum <6
 		order by indate
 	</select>
 	<select id="twoYearsAgoSales" resultType="com.midori.domain.OrderVO">
-		select * from benefit_view
-where to_number(to_char(indate, 'yyyymmdd')) between to_number(to_char(sysdate,'yyyy')-2)||'0101' 
-and to_number(to_char(sysdate,'yyyy')-2)||'1231' 
-order by indate
+		select * from benefit_view 
+		where to_number(to_char(indate, 'yyyymmdd')) between to_number(to_char(sysdate,'yyyy')-2)||'0101' 
+		and to_number(to_char(sysdate,'yyyy')-2)||'1231' 
+		order by indate
 	</select>
+	
+	<!-- 회원 관리 -->
+   <select id="getMemberWithPaging" resultType="com.midori.domain.MemberVO">
+      <![CDATA[
+         select 
+            id,name,email,address1,address2,phone,indate 
+         from (
+            select rownum rn,id,name,email,address1,address2,phone,indate 
+            from member
+            
+          ]]>
+          <where> 
+             <include refid="yhCri"></include>
+          <![CDATA[ 
+            and rownum <= #{pageNum} * #{amount} order by indate desc
+         )
+         where rn > (#{pageNum}-1) * #{amount}
+        ]]>
+        </where>
+   </select>
+    
+   <select id="getTotalMember" resultType="int">
+
+      select count(*) from member
+       <where>
+      <include refid="yhCri"></include>
+      </where>
+   </select>
+
+    <delete id="admMemberDelete">
+      delete from member where id=#{id}
+   </delete>
+	
 </mapper>

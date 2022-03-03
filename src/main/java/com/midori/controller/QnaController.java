@@ -32,7 +32,7 @@ public class QnaController {
 	
 	@PostMapping("/questionwritepro.do")
 	public String questionWritePro(QnaVO qvo, Principal principal) {
-		System.out.println("principal: "+principal.getName());
+	//	System.out.println("principal: "+principal.getName());
 		int ref = service.getRef()+1;
 		qvo.setRef(ref);
 		qvo.setQwriter(principal.getName());
@@ -51,7 +51,7 @@ public class QnaController {
 	
 	@PostMapping("/questionmodifypro.do")
 	public String questionModify(QnaVO qvo) {
-		System.out.println("질문 수정 컨트롤러");
+		//System.out.println("질문 수정 컨트롤러");
 		service.questionModify(qvo);
 		return "redirect:/product/product_view.do?pseq="+qvo.getPseq();
 	}

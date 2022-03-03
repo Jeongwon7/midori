@@ -52,6 +52,63 @@ public class AdminController {
     @Setter(onMethod_ = @Autowired)
     private NoticeService Nservice;
     
+    
+	//어드민 홈
+	@GetMapping("/admindex.do")
+	public void adminIndex(Model model) {
+		//주문단계별 건수
+		for(int i = 1; i<5; i++) {
+			model.addAttribute("count"+i, service.OrderCount(i));
+		}
+		//상품문의 최근 6건
+		List<QnaVO> qnaList = service.qnaListNew();
+		//리뷰 최근 6건
+		List<ReviewVO> reviewList = service.reviewListNew();
+		
+		//월간 판매순위 탑텐 파이그래프
+		List<OrderVO> monthly10 = service.monthlyTop10();
+		
+		//이번주 매출액, 수익, 원가 비교 가로  막대그래프
+		List<OrderVO> weekly = service.WeeklySales();
+		
+		int totalPrice1 = 0;
+		int totalPrice2 = 0;
+		int totalPrice3 = 0;
+		
+		for(OrderVO ovo : weekly) {
+			totalPrice1 += ovo.getPrice1();
+			totalPrice2 += ovo.getPrice2();
+			totalPrice3 += ovo.getPrice3();
+		}
+		
+		model.addAttribute("monthly10", monthly10);
+		
+		//totalPrice들은 주간 매출(매출액, 원가, 수익)
+		model.addAttribute("totalPrice1", totalPrice1);
+		model.addAttribute("totalPrice2", totalPrice2);
+		model.addAttribute("totalPrice3", totalPrice3);
+		model.addAttribute("qnaList", qnaList);
+		model.addAttribute("reviewList", reviewList);
+	}
+    
+    
+    
+    //고객관리
+    @GetMapping("/member/admmember")
+    public void admMember(Model model,Criteria cri) {
+       model.addAttribute("list",service.GetMemberWithPaging(cri));
+       int total = service.GetTotalMember(cri);
+       model.addAttribute("pageMaker", new PageVO(cri, total));
+    }
+    @GetMapping("/member/admmemberdelete")
+    public String admMemberDelete(String id, RedirectAttributes rttr) {
+       if(service.AdmMemberDelete(id)) {
+          rttr.addFlashAttribute("result","success");
+       }
+       return "redirect:/adm/member/admmember.do";
+    }
+    
+    
     //공지사항
     //노티스 게시판
     @GetMapping("/notice/admnotice")
@@ -123,49 +180,6 @@ public class AdminController {
         return "redirect:/";
     }
 	
-	//어드민 홈이 될 아이입니다
-	@GetMapping("/admindex.do")
-	public void adminIndex(Model model) {
-		//주문단계별 건수
-		for(int i = 1; i<5; i++) {
-			model.addAttribute("count"+i, service.OrderCount(i));
-		}
-		//상품문의 최근 6건
-		List<QnaVO> qnaList = service.qnaListNew();
-		//리뷰 최근 6건
-		List<ReviewVO> reviewList = service.reviewListNew();
-		
-		//월간 판매순위 탑텐 파이그래프
-		List<OrderVO> monthly10 = service.monthlyTop10();
-		
-		//이번주 매출액, 수익, 원가 비교 가로  막대그래프
-		List<OrderVO> weekly = service.WeeklySales();
-		
-		int totalPrice1 = 0;
-		int totalPrice2 = 0;
-		int totalPrice3 = 0;
-		
-		for(OrderVO ovo : weekly) {
-			totalPrice1 += ovo.getPrice1();
-			totalPrice2 += ovo.getPrice2();
-			totalPrice3 += ovo.getPrice3();
-		}
-		
-		model.addAttribute("monthly10", monthly10);
-		
-		//totalPrice들은 주간 매출(매출액, 원가, 수익)
-		model.addAttribute("totalPrice1", totalPrice1);
-		model.addAttribute("totalPrice2", totalPrice2);
-		model.addAttribute("totalPrice3", totalPrice3);
-		model.addAttribute("qnaList", qnaList);
-		model.addAttribute("reviewList", reviewList);
-	}
-    
-	
-	@GetMapping("/customlogin")
-	public void customlogin(String error,String logout, Model model) {
-		
-	}
 	
 	//상품관리
 	  @GetMapping("/product/productlist.do")
@@ -191,7 +205,7 @@ public class AdminController {
 	   @PostMapping("/product/productModify.do")
 	   public String modify(ProductVO product, Criteria cri, RedirectAttributes rttr,@RequestParam("uploadFile") MultipartFile upload) {
 	      String uploadFolder = "c:\\upload";
-	      System.out.println("product: "+product);
+	     // System.out.println("product: "+product);
 	      
 	      log.info("file name : "+upload.getOriginalFilename());
 	      log.info("file size : "+upload.getSize());
@@ -226,11 +240,11 @@ public class AdminController {
 	         e.printStackTrace();
 	      }
 	      
-	      System.out.println("dsklhjosdfj");
+	 //     System.out.println("dsklhjosdfj");
 	      if(Pservice.productUpdate(product)) {
-	         System.out.println("lsdkhslssdsdsssssssss");
+	 //        System.out.println("lsdkhslssdsdsssssssss");
 	         rttr.addAttribute("result", "success");
-	         System.out.println("sdlkjhso;hsf");
+	 //        System.out.println("sdlkjhso;hsf");
 	      }
 	      rttr.addAttribute("pageNum",cri.getPageNum());
 	      rttr.addAttribute("amount", cri.getAmount());
@@ -253,7 +267,7 @@ public class AdminController {
 	   
 	   @PostMapping("/admin_product_write.do")
 	   public String productWrite(ProductVO product, @RequestParam("uploadFile") MultipartFile upload) {
-		   System.out.println("product: "+product);
+		//   System.out.println("product: "+product);
 	      
 	      String uploadFolder = "c:\\upload";
 	      
@@ -297,7 +311,7 @@ public class AdminController {
 	   
 	   @GetMapping("/productDelete.do")
 	   public String productDelete(@RequestParam("pseq") int pseq, RedirectAttributes rttr) {
-	      System.out.println("lsdkjf "+pseq);
+	 //     System.out.println("lsdkjf "+pseq);
 	      if(Pservice.productDelete(pseq)) {
 	         rttr.addAttribute("result", "success");
 	      }
@@ -326,7 +340,7 @@ public class AdminController {
 	//리뷰 삭제
 	@GetMapping("/reviewdelete.do")
 	public String reviewDelete(@RequestParam("rbno") int rbno) {
-		System.out.println("rbno: "+rbno);
+	//	System.out.println("rbno: "+rbno);
 		service.reviewDelete(rbno);
 		return "redirect:/adm/review.do";
 		
@@ -334,7 +348,7 @@ public class AdminController {
 	
 	@GetMapping("/reviewdeleteindex.do")
 	public String reviewDeleteIndex(@RequestParam("rbno") int rbno) {
-		System.out.println("rbno: "+rbno);
+	//	System.out.println("rbno: "+rbno);
 		service.reviewDelete(rbno);
 		return "redirect:/adm/admindex.do";
 		
@@ -426,7 +440,7 @@ public class AdminController {
 	public void orderList(Criteria cri , Model model) {
 		
 		List<Integer> oseqlist = service.OseqListPaging(cri);
-		System.out.println("oseqlist: "+oseqlist);
+	//	System.out.println("oseqlist: "+oseqlist);
 		
 		List<OrderVO> olist = new ArrayList<OrderVO>();
 		
@@ -452,6 +466,7 @@ public class AdminController {
 			model.addAttribute("title", "주문관리(배송 완료)");
 		}
 		
+		model.addAttribute("status", status);
 		model.addAttribute("olist", olist);
 		model.addAttribute("pageMaker", new PageVO(cri, total));
 	}
@@ -482,7 +497,8 @@ public class AdminController {
 	//주문 단계별 스테이터스 처리(2의 경우 운송장까지 처리), form으로 받을 것이야
 	@PostMapping("/orderstatuspro.do")
 	public String orserStatus(OrderVO ovo) {//status, oseq, track
-		ovo.setStatus(ovo.getStatus()+1);
+		int status = ovo.getStatus();
+		ovo.setStatus(status+1);
 		System.out.println("ovo: "+ovo);
 		
 		if(ovo.getTrack() != 0) {
@@ -494,7 +510,7 @@ public class AdminController {
 			//System.out.println("else문 실행");
 			service.orderStatusUpdate(ovo);
 		}
-		return "redirect:/adm/orderlist.do?status="+ovo.getStatus();
+		return "redirect:/adm/orderlist.do?status="+status;
 	}
 	
 	
@@ -509,7 +525,7 @@ public class AdminController {
 		//오늘 판매량 TOP5 (번호, 카테고리, 상품명, 판매량)
 		List<OrderVO> todayBest = service.todayBest();
 		model.addAttribute("todayBest", todayBest);
-		System.out.println("tobe: "+todayBest);
+		System.out.println("tb: "+todayBest);
 		//3일간 수익 비교 막대그래프
 		List<OrderVO> today = service.TodaySales();
 		

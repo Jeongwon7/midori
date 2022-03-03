@@ -4,10 +4,11 @@
 <body>
 	<div style="margin-top:100px; margin-left:300px; width:1200px;">
 		
-		<p>${count1}</p>
-		<p>${count2}</p>
-		<p>${count3}</p>
-		<p>${count4}</p>
+		<!-- 네모 띵띵띵띵 누르면 링크(해당 주문관리 페이지)로 가게! -->
+		<a href="/adm/orderlist.do?status=1"><p>입금확인 대기 ${count1} 건</p></a>
+		<a href="/adm/orderlist.do?status=2"><p>배송대기 ${count2} 건</p></a>
+		<a href="/adm/orderlist.do?status=3"><p>배송중 ${count3} 건</p></a>
+		<a href="/adm/orderlist.do?status=4"><p>배송완료${count4} 건</p></a>
 		<div class="jw-charts-2wrap">
 			<div id="Weekly_Sales" style="margin-top:10px;"></div>
 			<div id="Monthly_Top10" ></div>
@@ -96,7 +97,7 @@
 					</td>
 				</tr>
 				</c:if>
-				<c:set var="num" value="${num-1}" />
+				<c:set var="num" value="${num+1}" />
 			</c:forEach>
 			<c:if test="${empty qnaList }">
 				<tr><td colspan="8" style="text-align:center;">상품 문의가 없습니다</td></tr>
@@ -183,7 +184,7 @@
 						</td>
 					</tr>
 					</c:if>
-					<c:set var="num" value="${num-1}" />
+					<c:set var="num" value="${num+1}" />
 				</c:forEach>
 				<c:if test="${empty reviewList }">
 					<tr><td colspan="8" style="text-align:center;">상품 후기가 없습니다</td></tr>
@@ -246,11 +247,11 @@ function review_delete(rbno){
 	  data.addColumn('string', 'product');
 	  data.addColumn('number', 'sales');
 	  data.addRows([
-	    ['${monthly10[0].pname}', ${monthly10[0].sales_count}],
-//	    ['${monthly10[1].pname}', ${monthly10[1].sales_count}],
-//	    ['${monthly10[2].pname}', ${monthly10[2].sales_count}],
-//	    ['${monthly10[3].pname}', ${monthly10[3].sales_count}],
-//	    ['${monthly10[4].pname}', ${monthly10[4].sales_count}],
+	    ['${monthly10[0].pname}', 123],
+	    ['${monthly10[1].pname}', 90],
+	    ['${monthly10[2].pname}', 86],
+	    ['${monthly10[3].pname}', 40],
+	    ['${monthly10[4].pname}', 32]
 //	    ['${monthly10[5].pname}', ${monthly10[5].sales_count}],
 //	    ['${monthly10[6].pname}', ${monthly10[6].sales_count}],
 //	    ['${monthly10[7].pname}', ${monthly10[7].sales_count}],
@@ -272,9 +273,9 @@ function review_delete(rbno){
    function drawWeeklyChart() {
 	      var data = google.visualization.arrayToDataTable([
 	        ["Element", "원: ", { role: "style" } ],
-	        ["매출액", ${totalPrice2}, "red"],
-	        ["수익",  ${totalPrice3}, "gold"],
-	        ["원가", ${totalPrice1}, "green"]
+	        ["매출액", 4164550, "red"],
+	        ["수익", 1249365, "gold"],
+	        ["원가", 2915185, "green"]
 	      ]);
 
 	      var view = new google.visualization.DataView(data);

@@ -44,7 +44,7 @@ public class NoticeController {
 		return "redirect:/notice/notice.do";
 	}
 	
-	@GetMapping({"/noticeview", "/noticemodify"})
+	@GetMapping({"/noticeview.do", "/noticemodify"})
 	public void read(@RequestParam("bno") int bno, @ModelAttribute("cri") Criteria cri,  Model model) {
 
 		model.addAttribute("nvo",service.read(bno));

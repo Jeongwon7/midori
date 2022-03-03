@@ -21,8 +21,8 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class SummerController {
 	
-		@PostMapping(value="/Image.do", produces = "application/json; charset=utf8")
-	   public @ResponseBody String profileImagedo(@RequestParam("file") MultipartFile file) {
+		  @PostMapping(value="/Image.do", produces = "application/json; charset=utf8")
+	      public @ResponseBody String profileImagedo(@RequestParam("file") MultipartFile file) {
 	      
 	      JsonObject jsonObject = new JsonObject();
 	      

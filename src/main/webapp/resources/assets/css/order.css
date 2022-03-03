@@ -244,3 +244,16 @@
     font-size: 14px;
     margin-left: 2px;
 }
+
+/* 상품상세 css */
+
+.order_strong {
+	font-size:21px;
+}
+.orderdetail{
+	padding-top:40px;
+}
+.detail_img img{
+	height: 80px;
+	padding-left: 20px;"
+}

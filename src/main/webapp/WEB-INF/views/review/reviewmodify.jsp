@@ -16,7 +16,7 @@
 					  <div class="form-group">
 					    <label for="star" class="col-sm-2 control-label">별점</label>
 						  <div class="star-rating space-x-4 ">
-							<input type="radio" id="5-stars" name="star" value="5" />
+							<input type="radio" id="5-stars" name="star" value="5"/>
 							<label for="5-stars" class="star pr-4">★</label>
 							<input type="radio" id="4-stars" name="star" value="4"/>
 							<label for="4-stars" class="star">★</label>

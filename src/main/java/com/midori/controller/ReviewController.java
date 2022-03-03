@@ -51,8 +51,8 @@ public class ReviewController {//컨트롤러 테스트 다 하고 테이블 제
 	@PostMapping("/reviewwritepro.do")
 	public String reviewInsert(ReviewVO rvo, Principal principal) {
 		rvo.setWriter(principal.getName());
-		System.out.println("rvo: "+rvo);
-		System.out.println("id: "+rvo.getWriter());
+	//	System.out.println("rvo: "+rvo);
+	//	System.out.println("id: "+rvo.getWriter());
 		service.reviewInsert(rvo);
 		return "redirect:/product/product_view.do?pseq="+rvo.getPseq();
 	}
@@ -62,7 +62,7 @@ public class ReviewController {//컨트롤러 테스트 다 하고 테이블 제
 	//jsp: reviewmodify.jsp
 	@GetMapping("/reviewmodify.do")
 	public void reviewModifyForm(@RequestParam("rbno") int rbno, Model model) {
-		System.out.println("rbno: "+rbno);
+	//	System.out.println("rbno: "+rbno);
 		ReviewVO rvo = service.reviewSelectOne(rbno);
 		model.addAttribute("rvo", rvo);
 	}
@@ -70,7 +70,7 @@ public class ReviewController {//컨트롤러 테스트 다 하고 테이블 제
 	//수정 후 상품뷰페이지로
 	@PostMapping("/reviewmodifypro.do")
 	public String reviewModify(ReviewVO rvo) {
-		System.out.println("rvo: "+rvo);
+	//	System.out.println("rvo: "+rvo);
 		service.reviewModify(rvo);
 		return "redirect:/product/product_view.do?pseq="+rvo.getPseq();
 	}

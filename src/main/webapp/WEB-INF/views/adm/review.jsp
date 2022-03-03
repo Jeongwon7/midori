@@ -3,7 +3,7 @@
 <%@ include file = "adminheader.jsp" %>
 <body>
 	<div style="margin-top:100px; margin-left:300px; width:1200px;">
-	<h2 style="margin-bottom: 30px;">상품리뷰 관리</h2>
+	<h2 style="margin-bottom: 30px;"><a href="/adm/review.do">상품리뷰 관리</a></h2>
 	<!-- <div class="container"> -->
 	  <div class="search_wrap">
 		<div class="record_group">
@@ -34,7 +34,7 @@
 			<colgroup>
 				<col width="10%">
 				<col width="10%">
-				<col width="10%">
+				<col width="15%">
 				<col width="*">
 				<col width="5%">
 				<col width="10%">

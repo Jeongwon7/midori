@@ -164,7 +164,8 @@
 	    		  <a href="#" class="first" onclick="history.back();">뒤로가기</a>
 	    		  </p>
 	    		  <p class="cart">
-	    		  <a href="#" class="first" onclick="orderInsert()"  >결제하기</a><!-- id="check_module"  -->
+	    		  <!-- id="check_module"로 하면 결제기능 실행되고 오더, 오더디테일 테이블에 저장됩니다. onclick="orderInsert()"의 경우 테이블에 저장만 됩니다! -->
+	    		  <a href="#" class="first" id="check_module">결제하기</a><!--onclick="orderInsert()"-->
 	    		  </p>
 	    		</div>
 	    	  </div>
@@ -186,7 +187,7 @@ $(function(){
 
     $("#check_module").click(function () {
     	var IMP = window.IMP; // 생략가능
-    	IMP.init('imp78738453');
+    	IMP.init('');
     	IMP.request_pay({
     	pg: 'inicis', // version 1.1.0부터 지원.
     	pay_method: 'card',

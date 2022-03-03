@@ -2,9 +2,8 @@ package com.midori.mapper;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
-
 import com.midori.domain.Criteria;
+import com.midori.domain.MemberVO;
 import com.midori.domain.OrderVO;
 import com.midori.domain.QnaVO;
 import com.midori.domain.ReviewVO;
@@ -74,6 +73,12 @@ public interface AdminMapper {
 	public void TrackInsert(OrderVO ovo);
 	//주문관리 건수
 	public int OrderCount(int status);
+	
+	
+	//회원관리
+    public List<MemberVO> getMemberWithPaging(Criteria cri);
+    public int getTotalMember(Criteria cri);
+    public boolean admMemberDelete(String id);
 	
 	
 	//통계페이지

@@ -42,6 +42,8 @@
 	<link rel="stylesheet" href="../resources/assets/css/mycss.css">
 	
 	<link rel="stylesheet" href="../resources/assets/css/cart.css">
+	
+	<link rel="stylesheet" href="/resources/assets/css/order.css">
 
 	<!-- jquery -->
 	<script src="/resources/assets/js/jquery-1.11.3.min.js"></script>
@@ -125,7 +127,7 @@
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					      	<a href="">
+					      	<a href="/order/ordering">
 					         	진행중인 주문내역
 					        </a>
 					      </h4>
@@ -134,7 +136,7 @@
 					  <div class="panel panel-default">
 					    <div class="panel-heading" role="tab">
 					      <h4 class="panel-title">
-					      	<a href="">
+					      	<a href="/order/orderall">
 					          	주문 목록
 					        </a>
 					      </h4>

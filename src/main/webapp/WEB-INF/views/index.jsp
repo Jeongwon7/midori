@@ -280,8 +280,8 @@
     					<c:forEach var="blist" items="${bestlist}">
 						<div class="col-lg-4 col-md-6 text-center">
 							<div class="single-product-item">
-								<div class="product-image">
-									<a href="/product/product_view.do?pseq=${blist.pseq}"><img src="/upload/${blist.image}" alt=""></a>
+								<div class="product-image" style="height:200px;">
+									<a href="/product/product_view.do?pseq=${blist.pseq}"><img src="/upload/${blist.image}" alt="상품사진" style="height:200px; object-fit:cover;"></a>
 								</div>
 								<h4 style="padding-top: 20px;">${blist.name}</h4>
 								<p class="product-price">${blist.price2} 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>
@@ -294,8 +294,8 @@
     				<c:forEach var="nlist" items="${newlist}">
 						<div class="col-lg-4 col-md-6 text-center">
 							<div class="single-product-item">
-								<div class="product-image">
-									<a href="/product/product_view.do?pseq=${nlist.pseq}"><img src="/upload/${nlist.image}" alt=""></a>
+								<div class="product-image" >
+									<a href="/product/product_view.do?pseq=${nlist.pseq}"><img src="/upload/${nlist.image}" style="height:200px; object-fit:cover;" alt="상품사진"></a>
 								</div>
 								<h4 style="padding-top: 20px;">${nlist.name}</h4>
 								<p class="product-price">${nlist.price2} 원   <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i></a></p>

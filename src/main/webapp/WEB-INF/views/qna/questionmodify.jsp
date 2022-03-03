@@ -34,7 +34,14 @@
 					  	  <label class="form-check-label col-sm-2 control-label" for="secret">
 						    비밀글 설정
 						  </label>
-						  <input class="form-check-input" type="checkbox" name="secret" id="secret" value="${qvo.secret}">
+						  <c:choose>
+							  <c:when test="${qvo.secret == true }">
+							  	<input class="form-check-input" type="checkbox" name="secret" id="secret" checked="checked">
+							  </c:when>
+							  <c:otherwise>
+							  	<input class="form-check-input" type="checkbox" name="secret" id="secret">
+							  </c:otherwise>
+						  </c:choose>
 						  <p>체크하지 않을 경우 공개글로 저장됩니다</p>
 					  </div>
 					    <div class="form-group">

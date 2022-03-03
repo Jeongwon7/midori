@@ -7,8 +7,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.midori.domain.CartVO;
 import com.midori.domain.MemberVO;
@@ -90,24 +92,83 @@ public class OrderController {
 		if(cvo.getCseq() == 0) {
 			System.out.println("cartvo: "+cvo);
 			service.orderDInsert(cvo);
-			System.out.println("뇬냐");
 		}else {
-			System.out.println("옹냥냥뇽");
 			List<CartVO> cartList = service.getCartList(id);
 			System.out.println(cartList);
-			System.out.println("뇨뇨?");
 			for(CartVO cartVO : cartList) {
-				System.out.println("뇨뇨??");
 				cartVO.setOseq(oseqMax);
 				service.orderDInsert(cartVO);
-				System.out.println("뇨뇨???");
 				service.cartResultUpdate(cartVO.getCseq());
-				System.out.println("뇨뇨????");
 			}//for
 		}
 		System.out.println("end"+cvo);
 		return "redirect:/";
 	}
+
+	
+	 @GetMapping("/ordering")
+	   public String orderIng(Principal principal,Model model) {
+	      
+	      String id=principal.getName();
+	        List<Integer> oseqList=service.OrderListing(id);
+	        //현재 진행 중인 주문 목록 대표 상품 외 2건식으로 출력하기기
+	        ArrayList<OrderVO> orderList=new ArrayList<>();
+	         
+	        //주문중인 번호 상품 oseq 를 반복문을 돌린다.
+	        for(int oseq :oseqList){
+	            //미처리 항목 1
+	            List<OrderVO> orderListing=service.ListOrderByID(id, "%", oseq);
+	             
+	            //목록중 첫번째 값만 orderVO 객체에 담는다.
+	            OrderVO orderVO=orderListing.get(0);
+	            orderVO.setPname(orderVO.getPname() + " 포함　"+ orderListing.size() + "  건");
+	             
+	            //주문 된 상품 목록의 전체 가격을 price2 에  담는다.
+	            int totalPrice=0;
+	            for(OrderVO  ovo : orderListing){
+	                totalPrice +=ovo.getPrice2()*ovo.getQuantity();
+	            }
+	            orderVO.setPrice2(totalPrice);
+	             
+	             
+	            orderList.add(orderVO);
+	        }
+	         
+	        model.addAttribute("title", "진행중인 주문 목록");
+	        model.addAttribute("orderList", orderList);
+	      
+	      
+	      return "/mypage/orderall";
+	   }
+	 
+	 
+		@GetMapping("/orderall")
+		public String orderAll(Principal principal,Model model) {
+			
+			String id = principal.getName();
+			
+			 List<Integer> oseqList=service.SelectSeqOrdering(id);
+	         //주문 목록 담기 객체 만들기
+	         List<OrderVO> orderList=new ArrayList<>();
+	                      
+	         for(int oseq: oseqList){
+	             List<OrderVO> orderListing=service.ListOrderByID(id,"%", oseq);
+	               
+	             OrderVO orderVO=orderListing.get(0);
+	             orderVO.setPname(orderVO.getPname() + " 포함　" + orderListing.size() + " 건");
+	              
+	             int totalPrice=0;
+	             for(OrderVO ovo : orderListing){
+	                 totalPrice += ovo.getPrice2()* ovo.getQuantity();
+	             }
+	             orderVO.setPrice2(totalPrice);
+	             orderList.add(orderVO);
+	         }
+	         model.addAttribute("title", "총 주문 목록");
+	         model.addAttribute("orderList", orderList);
+	         
+			 return "/mypage/orderall";
+		}
 
 	
 }

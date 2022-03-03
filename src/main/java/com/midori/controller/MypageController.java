@@ -98,9 +98,7 @@ public class MypageController {
 
 	@GetMapping("/orderconfirm.do")
 	public String orderConfirm(@RequestParam("oseq") int oseq) {
-		System.out.println("컨트롤러 시작");
 		service.orderConfirm(oseq);
-		System.out.println("메서드 실행됨");
 		return "redirect:/mypage/orderdetail.do?oseq="+oseq;
 	}
 	

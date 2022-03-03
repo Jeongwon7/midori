@@ -85,7 +85,7 @@
                        <div class="cart_footer">
                         <div class="button_wrap">
                          <p class="buy">
-                           <a href="#" class="first" onclick="return chk_form()">구매하기</a>
+                           <a href="#" class="first" onclick="return chk_formm()">구매하기</a>
                          </p>
                          <p class="cart">
                           <a href="#" class="first" onclick="goCart()">장바구니</a>
@@ -216,7 +216,7 @@
 																	</c:if>
 																	<c:if test="${rlist.writer eq pinfo || pinfo eq 'admin'}">
 																		<div class="review_btn">
-																			<span><input type="button" onclick="review_delete(${rlist.rbno}, ${pseq}, '${pinfo}');" value="삭제"></span>
+																			<span><input type="button" onclick="review_delete(${rlist.rbno}, ${plist.pseq}, '${pinfo}');" value="삭제"></span>
 																		</div>
 																	</c:if>
 																</sec:authorize>
@@ -302,7 +302,7 @@
 																							<span><input type="button" onclick="location.href='/qna/questionmodify.do?qbno=${list.qbno}'" value="수정"></span>
 																						</c:if>
 																						<c:if test="${list.qwriter eq pinfo || pinfo eq 'admin'}">
-																							<span><input type="button" onclick="question_deleteOpen(${list.qbno}, ${pseq}, '${pinfo}');" value="삭제"></span>
+																							<span><input type="button" onclick="question_deleteOpen(${list.qbno}, ${plist.pseq}, '${pinfo}');" value="삭제"></span>
 																						</c:if>
 																					</sec:authorize>
 																			</div>
@@ -334,7 +334,7 @@
 																					</div>
 																						<c:if test="${pinfo eq 'admin'}">
 																							<div class="review_btn">
-																									<span><input type="button" onclick="location.href='/adm/answermodify.do?abno=${list.abno}'" value="수정"></span>
+																									<span><input type="button" onclick="location.href='/adm/answermodify.do?abno=${list.abno}&qbno=${list.qbno}'" value="수정"></span>
 																									<span><input type="button" onclick="answer_delete(${list.abno}, ${list.qbno})" value="삭제"></span>
 																							</div>
 																						</c:if>
@@ -429,7 +429,7 @@
 																							
 																						</c:if>
 																						<c:if test="${list.qwriter eq pinfo || pinfo eq 'admin'}">
-																							<span><input type="button" onclick="question_deleteOpen(${list.qbno}, ${pseq}, '${pinfo}');" value="삭제"></span>
+																							<span><input type="button" onclick="question_deleteOpen(${list.qbno}, ${plist.pseq}, '${pinfo}');" value="삭제"></span>
 																						</c:if>
 																					</sec:authorize>
 																			</div>
@@ -461,7 +461,7 @@
 																					</div>
 																						<c:if test="${pinfo eq 'admin'}">
 																							<div class="review_btn">
-																									<span><input type="button" onclick="location.href='/adm/answermodify.do?abno=${list.abno}'" value="수정"></span>
+																									<span><input type="button" onclick="location.href='/adm/answermodify.do?abno=${list.abno}&qbno=${list.qbno}'" value="수정"></span>
 																									<span><input type="button" onclick="answer_delete(${list.abno}, ${list.qbno})" value="삭제"></span>
 																							</div>
 																						</c:if>
@@ -490,7 +490,7 @@
 												
 											<sec:authorize access="isAuthenticated()">
 												<div class="review_btn float-right">
-													<span><input type="button" onclick="location.href='/qna/questionwrite.do?pseq=1'" value="글쓰기"></span>
+													<span><input type="button" onclick="location.href='/qna/questionwrite.do?pseq=${plist.pseq}'" value="글쓰기"></span>
 												</div>
 											</sec:authorize>
 							</div>
@@ -594,7 +594,7 @@
 		}
 	}
 	
-	function chk_form() {
+	function chk_formm() {
 		var form = document.getElementById('ofrm');
 		form.action = "/order/orderinfo.do";
 		form.submit();

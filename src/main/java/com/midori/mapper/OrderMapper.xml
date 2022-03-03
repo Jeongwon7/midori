@@ -34,4 +34,26 @@
 	<update id="cartResultUpdate">
 		update cart set result=2 where cseq=#{cseq}
 	</update>
+	
+	<!-- 주문 목록(진행중, 총) -->
+	<select id="orderListing" resultType="int">
+        select distinct oseq from order_view where
+        <![CDATA[
+         id=#{id} and status <='3' order by oseq desc
+         ]]>
+    </select>
+    
+    <select resultType="int" id="selectSeqOrdering">
+    	select distinct oseq from order_view where id=#{id} order by oseq desc 
+    </select>
+
+	<select resultType="com.midori.domain.OrderVO" id="listOrderByID">
+		select * from order_view where id = #{id} and status like '%'|| #{status} ||'%' and oseq=#{oseq} 
+	</select>
+
+	<select resultType="int" id="getTotalOrder">
+		 <![CDATA[
+			select count(*) from oder_view where oseq > 0 
+		]]>
+	</select>
 </mapper>

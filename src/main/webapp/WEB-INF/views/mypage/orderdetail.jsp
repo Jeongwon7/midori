@@ -43,7 +43,6 @@
 											</c:when>
 											<c:otherwise>
 												<span style="color:#f00;">배송 완료</span>
-												<span> / <a href="/review/reviewwrite.do?pseq=${od.pseq}">리뷰 작성</a></span>
 											</c:otherwise>
 										</c:choose>
 									</td>
@@ -57,6 +56,7 @@
 								<th>상품별주문번호</th>
 								<th>수량</th>
 								<th>가격</th>
+								<th>처리상태</th>
 							</tr>
 							<c:forEach var="list" items="${odlist}">
 								<tr>
@@ -65,7 +65,31 @@
 									<td>${list.odseq}</td>
 									<td>${list.quantity}</td>
 									<td><fmt:formatNumber value="${list.price2}"/>&#x20a9;</td>
-									
+									<td>
+										<c:choose>
+											<c:when test="${status == 1}">
+												<span>입금 확인</span>
+											</c:when>
+											<c:when test="${status == 2}">
+												<span>배송 준비</span>
+											</c:when>
+											<c:when test="${status == 3}">
+												<span>배송중 / </span>
+												<span><a id="confirm">구매확정</a></span>
+												<br>
+												<span>CJ대한통운</span>
+												<br>
+												<span><a href="https://tracker.delivery/#/kr.cjlogistics/${od.track }" 
+													onclick="window.open(this.href, '_blank', 'width=800, height=600'); 
+													return false;">[${od.track}]</a>
+												</span>
+											</c:when>
+											<c:otherwise>
+												<span style="color:#f00;">배송 완료</span>
+												<span> / <a href="/review/reviewwrite.do?pseq=${list.pseq}">리뷰 작성</a></span>
+											</c:otherwise>
+										</c:choose>
+									</td>
 								</tr>
 							</c:forEach>
 						</table>

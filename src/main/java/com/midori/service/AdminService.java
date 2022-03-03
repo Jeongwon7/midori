@@ -3,6 +3,7 @@ package com.midori.service;
 import java.util.List;
 
 import com.midori.domain.Criteria;
+import com.midori.domain.MemberVO;
 import com.midori.domain.OrderVO;
 import com.midori.domain.QnaVO;
 import com.midori.domain.ReviewVO;
@@ -74,6 +75,10 @@ public interface AdminService {
 		//주문관리 건수
 		public int OrderCount(int status);
 		
+		//회원관리
+        public List<MemberVO> GetMemberWithPaging(Criteria cri);
+        public int GetTotalMember(Criteria cri);
+        public boolean AdmMemberDelete(String id);
 		
 		//통계페이지
 		//전체상품 판매량 통계 도넛 그래프

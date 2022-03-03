@@ -17,10 +17,31 @@
 	<security:http>
 		<!-- <security:form-login/>  -->
 		<security:intercept-url pattern="/adm/admin" access="permitAll"/>
-		<!-- <security:intercept-url pattern="/sub/cartInsert.do" access="hasRole({'ROLE_ADMIN','ROLE_USER'})"/> -->
-
-		<!-- <security:intercept-url pattern="/sample/insert" access="hasRole({'ROLE_ADMIN','ROLE_USER'})"/> -->
-		<!-- 권한이 없는 사람이 접근하면  -->
+		<security:intercept-url pattern="/adm/adminLogout" access="permitAll"/>
+		<security:intercept-url pattern="/adm/**" access="hasRole('ROLE_ADMIN')"/>
+		
+		<security:intercept-url pattern="/order/**" access="hasAnyRole({'ROLE_ADMIN','ROLE_USER'})"/>
+		
+		<security:intercept-url pattern="/mypage/**" access="hasAnyRole({'ROLE_ADMIN','ROLE_USER'})"/>
+		
+		<security:intercept-url pattern="/member/email.do" access="hasAnyRole({'ROLE_ADMIN','ROLE_USER'})"/>
+		<security:intercept-url pattern="/memebr/memberModify.do" access="hasAnyRole({'ROLE_ADMIN','ROLE_USER'})"/>
+		<security:intercept-url pattern="/member/memberDelete.do" access="hasAnyRole({'ROLE_ADMIN','ROLE_USER'})"/>
+		<security:intercept-url pattern="/member/**" access="permitAll"/>
+		
+		<security:intercept-url pattern="/notice/notice" access="permitAll"/>
+		<security:intercept-url pattern="/notice/notice.do" access="permitAll"/>
+		<security:intercept-url pattern="/notice/noticeview.do" access="permitAll"/>
+		<security:intercept-url pattern="/notice/**" access="hasRole('ROLE_ADMIN')"/>
+		
+		<security:intercept-url pattern="/qna/**" access="hasAnyRole({'ROLE_ADMIN','ROLE_USER'})"/>
+		
+		<security:intercept-url pattern="/review/**" access="hasAnyRole({'ROLE_ADMIN','ROLE_USER'})"/>
+		
+		<security:intercept-url pattern="/product/**" access="permitAll"/>
+		
+		<security:intercept-url pattern="/summer/**" access="permitAll"/>
+		<!-- 권한이 없는 사람이 접근  -->
 		<security:form-login login-page="/member/login.do" authentication-failure-handler-ref="customLoginFail" authentication-success-handler-ref="AdminLoginSuccess" 
 		 />
 		<!-- logout 처리 -->

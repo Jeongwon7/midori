@@ -111,7 +111,7 @@
 						</sec:authorize>
 		                <sec:authorize access="isAuthenticated()">				
 	     					<li>
-		     					<form id="frm" name="logout" method="post" action="/adm/adminLogout">
+		     						<form id="frm" name="logout" method="post" action="/adm/adminLogout">
              					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		     					<a href="#" onclick="return chk_form()" class="shopping-cart" type="submit"><i class="fas fa-lock-open"></i></a>
 		     					</form>

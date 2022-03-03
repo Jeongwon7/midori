@@ -32,14 +32,14 @@ public class ProductController {
 	//상품뷰페이지
 	@GetMapping("/product_view.do")
 	public void productView(@RequestParam("pseq") int pseq, Model model) {
-		System.out.println("pseq: "+pseq);
+	//	System.out.println("pseq: "+pseq);
 		
 		ProductVO pList = service.getProductOne(pseq);
 		List<ReviewVO> reviewList = service.reviewRead(pseq);
 		List<QnaVO> qnaList = service.QnaListByProduct(pseq);
 		
-		System.out.println("reviewList: "+reviewList);
-		System.out.println("qnaList: "+qnaList);
+	//	System.out.println("reviewList: "+reviewList);
+	//	System.out.println("qnaList: "+qnaList);
 		
 		model.addAttribute("plist", pList);
 		model.addAttribute("rlist", reviewList);
@@ -66,7 +66,7 @@ public class ProductController {
 	@GetMapping("/product_list")
 	   public void productList(Model model, Criteria9 cri9) {
 		  List<ProductVO> list = service.getProductListWithPaging(cri9);
-		  System.out.println("list: "+list);
+	//	  System.out.println("list: "+list);
 	      model.addAttribute("list", list);
 	      int total = service.getTotalCount(cri9);  
 	      model.addAttribute("pageMaker", new PageVO9(cri9, total));

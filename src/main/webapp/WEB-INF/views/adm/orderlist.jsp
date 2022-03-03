@@ -5,7 +5,7 @@
 	<div style="margin-top:100px; margin-left:300px; width:1200px;">
 	
 	 <div class="container">
-	 <h2>${title}</h2>
+	 <h2><a href="/adm/orderlist.do?status=${status}">${title}</a></h2>
 	  <div class="search_wrap">
 		<div class="record_group float-right">
 			<p>총게시글<span>${pageMaker.total}</span>건</p>

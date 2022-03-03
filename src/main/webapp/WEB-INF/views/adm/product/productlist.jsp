@@ -38,7 +38,7 @@
 					    	<th>원가</th>
 					    	<th>판매가</th>
 					    	<th>등록일</th>
-					    	<th>베스트 아이템</th>
+					    	<th>베스트</th>
 					    	<th>수정</th>
 					    	<th>삭제</th>
 					    </tr>
@@ -53,7 +53,7 @@
 								    <tr>
 								    	<td>${list.pseq}</td>
 								    	<td>${list.name}</td>
-								    	<td><img src="/upload/${list.image}" style="width:30px;"></td>
+								    	<td><img src="/upload/${list.image}" style="width:30px; height:30px;"></td>
 								    	<td><fmt:formatNumber value="${list.price1}"/></td>
 								    	<td><fmt:formatNumber value="${list.price2}"/></td>
 								    	<td><fmt:parseDate var="regdate" value="${list.indate}" pattern="yyyy-MM-dd"/>

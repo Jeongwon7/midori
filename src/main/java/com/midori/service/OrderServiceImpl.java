@@ -58,5 +58,23 @@ public class OrderServiceImpl implements OrderService {
 		mapper.cartResultUpdate(cseq);
 		
 	}
+	@Override
+    public List<Integer> OrderListing(String id) {
+       
+       return mapper.orderListing(id);
+    }
+	
+	@Override
+	public List<Integer> SelectSeqOrdering(String id) {
+	   
+		return mapper.selectSeqOrdering(id);
+	}
+	
+	@Override
+	public List<OrderVO> ListOrderByID(String id, String result, int oseq) {
+		
+		return mapper.listOrderByID(id,result,oseq);
+	}
+
 
 }

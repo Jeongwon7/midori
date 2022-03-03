@@ -151,7 +151,7 @@ pageEncoding="UTF-8"%>
                                      <li><a class="nav-link" href="/adm/orderlist.do?status=4">배송 완료</a></li>
                                    </ul>
                                   </li>
-                                  <li class="category-record"><a href=""><i class="fas fa-user" style="padding-right:5px;"></i>고객관리</a>
+                                  <li class="category-record"><a href="/adm/member/admmember"><i class="fas fa-user" style="padding-right:5px;"></i>고객관리</a>
                                     <ul class="sub-category" style="display: none; left: 95px;">
                                    </ul>
                                   </li>
@@ -171,7 +171,11 @@ pageEncoding="UTF-8"%>
                                     <ul class="sub-category" style="display: none; left: 95px;">
                                    </ul>
                                   </li>	
-                                   <li class="category-record"><a href="/adm/adminLogout"><i class="fas fa-user" style="padding-right:5px;"></i>로그아웃</a>
+                                   <li class="category-record">
+                                   <form id="frm" name="logout" method="post" action="/adm/adminLogout">
+             							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                                 		<a type="submit" onclick="return chk_form()"><i class="fas fa-user" style="padding-right:5px;"></i>로그아웃</a>
+                                   </form>
                                     <ul class="sub-category" style="display: none; left: 95px;"></ul>
                                   </li>
                                  </ul>
@@ -185,3 +189,9 @@ pageEncoding="UTF-8"%>
                     </div>
                 </nav>
             </div>
+<script>
+	function chk_form() {
+	
+	document.getElementById('frm').submit();
+	}
+</script>

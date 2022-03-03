@@ -4,7 +4,7 @@
 <body>
    <div class="col-md-12" style="margin-top:100px; margin-left:300px; width:1150px;">
             <div class="col-md-12">
-   <h2>상품문의 관리</h2>
+   <h2><a href="/adm/qna.do">상품문의 관리</a></h2>
    <!-- <div class="container"> -->
      <div class="search_wrap">
       <div class="record_group">
