@@ -187,7 +187,7 @@ $(function(){
 
     $("#check_module").click(function () {
     	var IMP = window.IMP; // 생략가능
-    	IMP.init('');
+    	IMP.init('imp78738453');
     	IMP.request_pay({
     	pg: 'inicis', // version 1.1.0부터 지원.
     	pay_method: 'card',

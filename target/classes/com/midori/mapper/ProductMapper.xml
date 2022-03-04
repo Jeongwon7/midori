@@ -12,18 +12,31 @@
 			</choose>
 		</trim>
 	</sql>
-	<sql id="yhCri">
-         <trim>
-			<choose>
-				<when test="kind != null and keyword == null">
-					kind=#{kind} and 
-				</when>
-				<when test="kind == null and keyword != null">
-					name like '%' || #{keyword} || '%' and
-				</when>
-			</choose>
-		</trim>
+	  <sql id="yhCri">
+	  <choose>
+	  	 <when test="keyword == null and kind == null">
+            
+         </when>
+          <when test="keyword == '' and kind == ''">
+            
+         </when>
+          <when test="keyword != null and kind == null">
+         	name like '%' || #{keyword} || '%' and
+         </when>
+         <when test="keyword != null and kind == ''">
+         	name like '%' || #{keyword} || '%' and
+         </when>
+	  	  <when test='keyword == null and kind != null'>
+			 kind=#{kind} and 
+		  </when>
+          <when test="keyword == '' and kind != null">
+             kind=#{kind} and 
+         </when>
+         <otherwise>
+         </otherwise>
+         </choose>
    </sql>
+ 
 	<select id="selectProductOne" resultType="com.midori.domain.ProductVO">
       select * from product where pseq=#{pseq}
    </select>

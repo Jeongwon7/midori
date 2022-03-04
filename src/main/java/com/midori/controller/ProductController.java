@@ -65,10 +65,12 @@ public class ProductController {
 	//상품 카테고리별 리스트 페이지
 	@GetMapping("/product_list")
 	   public void productList(Model model, Criteria9 cri9) {
+			System.out.println("cri9: "+cri9);
 		  List<ProductVO> list = service.getProductListWithPaging(cri9);
-	//	  System.out.println("list: "+list);
+		  System.out.println("list: "+list);
 	      model.addAttribute("list", list);
 	      int total = service.getTotalCount(cri9);  
+	      System.out.println("total: "+total);
 	      model.addAttribute("pageMaker", new PageVO9(cri9, total));
 	   
 	   }

@@ -71,7 +71,8 @@
 		  <form id="actionForm" action="/product/product_list.do" method="get">
 		  <input type="hidden" name="pageNum" value="${pageMaker.cri9.pageNum}">
 		  <input type="hidden" name="amount" value="${pageMaker.cri9.amount}">
-		  <input type="hidden" name="type" value="${pageMaker.cri9.kind}">
+		  <input type="hidden" name="keyword" value="${pageMaker.cri9.keyword}">
+		  <input type="hidden" name="kind" value="${pageMaker.cri9.kind}">
 			</form>
 	     </div>
 		 </div>
