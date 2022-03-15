@@ -21,7 +21,7 @@ public class OrderVO {
 	private int price2;
 	private int price3;
 	private int status;
-	private int track;//운송장번호
+	private long track;//운송장번호
 	private String oname;//받는 사람 이름
 	private String zip_num;
 	

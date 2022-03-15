@@ -1,6 +1,6 @@
 $(function() {
    var total = function(n) {
-   var price=$(".newitem .information span").attr("class");
+   var price=$(".midori_main .information span").attr("class");
    var amount = $(".quantity").attr("value"); //수량
    var amount = parseInt(amount); //정수 숫자 변환
    var amount = amount + n; //수량 증가 감소 수식

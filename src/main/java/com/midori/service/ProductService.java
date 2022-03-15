@@ -33,5 +33,8 @@ public interface ProductService {
 	//상품 리스트 페이지
 	public List<ProductVO> getProductListWithPaging(Criteria9 cri);
 	public int getTotalCount(Criteria9 cri);
-		
+	
+	public int getNewProductCount(Criteria9 cri);
+	public int getBestProductCount(Criteria9 cri);
+	
 }

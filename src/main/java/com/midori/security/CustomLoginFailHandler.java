@@ -13,15 +13,22 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.CredentialsExpiredException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.LockedException;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.stereotype.Service;
 
+import lombok.Data;
 import lombok.extern.log4j.Log4j;
 
 @Service
 @Log4j
+@Data
 public class CustomLoginFailHandler implements AuthenticationFailureHandler {
+	  private String username;
+	  private String password;
+	  private String errormsgname;
+	  private String defaultFailureUrl;
 
 	@Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
@@ -50,6 +57,7 @@ public class CustomLoginFailHandler implements AuthenticationFailureHandler {
 		}
 		
 		log.error(error);
+		
 		// 로그인 페이지로 다시 포워딩
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/member/login.jsp");
 		dispatcher.forward(request, response);

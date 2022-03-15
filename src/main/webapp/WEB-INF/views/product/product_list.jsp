@@ -1,18 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<%@ include file="../header.jsp" %>
 
-	<div class="col-md-9">
-	  <div class="container">
-	   <div class="row"> 
-		 <div class="productlist_body">
-		  <div class="total_sort list_clear">
-		    <p class="list_total">
-		      <span>${pageMaker.total}</span>
-		      items
-		    </p>
-		  <div class="product_search">   
+<%@ include file="../mainheader.jsp" %>
+
+	  <div class="midori_main">
+       <div class="midori_content">
+        <div class="midori_indexmain page_main">
+		 <div class="midori_productpage">
+		  <div class="midori_one">
+		   
+	<%-- 	  <div class="product_search">   
               <form class="myform" action="/product/product_list.do" method="get" id="searchForm">
                    <input type="hidden" name="pageNum" value="${pageMaker.cri9.pageNum}">
                   <input type="hidden" name="amount" value="${pageMaker.cri9.amount}">
@@ -20,10 +17,20 @@
                   <input type="image" class="search_icon" src="../assets/img/search_icon.png">
                  <button class="search_none" type="submit"><i class="fa fa-search"></i><span class="sr-only">검색버튼</span></button>
               </form>
-             </div>
-		  </div>
+             </div> --%>
+
+		 
+         <div class="inner_listbody">          
           <div class="list_body">
-           <div class="inner_listbody">
+           <div style="width: 1050px;margin: 0 auto;text-align: center;">		    
+              <h3 style="position: relative;padding-top: 160px;">상품 보기</h3>
+            <div class="total_sort list_clear">
+		     <p class="list_total">
+		       <span>${pageMaker.total}</span>
+		       items
+		      </p>
+		     </div>
+		    </div>
             <ul class="list">
             <c:set var="num" value="${pageMaker.total-((pageMaker.cri9.pageNum-1)*10)}" />
              <c:forEach items="${list}" var="list">
@@ -58,27 +65,29 @@
             </ul>
            </div>
           </div>
-          <div class="product_footer">
+          <div class="product_footer" >
 		 <c:if test="${pageMaker.prev}">
-			<a href="${pageMaker.startPage-1}"><i class="fa  fa-angle-double-left"></i></a>
+			<a href="${pageMaker.startPage-1}" class="footer_active"><i class="fas fa-angle-double-left"></i></a>
 		</c:if>
 		<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage }">
-			<a href="${num}" class="${pageMaker.cri9.pageNum==num?'active':''}">${num}</a>
+			<a href="${num}" class="${pageMaker.cri9.pageNum==num?'active':''}" class="footer_active">${num}</a>
 		</c:forEach>
 		<c:if test="${pageMaker.next}">
-			<a href="${pageMaker.endPage+1}"><i class="fa  fa-angle-double-right"></i></a>
+			<a href="${pageMaker.endPage+1}" class="footer_active"><i class="fas fa-angle-double-right"></i></a>
 		</c:if>
-		  <form id="actionForm" action="/product/product_list.do" method="get">
-		  <input type="hidden" name="pageNum" value="${pageMaker.cri9.pageNum}">
-		  <input type="hidden" name="amount" value="${pageMaker.cri9.amount}">
-		  <input type="hidden" name="keyword" value="${pageMaker.cri9.keyword}">
-		  <input type="hidden" name="kind" value="${pageMaker.cri9.kind}">
-			</form>
+		 <form id="actionForm" action="/product/product_list.do" method="get">
+        <input type="hidden" name="pageNum" value="${pageMaker.cri9.pageNum}">
+        <input type="hidden" name="amount" value="${pageMaker.cri9.amount}">
+        <input type="hidden" name="keyword" value="${pageMaker.cri9.keyword}">
+        <input type="hidden" name="kind" value="${pageMaker.cri9.kind}">
+         </form>
+	     </div>
 	     </div>
 		 </div>
 	   </div>
 	  </div>
 	</div>
+</div>
 
 <script>
 $(function() {
@@ -91,4 +100,4 @@ $(function() {
 	})
   });
 </script>
-	
+		<%@ include file="../footer.jsp" %>

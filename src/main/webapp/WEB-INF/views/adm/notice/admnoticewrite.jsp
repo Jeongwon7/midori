@@ -3,64 +3,64 @@
 
 <%@ include file = "../adminheader.jsp" %>
 
-<div class="col-md-10" style="margin-top:100px; margin-left:300px; width:1000px;">
-           <h2 style="padding-left:10px; padding-bottom:30px;">공지사항 관리</h2>
-				<div class="col-md-12">
-		<div class="noticewrite">
-		 <form name="notice" method="post" action="admnoticewritepro.do" onsubmit="return check()" >
+<div class="col-md-12 col-sm-12" style="margin-left:370px; width:1100px;">
+    <h2 style="padding-left:10px; padding:30px 0;">공지사항 관리</h2>
+	<div class="noticewrite">
+	 <form name="notice" method="post" action="admnoticewritepro.do" onsubmit="return check()" >
 	  <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 	  <!-- action을 처리하기전에 check()사용자 함수를 실행하고 되돌아 와라-->
-			<div class="tbl_noticewrite">
-			     <table class="noticewrite_table">
-			      <colgroup>
-			       <col width="130">
-			       <col> 
-			       <col width="100">
-			       <col>
-			      </colgroup>
-			      <tbody>
-			       <tr>
-			        <th scope="row">
-			         <div class="txt-1">작성자</div>
-			        </th>
-			        <td colspan="3">
-			         <input type="text" name="writer" id="writer" style="margin:0;">
-			        </td>
-			       </tr>
-			       <tr>
-			        <th scope="row">
-			         <div class="txt-1">제목</div>
-			        </th>
-			        <td colspan="3">
-			         <input type="text" name="title" id="title" style="margin:0;">
-			        </td>
-			       </tr>
-			       <tr>
-			        <th scope="row">
-			         <div class="txt-1">내용</div>
-			        </th>
-			        <td colspan="3">
-			        <textarea name="content" id="summernote" style="width:100%; height:150px;"></textarea>
-			        </td>
-			       </tr>
-			      </tbody>
-			     </table>
-			    </div>
-			    <div class="order_footer" style="float:left;">
-	    		<div class="button_wrap">
-	    		  <p class="buy">
-	    		  <a href="#" class="first" onclick="location.href='admnotice.do'">뒤로가기</a>
-	    		  </p>
-	    		  <p class="cart">
-	    		  <input type="submit" class="btn_ok" value="등록하기">
-	    		  </p>
-	    		</div>
-	    	  </div>
+		<div class="tbl_noticewrite">
+		     <table class="noticewrite_table">
+		      <colgroup>
+		       <col width="130">
+		       <col> 
+		       <col width="100">
+		       <col>
+		      </colgroup>
+		      <tbody>
+		       <tr>
+		        <th scope="row">
+		         <div class="txt-1">작성자</div>
+		        </th>
+		        <td colspan="3">
+		         <input type="text" name="writer" id="writer" style="width:100%; margin:0;">
+		        </td>
+		       </tr>
+		       <tr>
+		        <th scope="row">
+		         <div class="txt-1">제목</div>
+		        </th>
+		        <td colspan="3">
+		         <input type="text" name="title" id="title" style="width:100%; margin:0;">
+		        </td>
+		       </tr>
+		       <tr>
+		        <th scope="row">
+		         <div class="txt-1">내용</div>
+		        </th>
+		        <td colspan="3">
+		        <textarea name="content" id="summernote" style="width:100%; height:150px;"></textarea>
+		        </td>
+		       </tr>
+		      </tbody>
+		     </table>
+		    </div>
+		    <div class="order_footer" style="float:left;">
+    		<div class="button_wrap">
+    		  <p class="buy">
+    		  <a href="#" class="first" onclick="location.href='admnotice.do'" style="width: 100px; height: 50px; line-height: 25px;">뒤로가기</a>
+    		  </p>
+    		  <p class="cart">
+    		  <input type="submit" class="btn_ok" style="width: 100px; height: 50px;" value="등록하기">
+    		  </p>
+    		</div>
+    	  </div>
 		</form>
-		</div>
-	   </div>
-	 </div> 
- </div>
+	</div>
+</div>
+</div>
+</div>
+</div>
  	<script>
 		function check() {
 			if(notice.writer.value=="") {

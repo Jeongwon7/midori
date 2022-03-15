@@ -1,49 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file = "../header.jsp" %>
-				<div class="col-md-9">
-				  <h3>Review Writing (후기 작성)</h3>
-					<form class="form-horizontal" name="rvfrm" method="post">
+    <%@ include file = "../mainheader.jsp" %>
+	<div class="midori_main">
+       <div class="midori_content">
+        <div class="midori_indexmain page_main">
+		 <div class="midori_productpage">
+		  <div class="midori_one">
+		    <div class="inner_listbody">
+		     <div class="list_body">
+		      <div class="notice_head">		        
+		      </div>
+				   <div class="notice_aticle">
+				   <h2 class="notice_tit">
+				            Review Writing
+				   </h2>
+				  </div>
+				  <div class="member_join" style="width:1050px;">
+					<form class="form-horizontal" name="rvfrm" method="post" style="border: 1px solid #ddd;">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 					<input type="hidden" name="pseq" value="${pseq}">
-					 <div class="form-group">
-					    <label for="title" class="col-sm-2 control-label">제목</label>
-					    <div class="col-sm-10">
-					      <input type="text" name="title" class="form-control" id="title" placeholder="제목 입력">
-					    </div>
-					 </div>
-					  <div class="form-group">
-					    <label for="rating" class="col-sm-2 control-label">별점</label>
-						  <div class="star-rating space-x-4 ">
-							<input type="radio" id="5-stars" name="star" value="5" />
-							<label for="5-stars" class="star pr-4">★</label>
-							<input type="radio" id="4-stars" name="star" value="4"/>
-							<label for="4-stars" class="star">★</label>
-							<input type="radio" id="3-stars" name="star" value="3"/>
-							<label for="3-stars" class="star">★</label>
-							<input type="radio" id="2-stars" name="star" value="2"/>
-							<label for="2-stars" class="star">★</label>
-							<input type="radio" id="1-star" name="star" value="1" />
-							<label for="1-star" class="star">★</label>
-						</div>
+					<table class="tbl_comm">
+						<tbody>
+							<tr class="fst">
+			 	       		 <th>제목 </th>
+			 	       		 <td>
+			 	        		 <input type="text"  name="title" class="member_cont" id="title" placeholder="제목입력">
+			 	        	 </td>
+			 	      		</tr>
+			 	      		<tr class="fst">
+			 	       		 <th>별점 </th>
+			 	       		 <td>
+			 	        		 <div class="star-rating space-x-4 ">
+									<input type="radio" id="5-stars" name="star" value="5" />
+									<label for="5-stars" class="star pr-4">★</label>
+									<input type="radio" id="4-stars" name="star" value="4"/>
+									<label for="4-stars" class="star">★</label>
+									<input type="radio" id="3-stars" name="star" value="3"/>
+									<label for="3-stars" class="star">★</label>
+									<input type="radio" id="2-stars" name="star" value="2"/>
+									<label for="2-stars" class="star">★</label>
+									<input type="radio" id="1-star" name="star" value="1" />
+									<label for="1-star" class="star">★</label>
+								</div>
+			 	        	 </td>
+			 	      		</tr>
+			 	      		<tr class="fst">
+			 	       		 <th>내용 </th>
+			 	       		 <td>
+			 	        		  <textarea name="content" class="member_cont" id="summernote" rows="10"></textarea>
+			 	        	 </td>
+			 	      		</tr>
+						</tbody>
+					</table>
+					<div class="join_footer" style="padding-left:200px;">
+						<button type="button" class="btn_join btn_active" onclick="review_save()">리뷰등록</button>
+					    <button type="button"class="btn_back1"  onclick="history.back();" style="margin-right: 90px;"><span class="txt_type">목록으로</span></button>
 					</div>
-					   <div class="form-group">
-					    <label for="content" class="col-sm-2 control-label">내용</label>
-					    <div class="col-sm-10" >
-					      <textarea name="content" class="form-control" id="summernote" rows="10"></textarea><!-- id="summernote" -->
-					    </div>
-					  </div>
-					    <div class="form-group">
-					    <div class="col-sm-offset-2 col-sm-10">
-					      <button type="button" onclick="review_save()">리뷰등록</button>
-					       <button type="button" onclick="history.back();">목록으로</button>
-					    </div>
-					  </div>
 					</form>
+					</div>
 				</div>
 				</div>
 			</div>
 		</div>
+	   </div>
+	  </div>
+	 </div>
 		</body>
 	<!-- contents end-->
 	<script>

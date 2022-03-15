@@ -1,5 +1,5 @@
 Skip to content
-Search or jump to…
+Search or jump to��
 Pull requests
 Issues
 Marketplace
@@ -861,6 +861,28 @@ a.mobile-show {
 /* -----------------------------------------------------------------------------
 # Footer Styles
 ----------------------------------------------------------------------------- */
+footer{
+   /* width: 1519px;*/
+    border-top: 3px solid #000;
+   padding: 50px 70px;
+   margin-top:60px;
+   background:#eee;
+}
+.dennwa{
+   font-size: 30px;
+   color: #49904E;
+   margin: 0;
+}
+.jikann {
+   font-size: 12px;
+   margin: 0;
+   padding: 4px 0;
+}
+.mannaka{
+   display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
 .single-logo-item img {
   max-width: 180px;
   margin: 0 auto;
@@ -877,26 +899,8 @@ a.mobile-show {
   padding: 150px 0;
 }
 
-h2.widget-title {
-  font-size: 24px;
-  font-weight: 500;
-  position: relative;
-  padding-bottom: 20px;
-  color: #fff;
-}
-
-h2.widget-title:after {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 20px;
-  height: 2px;
-  background-color: #49904E;
-  content: "";
-}
-
 .footer-box p {
-  color: #fff;
+  color: #000;
   opacity: 0.7;
   line-height: 1.8;
 }
@@ -943,16 +947,13 @@ h2.widget-title:after {
 }
 
 .copyright {
-  background-color: beige;
-  border-top: 1px solid #232a35;
+  margin: 0 auto;
+    width: 1050px;
 }
 
 .copyright p {
   margin: 0;
-  color: #fff;
   opacity: 0.7;
-  padding: 16px 0;
-  font-size: 15px;
 }
 
 .copyright a {
@@ -1176,17 +1177,6 @@ ul.social-link-team li a:hover {
   box-shadow: 0 0 80px #6f6f6f;
 }
 
-input[type="submit"] {
-  -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
-  border-radius: 50px !important;
-}
-
-input[type="submit"]:hover {
-  background-color: #051922;
-  color: #49904E;
-}
 
 div.owl-controls, .owl-controls div {
   -webkit-transition: 0.3s;
@@ -1461,17 +1451,7 @@ html, body {
   height: 600px;
 }
 
-input[type="submit"] {
-  background-color: #49904E;
-  color: #051922;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 15px;
-  border: none !important;
-  cursor: pointer;
-  padding: 6px 14px;
-  border-radius: 3px;
-}
+
 
 .homepage-bg-1 {
   background-image: url(../img/slide3.jpg);
@@ -2735,10 +2715,25 @@ table.order-details tbody td {
   vertical-align: middle;
   width: 100%;
 }
+.post_thumbnail{
+	height:300px;
+}
+.post_img{
+	height: 250px;
+    object-fit: cover;
+}
 
+.modal-backdrop {
+    position : inherit;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
 
-
-© 2022 GitHub, Inc.
+짤 2022 GitHub, Inc.
 Terms
 Privacy
 Security

@@ -4,11 +4,15 @@ function question_save() {
 	if(!theForm.qtitle.value){
 		alert("제목 입력하세요");
 		theForm.qtitle.focus();
+		return false;
 	}else if(theForm.category.value == 0){
 		alert("문의 분류를 선택해주세요");
+		theForm.category.focus();
+		return false;
 	}else if(!theForm.qcontent.value){
 		alert("내용 입력하세요");
 		theForm.qcontent.focus();
+		return false;
 	}else{
 		//theForm.encoding = "multipart/form-data";
 		
@@ -23,11 +27,14 @@ function question_modify(){
 	if(!theForm.qtitle.value){
 		alert("제목 입력하세요");
 		theForm.qtitle.focus();
+		return false;
 	}else if(theForm.category.value == 0){
 		alert("문의 분류를 선택해주세요");
+		return false;
 	}else if(!theForm.qcontent.value){
 		alert("내용 입력하세요");
 		theForm.qcontent.focus();
+		return false;
 	}else{
 		//theForm.encoding = "multipart/form-data";
 		theForm.action = "/qna/questionmodifypro.do";

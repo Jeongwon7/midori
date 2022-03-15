@@ -2,11 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "adminheader.jsp" %>
 <body>
-	<div style="margin-top:100px; margin-left:300px; width:100%;">
+	<div class="col-md-12 col-sm-12" style="margin-left:250px; width:1100px;">
 			<div class="container">
 			<div class="row">
-				<div class="col-md-12 newitem">
-					<h2 style="font-weight:bold;">주문관리 (주문상세 정보)</h2>
+				<div class="col-md-12 newitem" style="margin-left: 110px;">
+					<h2 style="padding-left:10px; padding:30px 0;">주문관리 (주문상세 정보)</h2>
 					<h3 class="jw_h3">주문자 정보</h3>
 						<table class="table jw_table">
 							<tr>
@@ -81,16 +81,16 @@
 								<input type="hidden" name="oseq" value="${od.oseq}">
 							<c:choose>
 								<c:when test="${status == 1}">
-									<input type="button" class="form-control jw_btn" value="입금확인" onclick="orderPro1()" style="width:150px; margin-right:10px; margin-left:170px;">
-									<input type="button" class="form-control jw_btn" value="목록으로" onclick="history.back()" style="width:150px;">
+									<input type="button" class="rarara" value="입금확인" onclick="orderPro1()" style="width: 100px; height: 50px; margin-left:100px;">
+									<input type="button" class="rarara" value="목록으로" onclick="history.back()" style="width: 100px; height: 50px;  margin-left:10px;">
 								</c:when>
 								<c:when test="${status == 2}">
-									<input type="text" class="form-control jw_btn" name="track" placeholder="운송장번호 입력" style="width:200px; margin-right:10px;  margin-left:80px;">
-									<input type="button" class="form-control jw_btn" value="발송처리" onclick="orderPro2()" style="width:150px; margin-right:10px;">
-									<input type="button" class="form-control jw_btn" value="목록으로" onclick="history.back()" style="width:150px;">
+									<input type="text" class="form-control jw_btn" name="track" placeholder="운송장번호 입력" style="width: 200px; height: 50px; margin-right: 10px;">
+									<input type="button" class="rarara" value="발송처리" onclick="orderPro2()" style="width: 100px; height: 50px; margin-right:10px;">
+									<input type="button" class="rarara" value="목록으로" onclick="history.back()" style="width: 100px; height: 50px;">
 								</c:when>
 								<c:otherwise>
-									<input type="button" class="form-control jw_btn" value="목록으로" onclick="history.back()" style="width:150px; margin-left:260px;">
+									<input type="button" class="rarara" value="목록으로" onclick="history.back()" style="width: 100px; height: 50px; margin-left:160px;">
 								</c:otherwise>
 							</c:choose>
 							</form>

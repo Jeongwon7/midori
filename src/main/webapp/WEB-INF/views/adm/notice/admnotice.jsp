@@ -2,9 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "../adminheader.jsp" %>
 
-          <div class="col-md-10" style="margin-top:100px; margin-left:300px; width:1000px;">
-           <h2 style="padding-left:10px; padding-bottom:30px;"><a href="/adm/notice/admnotice">공지사항 관리</a></h2>
-				<div class="col-md-12">
+          <div class="col-md-12 col-sm-12" style="margin-left:370px; width:1100px;">
+           <h2 style="padding-left:10px; padding:30px 0;"><a href="/adm/notice/admnotice">공지사항 관리</a></h2>
 				<div class="notice_search">
 				  <form class="myform" action="admnotice" method="get" id="searchForm">
 				    <select name="type" class="select">
@@ -22,21 +21,21 @@
 					  <table class="table">
 					  <caption class="sr-only">리뷰 리스트</caption>
 						<colgroup>
-							<col width="50">
+							<col width="100">
 							<col width="*">
 							<col width="110">
 							<col width="110">
-							<col width="50">
-							<col width="50">
+							<col width="80">
+							<col width="80">
 						</colgroup>
 						<thead>
-					    <tr>
-					    	<th>번호</th>
+					    <tr >
+					    	<th style="text-align:center;">번호</th>
 					    	<th style="text-align:center;">제목</th>
-					    	<th>작성자</th>
-					    	<th>등록일</th>
-					    	<th>수정</th>
-					    	<th>삭제</th>
+					    	<th style="text-align:center;">작성자</th>
+					    	<th style="text-align:center;">등록일</th>
+					    	<th style="text-align:center;">수정</th>
+					    	<th style="text-align:center;">삭제</th>
 					    </tr>
 					    </thead>
 					    <tbody>
@@ -50,7 +49,7 @@
 					    		<c:set var="num" value="${pageMaker.total-((pageMaker.cri.pageNum-1)*10)}" />
 			                     <c:forEach var="list" items="${list}">
 								    <tr>
-								    	<td><div>${num}</div>
+								    	<td><div style="text-align:center;">${num}</div>
 								    	<fmt:parseDate var="kbs" pattern="yyyy-MM-dd" value="${list.regdate}"/>
 								    	</td>
 								    	<td>
@@ -60,10 +59,10 @@
 								           </a>
 								         </div>
 								        </td>
-								    	<td>${list.writer}</td>
-								    	<td><fmt:formatDate var="mbc" pattern="yyyy-MM-dd" value="${kbs}"/>${mbc}</td>
-								    	<td><a href='/adm/notice/admnoticemodify?bno=${list.bno}' style="color:#000; padding-left:5px;"><i class="fa fa-solid fa fa-pen"></i></a></td>
-								    	<td><a href='/adm/notice/admnoticedelete?bno=${list.bno}' style="color:#000; padding-left:10px;" onClick="return confirm('삭제하시겠어요?')"><i class="fa fa-solid fa-trash"></i></a></td>
+								    	<td style="text-align:center;">${list.writer}</td>
+								    	<td style="text-align:center;"><fmt:formatDate var="mbc" pattern="yyyy-MM-dd" value="${kbs}"/>${mbc}</td>
+								    	<td style="text-align:center;"><a href='/adm/notice/admnoticemodify?bno=${list.bno}' style="color:#000; padding-left:5px;"><i class="fa fa-solid fa fa-pen"></i></a></td>
+								    	<td style="text-align:center;"><a href='/adm/notice/admnoticedelete?bno=${list.bno}' style="color:#000; padding-left:10px;" onClick="return confirm('삭제하시겠어요?')"><i class="fa fa-solid fa-trash"></i></a></td>
 								    </tr>
 								    <c:set var="num" value="${num-1}" />
 								</c:forEach>
@@ -71,7 +70,7 @@
 					    </c:choose>
 					   </tbody>
 					  </table>
-					 <div class="notice_footer">
+					 <div class="paging" style="text-align: center; padding: 20px 0; margin-button:30px;">
 						 <c:if test="${pageMaker.prev}">
 							<a href="${pageMaker.startPage-1}"><i class="fa  fa-angle-double-left"></i></a>
 						</c:if>
@@ -81,24 +80,23 @@
 						<c:if test="${pageMaker.next}">
 							<a href="${pageMaker.endPage+1}"><i class="fa  fa-angle-double-right"></i></a>
 						</c:if>
-						<div class="button_wrap">
-					    	  <p class="buy">
-					    		<a href="admnoticewrite" class="first">글쓰기</a>
-					    	  </p>
+						<div style="float:right;">
+					    	<a href="admnoticewrite" class="rarara" style="width: 70px; height: 35px; line-height: 10px;">글쓰기</a>
 					   </div>
+					   <form id="actionForm" action="/adm/notice/admnotice" method="get">
+							<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+							<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+							<input type="hidden" name="type" value="${pageMaker.cri.type}">
+							<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+						</form>
 					 </div>
 				</div>
-  			</div>
   		</div>
   	</div>
 </div>
+</div>
   </body>
-  <form id="actionForm" action="/adm/notice/admnotice" method="get">
-		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
-		<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-		<input type="hidden" name="type" value="${pageMaker.cri.type}">
-		<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
-	</form>
+  
      <script>
 		$(function() {
    

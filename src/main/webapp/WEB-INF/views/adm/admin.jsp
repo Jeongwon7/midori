@@ -1,46 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file = "adminheader.jsp" %>
 
-<div class="col-md-10" style="margin-top:100px; margin-left:300px; width:1000px;">
-	<h2 style="padding-left:10px; padding-bottom:30px;">관리자 로그인</h2>
-	<div class="col-md-12">
-	<form id="dd" class="form-horizontal" name="admin" method="post" action="/login" >
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-	
-	<div class="form-group">
-		<label for="id" class="col-sm-2 control-label">아이디</label>
-		<div class="col-sm-10">
-			<input type="text" name="username" class="form-control" id="userid" placeholder="아이디 입력">
+<link rel="stylesheet" href="/resources/adminassets/css/admin-member.css">
+
+<html> 
+	<head> 
+		<meta name="viewport" content="width=device-width, height=device-height, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1.0"> 
+	</head> 
+	<body> 
+	<div class="adminback">
+		<div class="adminLogin">
+			<h2 style="text-align: center;">Admin Login</h2> 
+			<form id="dd" action="/login" name="admin" method="POST" onsubmit="return admin_check()"> 
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+				<div class="input-box1"> 
+					<input id="userid" type="text" name="username" placeholder="아이디"> 
+					<label for="username">아이디</label> 
+				</div> 
+				<div class="input-box1"> 
+					<input id="password" type="password" name="password" placeholder="비밀번호"> 
+					<label for="password">비밀번호</label> 
+				</div>
+				<input type="submit" class="w-btn w-btn-gray" value="로그인"> 
+			</form> 
 		</div>
 	</div>
-	
-	<div class="form-group">
-		<label for="pw" class="col-sm-2 control-label">패스워드</label>
-		<div class="col-sm-10">
-			<input type="password" name="password" class="form-control" id="password" placeholder="패스워드 입력">
-		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-sm-offset-2 col-sm-10">
-	      <input type="submit" class="btn btn-default" onClick="admin_check();" value="로그인"> &nbsp;&nbsp;&nbsp;
-	    </div>
-	</div>
-	</form>
-	</div>
-</div>
+	</body> 
+</html>
+
 <script type="text/javascript">
 	function admin_check() {
 		if(admin.userid.value=="") {
 			alert("아이디입력");
 			admin.userid.focus();
 			return false;
-		}
-		if (admin.password.value=="") {
+		}else if(admin.password.value==""){
 			alert("패스워드입력");
 			admin.password.focus();
 			return false;
+		}else{
+			admin.submit();
 		}
-		admin.submit();
+		
 	}
 </script>	

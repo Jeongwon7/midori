@@ -2,6 +2,8 @@
 
 .order {
 	width:825px;
+	margin:0 auto;
+	padding-top:50px;
 }
 .order h2{
     padding-bottom: 5px;
@@ -87,6 +89,10 @@
 	width: 240px !important;
 }
 
+.or_center{
+	text-align:center;
+	padding-bottom:10px;
+}
 /* ----orderlist css ----*/
 
 .orderlist{

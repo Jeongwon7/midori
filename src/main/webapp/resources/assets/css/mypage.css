@@ -1,0 +1,143 @@
+@charset "EUC-KR";
+
+.sub_my{
+	float: left;
+    width: 230px;
+    padding-left:35px;
+}
+.sub_my .tit_snb{
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 35px;
+    color: #333;
+    letter-spacing: -1px;
+}
+.inner_snb{
+	border: 1px solid #f2f2f2;
+    border-bottom: 0;
+}
+.mypage_menu li{
+	border-bottom: 1px solid #f2f2f2;
+}
+.sub_my .mypage_menu li.on a, .sub_my .mypage_menu li a:hover {
+    background-size: 6px 11px;
+    font-weight: 700;
+    color: #49904E;
+}
+.sub_my .mypage_menu li a {
+    display: block;
+    overflow: hidden;
+    padding: 14px 0 16px 20px;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -.3px;
+}
+.page_section{
+	float: right;
+    width: 820px;
+}
+.head_aticle{
+	padding:0px 20px 34px;
+}
+.head_aticle .tit{
+	    height: 36px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    color: #333;
+    letter-spacing: -.5px;
+}
+.mypage_email{
+	width:820px;
+	margin:0 auto;
+	padding-left:20px;
+}
+
+.field_email .tit{
+	    padding: 0 0 8px;
+    font-weight: 700;
+    font-size: 18px;
+    margin:0px;
+}
+.field_email .sub{
+	    padding-bottom: 20px;
+    font-size: 12px;
+    color: #666;
+    line-height: 17px;
+    margin:0px;
+}
+.tbl_comm{
+	padding-left:20px;
+	width: 100%;
+    border-top: 2px solid #333;
+}
+.mypage_email th{
+	width: 259px;
+    padding-left: 120px;
+    padding-top:30px;
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    vertical-align: top;
+    text-align: left;
+}
+.mypage_order th{
+    font-weight: 700;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    vertical-align: top;
+    text-align: left;
+}
+.tbl_comm .fst td{
+	padding-top: 19px;
+}
+.field_email td{
+	padding: 10px 0;
+    border-top: 0;
+    font-size: 14px;
+    vertical-align: top;
+    text-align: left;
+}
+.type_form textarea, .type_form input[type=text], .type_form input[type=password] {
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    border-radius: 3px;
+    background: #fff;
+    outline: none;
+    vertical-align: top;
+    width:332px;
+}
+.email_button{
+	    border: 1px solid #49904E;
+    background-color: #49904E;
+    color: #fff;
+    display: inline-block;
+    width: 170px;
+    margin-left: 5px;
+    vertical-align: top;
+    border-radius: 3px;
+    outline: none;
+}
+.email_ok{
+	    display: block;
+    width: 240px;
+    height: 56px;
+    margin: 40px auto 0;
+    font-size: 16px;
+    line-height: 54px;
+}
+.mypage_email tr:last-child th, .mypage_email tr:last-child td {
+    padding-bottom: 19px;
+    border-bottom: 1px solid #ddd;
+}
+.correct, .incorrect {
+	padding-left: 10px;
+    font-weight: 600;
+}

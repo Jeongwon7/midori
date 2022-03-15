@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.midori.domain.Criteria9;
-import com.midori.domain.PageVO;
 import com.midori.domain.PageVO9;
 import com.midori.domain.ProductVO;
 import com.midori.domain.QnaVO;
 import com.midori.domain.ReviewVO;
+import com.midori.service.MainService;
 import com.midori.service.ProductService;
 
 import lombok.AllArgsConstructor;
@@ -29,6 +29,9 @@ public class ProductController {
 	@Setter(onMethod_ = @Autowired)
 	private ProductService service ;
 	
+	@Setter(onMethod_ = @Autowired)
+	private MainService Mservice ;
+	
 	//상품뷰페이지
 	@GetMapping("/product_view.do")
 	public void productView(@RequestParam("pseq") int pseq, Model model) {
@@ -40,7 +43,7 @@ public class ProductController {
 		
 	//	System.out.println("reviewList: "+reviewList);
 	//	System.out.println("qnaList: "+qnaList);
-		
+		System.out.println("plist: "+pList);
 		model.addAttribute("plist", pList);
 		model.addAttribute("rlist", reviewList);
 		model.addAttribute("qnalist",qnaList);
@@ -74,5 +77,21 @@ public class ProductController {
 	      model.addAttribute("pageMaker", new PageVO9(cri9, total));
 	   
 	   }
+	
+	@GetMapping("/product_new")
+	 public void newProduct(Model model, Criteria9 cri9) {
+		List<ProductVO> nlist = Mservice.GetNewPro();
+		model.addAttribute("nlist", nlist);
+		int total = service.getNewProductCount(cri9); 
+		model.addAttribute("pageMaker",new PageVO9(cri9, total));
+	}
+	
+	@GetMapping("/product_best")
+	 public void bestProduct(Model model, Criteria9 cri9) {
+		List<ProductVO> blist = Mservice.GetBestPro();
+		model.addAttribute("blist", blist);
+		int total = service.getBestProductCount(cri9); 
+		model.addAttribute("pageMaker",new PageVO9(cri9, total));
+	}
 	
 }

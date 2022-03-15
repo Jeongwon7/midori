@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "adminheader.jsp" %>
 <body>
-	<div style="margin-top:100px; margin-left:300px; width:1200px;">
-	<h2 style="margin-bottom: 30px;"><a href="/adm/review.do">상품리뷰 관리</a></h2>
+	<div class="col-md-12 col-sm-12" style="margin-left:370px; width:1100px;">
+	<h2 style="padding-left:10px; padding:30px 0;"><a href="/adm/review.do">상품리뷰 관리</a></h2>
 	<!-- <div class="container"> -->
 	  <div class="search_wrap">
 		<div class="record_group">
@@ -28,7 +28,7 @@
 			</form>
 		</div>
 	  </div> <!-- search end -->
-	 <div class="my_review" style="margin-top:100px;">
+	 <div class="my_review">
 		<table class="table table-hover my_reviewtbl jw_table">
 			<caption class="sr-only">리뷰 리스트</caption>
 			<colgroup>
@@ -91,8 +91,8 @@
 						<fmt:parseDate var="regdate" value="${list.regdate }" pattern="yyyy-MM-dd"/><!-- String에서 Date타입으로 -->
 						<fmt:formatDate value="${regdate }" pattern="yyyy-MM-dd"/><!-- 날짜 형식을 출력 -->
 					</td>
-					<td>
-						<input type="button" onclick="review_deleteOpen(${list.rbno})" value="삭제" style="border: none; background: green; color:white;">
+					<td style="text-align:center;">
+						<a style="color:#000; padding-left:10px;" onClick="review_deleteOpen(${list.rbno})"><i class="fa fa-solid fa-trash"></i></a>
 					</td>
 				</tr>
 				<tr class="hide">
@@ -125,8 +125,7 @@
 			<form id="actionForm" action="/adm/review.do" method="get">
 				<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 				<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-				<input type="hidden" name="type" value="${pageMaker.cri.type}">
-				<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+				<input type="hidden" name="kind" value="${pageMaker.cri.kind}">
 			</form>
 		</div>
 	  </div>

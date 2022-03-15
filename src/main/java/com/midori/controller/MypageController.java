@@ -53,6 +53,16 @@ public class MypageController {
 	    service.goCart(cvo);
 	    return "redirect:/mypage/cart_list";
 	 }
+	 
+	//장바구니 등록
+	 @GetMapping("/cartinsert.do")
+		 @PreAuthorize("isAuthenticated()")
+		 public String cartinsert(CartVO cvo, Principal principal) {
+			cvo.setId(principal.getName());
+			System.out.println("cvo: "+cvo);
+		    service.goCart(cvo);
+		    return "redirect:/mypage/cart_list";
+		 }
 	
 	 //장바구니 페이지
 	 @GetMapping("/cart_list")

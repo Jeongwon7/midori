@@ -2,61 +2,69 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "adminheader.jsp" %>
 <body>
-	<div style="margin-top:100px; margin-left:300px; margin-bottom:100px;">
-	<h3 style="font-weight: bold;"><a href="/adm/statistics.do">통계 분석</a></h3>
+	<div class="col-md-12 col-sm-12" style="margin-left:370px; width:1050px;">
+	<h2 style="padding-left:10px; padding:30px 0;"><a href="/adm/statistics.do">통계 분석</a></h2>
 		<div class="jw-charts-2wrap">
-		<!-- 전체기간  판매량 top10 -->
-		<div id="AllSales"></div>
-		<!-- 오늘 판매량 top5 -->
-		<div id="TodaysBest" style="margin-top:30px; width: 500px;">
-				<h4 style="margin:30px; font-weight: bold;">일일 판매량 Top5</h4>
-					<table class="table jw_table" >
+			<!-- 전체기간  판매량 top5 -->
+			<div id="AllSales"></div>
+			<!-- 오늘 판매량 top5 -->
+			<div>
+			<c:choose>
+				<c:when test="${empty todayBest}">
+				</c:when>
+				<c:otherwise>
+					<h4 style="margin:30px; font-weight: bold;">일일 판매량 Top5</h4>
+						<table class="table jw_table" >
+							<tr>
+								<th>순위</th>
+								<th>카테고리</th>
+								<th>상품명</th>
+								<th>판매량</th>
+							</tr>
+					<c:set var="num" value="1" />
+					<c:forEach var="list" items="${todayBest}">
 						<tr>
-							<th>순위</th>
-							<th>카테고리</th>
-							<th>상품명</th>
-							<th>판매량</th>
+							<td>${num}</td>
+							<c:choose>
+								<c:when test="${list.kind == '1'}">
+									<td>샐러드</td>
+								</c:when>
+								<c:when test="${list.kind == '2'}">
+									<td>닭가슴살</td>
+								</c:when>
+								<c:when test="${list.kind == '3'}">
+									<td>다이어트도시락</td>
+								</c:when>
+								<c:when test="${list.kind == '4'}">
+									<td>샌드위치</td>
+								</c:when>
+								<c:when test="${list.kind == '5'}">
+									<td>프로틴</td>
+								</c:when>
+								<c:when test="${list.kind == '6'}">
+									<td>저칼로리간식</td>
+								</c:when>
+								<c:otherwise>
+									<td>무설탕음료</td>
+								</c:otherwise>
+							</c:choose>
+							<td>${list.pname}</td>
+							<td>${list.sales_count}</td>
 						</tr>
-						<tr>
-							<td>1</td>
-							<td>샐러드</td>
-							<td>비엔나 샐러드</td>
-							<td>35</td>
-						</tr>
-						<tr>
-							<td>2</td>
-							<td>샐러드</td>
-							<td>볼샐러드 깻잎가득</td>
-							<td>30</td>
-						</tr>
-						<tr>
-							<td>3</td>
-							<td>닭가슴살</td>
-							<td>스팀 닭가슴살 마늘맛</td>
-							<td>23</td>
-						</tr>
-						<tr>
-							<td>4</td>
-							<td>닭가슴살</td>
-							<td>햇살닭</td>
-							<td>20</td>
-						</tr>
-						<tr>
-							<td>5</td>
-							<td>저칼로리간식</td>
-							<td>한끼곤약</td>
-							<td>10</td>
-						</tr>
-					</table>
-		</div>
+						<c:set var="num" value="${num+1}"/>
+					</c:forEach>
+				</table>
+				</c:otherwise>
+			</c:choose><!-- end -->
+			</div>
 		</div>
 		<div class="jw-charts-3wrap">
 			<!-- 3일간 매출, 수익, 원가 정보 -->
-			<div id="3DaysSales"></div>
+			<div id="3DaysSales" style="width:330px; height:300px; margin-right:10px;"></div>
 			<!-- 3개월간 매출, 수익, 원가 정보 -->
-			<div id="3MonthsSales"></div>
+			<div id="3MonthsSales" style="width:330px; height:300px; margin-right:10px;"></div>
 			<!-- 3년간 매출, 수익, 원가 정보 -->
-			<div id="3YearsSales"></div>
+			<div id="3YearsSales" style="width:330px; height:300px;"></div>
 		</div>
 	</div>
 </body>
@@ -64,7 +72,7 @@
 	google.charts.load('current', {'packages':['corechart']});
 	google.charts.load('current', {'packages':['bar']});
 	
-	// 전체기간 판매량 top10
+	// 전체기간 판매량 top5
 	google.charts.setOnLoadCallback(AllSalesChart);
 	
 	// 3일간 매출, 수익, 원가 정보
@@ -83,11 +91,11 @@
 		  data.addColumn('string', '상품명');
 		  data.addColumn('number', '판매량');
 		  data.addRows([
-		    ['${AllSales[0].pname}', 2345],
-		    ['${AllSales[1].pname}', 2210],
-		    ['${AllSales[2].pname}', 2100],
-		    ['${AllSales[3].pname}', 1780],
-		    ['${AllSales[4].pname}', 1200]
+		    ['${AllSales[0].pname}', ${AllSales[0].sales_count}],
+		    ['${AllSales[1].pname}', ${AllSales[1].sales_count}],
+		    ['${AllSales[2].pname}', ${AllSales[2].sales_count}],
+		    ['${AllSales[3].pname}', ${AllSales[3].sales_count}],
+		    ['${AllSales[4].pname}', ${AllSales[4].sales_count}]
 //		    ['${AllSales[5].pname}', ${AllSales[5].sales_count}],
 //		    ['${AllSales[6].pname}', ${AllSales[6].sales_count}],
 //		    ['${AllSales[7].pname}', ${AllSales[7].sales_count}],
@@ -111,9 +119,9 @@
 	 function ThreeDaysSalesChart() {
 	        var data = google.visualization.arrayToDataTable([
 	          ['일', '매출', '수익', '원가'],
-	          ['${towDaysago}', 341765, 102529, 239236],
-	          ['${yesterday}', 369026, 110707, 258318],
-	          ['${toDay}', 257428, 77228.4, 180199.6]
+	          ['${towDaysago}', ${totalTwoDaysAgo2}, ${totalTwoDaysAgo3}, ${totalTwoDaysAgo1}],
+	          ['${yesterday}', ${totalAdayAgo2}, ${totalAdayAgo3}, ${totalAdayAgo1}],
+	          ['${toDay}', ${totalToday2}, ${totalToday3}, ${totalToday1}]
 	        ]);
 
 	        var options = {
@@ -132,9 +140,9 @@
 	 function ThreeMonthsSalesChart() {
 	        var data = google.visualization.arrayToDataTable([
 	          ['월', '매출', '수익', '원가'],
-	          ['${month2}', 10252972, 3075891, 7177080],
-	          ['${month1}', 11070792, 3321237, 7749554],
-	          ['${month}', 16612530, 4983759, 11628771]
+	          ['${month2}', ${totalTwoMonthsAgo2}, ${totalTwoMonthsAgo3}, ${totalTwoMonthsAgo1}],
+	          ['${month1}', ${totalAMonthAgo2}, ${totalAMonthAgo3}, ${totalAMonthAgo1}],
+	          ['${month}', ${totalThisMonth2}, ${totalThisMonth3}, ${totalThisMonth1}]
 	        ]);
 
 	        var options = {
@@ -153,9 +161,9 @@
 	 function ThreeYearsSalesChart() {
 	        var data = google.visualization.arrayToDataTable([
 	          ['연', '매출', '수익', '원가'],
-	          ['${year2}', 123035670, 36910701, 86124969],
-	          ['${year1}', 132849504, 39854851, 92994652],
-	          ['${year}', 49837590, 14951277, 34886313]
+	          ['${year2}', ${totalTwoYearsAgo2}, ${totalTwoYearsAgo3}, ${totalTwoYearsAgo1}],
+	          ['${year1}', ${totalAYearAgo2}, ${totalAYearAgo3}, ${totalAYearAgo1}],
+	          ['${year}', ${totalThisYear2}, ${totalThisYear3}, ${totalThisYear1}]
 	        ]);
 
 	        var options = {
@@ -170,9 +178,5 @@
 
 	        chart.draw(data, google.charts.Bar.convertOptions(options));
 	      }
-	
-	
-	
-	
 </script>
 </html>

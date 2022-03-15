@@ -95,7 +95,7 @@ public class MemberController {
         log.info("인증번호 " + checkNum);
         
         /* 이메일 보내기 */
-        String setFrom = "baozi3785@naver.com";//root-context에 이메일
+        String setFrom = "";//root-context에 이메일
         String toMail = email;
         log.info("이메일 : " + email);
         String title = "녹색식탁 인증 이메일 입니다.";

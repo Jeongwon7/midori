@@ -1,40 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file = "../header.jsp" %>
-				<div class="col-md-9">
-				  <h3>Question Modify</h3>
+<%@ include file = "../mainheader.jsp" %>
+			 <div class="midori_main">
+		       <div class="midori_content">
+		        <div class="midori_indexmain page_main">
+				 <div class="midori_productpage">
+				  <div class="midori_one">
+				    <div class="inner_listbody">
+				     <div class="list_body">
+				      <div class="notice_head">		        
+				     </div>
+				   <div class="notice_aticle">
+				   <h2 class="notice_tit">
+				          Question Modify 
+				   </h2>
+				  </div>
+				   <div class="member_join" style="width:1050px;">
 					<form class="form-horizontal" name="qfrm" method="post">
 					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 					<input type="hidden" name="qbno" value="${qvo.qbno}">
 					<input type="hidden" name="pseq" value="${qvo.pseq}">
-					 <div class="form-group">
-					    <label for="qtitle" class="col-sm-2 control-label">제목</label>
-					    <div class="col-sm-10">
-					      <input type="text" name="qtitle" class="form-control" id="qtitle" value="${qvo.qtitle}">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="category" class="col-sm-2 control-label">문의분류</label>
-					    <div class="col-sm-10">
-					      <select name="category">
-					      	<option value="0">선택</option>
-					      	<option value="1">상품문의</option>
-					      	<option value="2">배송문의</option>
-					      	<option value="3">기타문의</option>
-					      </select>
-					    </div>
-					  </div>
-					   <div class="form-group">
-					    <label for="qcontent" class="col-sm-2 control-label">내용</label>
-					    <div class="col-sm-10">
-					      <textarea name="qcontent" id="summernote" class="form-control" rows="10">${qvo.qcontent}</textarea>
-					    </div>
-					  </div>
-					  <div class="form-group">
-					  	  <label class="form-check-label col-sm-2 control-label" for="secret">
-						    비밀글 설정
-						  </label>
-						  <c:choose>
+					<table class="tbl_comm">
+						 <tbody>
+						 	<tr class="fst">
+				 	        <th>제목 </th>
+				 	        <td>
+				 	         <input type="text"  name="qtitle" class="member_cont" id="qtitle" value="${qvo.qtitle}">
+				 	        </td>
+				 	       </tr>
+				 	        <tr>
+				 	        <th>문의분류</th>
+				 	        <td>
+				 	         <select name="category">
+						      	<option value="0">선택</option>
+						      	<option value="1">상품문의</option>
+						      	<option value="2">배송문의</option>
+						      	<option value="3">기타문의</option>
+						      </select>
+				 	        </td>
+				 	       </tr>
+				 	       <tr>
+				 	        <th>내용</th>
+				 	        <td>
+				 	         <textarea name="qcontent" id="summernote" class="form-control" rows="10">${qvo.qcontent}</textarea>
+				 	        </td>
+				 	       </tr>
+				 	       <tr>
+				 	        <th>비밀글 설정</th>
+				 	        <td style="padding-left:20px;padding-top:18px;">
+				 	           <c:choose>
 							  <c:when test="${qvo.secret == true }">
 							  	<input class="form-check-input" type="checkbox" name="secret" id="secret" checked="checked">
 							  </c:when>
@@ -42,19 +56,27 @@
 							  	<input class="form-check-input" type="checkbox" name="secret" id="secret">
 							  </c:otherwise>
 						  </c:choose>
-						  <p>체크하지 않을 경우 공개글로 저장됩니다</p>
+							  <p>체크하지 않을 경우 공개글로 저장됩니다</p>
+				 	        </td>
+				 	        </tr>
+						 </tbody>
+					</table>
+					<div class="join_footer" style="padding-left:200px;">
+					   <button class="btn_join btn_active" onclick="return question_modify()">문의수정</button>
+					   <button type="button" class="btn_back1" onclick="history.back();" style="margin-right: 90px;">
+						  <span class="txt_type">목록으로</span>
+						</button>
 					  </div>
-					    <div class="form-group">
-					    <div class="col-sm-offset-2 col-sm-10">
-					      <button type="button" class="btn btn-default" onclick="question_modify()">문의수정</button>
-					       <button type="button" class="btn btn-default" onclick="history.back();">목록으로</button>
-					    </div>
-					  </div>
-					</form>
+					  </form>
+					 </div>
 				</div>
-			</div><!-- row end -->
+			</div>
 		</div>
-	</div>
+	   </div>
+	</body>
+   </div>
+  </div>
+ </div>
 	<!-- contents end-->
 	<script>
 	//썸머노트

@@ -75,6 +75,14 @@ public class ProductServiceImpl implements ProductService {
     public int getTotalCount(Criteria9 cri) {
        return mapper.getTotalCount(cri);
     }
+    @Override
+    public int getNewProductCount(Criteria9 cri) {
+    	return mapper.getNewProductCount(cri);
+    }
 	
+    @Override
+    public int getBestProductCount(Criteria9 cri) {
+    	return mapper.getBestProductCount(cri);
+    }
 	
 }

@@ -2,9 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file = "adminheader.jsp" %>
 <body>
-   <div class="col-md-12" style="margin-top:100px; margin-left:300px; width:1150px;">
-            <div class="col-md-12">
-   <h2><a href="/adm/qna.do">상품문의 관리</a></h2>
+   <div class="col-md-12 col-sm-12" style="margin-left:370px; width:1100px;">
+   <h2 style="padding-left:10px; padding:30px 0;"><a href="/adm/qna.do">상품문의 관리</a></h2>
    <!-- <div class="container"> -->
      <div class="search_wrap">
       <div class="record_group">
@@ -44,14 +43,14 @@
          </colgroup>
 			<thead>
 				<tr>
-					<th>번호</th>
-					<th>문의분류</th>
-					<th>카테고리</th>
-					<th>상품명</th>
-					<th>제목</th>
-					<th>답변상태</th>
-					<th>아이디</th>
-					<th>등록일</th>
+					<th style="text-align:center;">번호</th>
+					<th style="text-align:center;">문의분류</th>
+					<th style="text-align:center;">카테고리</th>
+					<th style="text-align:center;">상품명</th>
+					<th style="text-align:center;">제목</th>
+					<th style="text-align:center;">답변상태</th>
+					<th style="text-align:center;">아이디</th>
+					<th style="text-align:center;">등록일</th>
 				</tr>
 			</thead>
 			<tbody class="review_box">
@@ -59,53 +58,53 @@
 			<c:forEach var="list" items="${qnaList}">
 			<c:if test ="${not empty list}">
 				<tr>
-					<td>${num}</td>
+					<td style="text-align:center;">${num}</td>
 					<c:choose>
 						<c:when test="${list.category eq 1 }">
-							<td>상품문의</td>
+							<td style="text-align:center;">상품문의</td>
 						</c:when>
 						<c:when test="${list.category eq 2 }">
-							<td>배송문의</td>
+							<td style="text-align:center;">배송문의</td>
 						</c:when>
 						<c:otherwise>
-							<td>기타문의</td>
+							<td style="text-align:center;">기타문의</td>
 						</c:otherwise>
 					</c:choose>
 					<c:choose>
 						<c:when test="${list.kind eq '1'}">
-							<td>샐러드</td>
+							<td style="text-align:center;">샐러드</td>
 						</c:when>
 						<c:when test="${list.kind eq '2'}">
-							<td>닭가슴살</td>
+							<td style="text-align:center;">닭가슴살</td>
 						</c:when>
 						<c:when test="${list.kind eq '3'}">
-							<td>다이어트도시락</td>
+							<td style="text-align:center;">다이어트도시락</td>
 						</c:when>
 						<c:when test="${list.kind eq '4'}">
-							<td>샌드위치</td>
+							<td style="text-align:center;">샌드위치</td>
 						</c:when>
 						<c:when test="${list.kind eq '5'}">
-							<td>프로틴</td>
+							<td style="text-align:center;">프로틴</td>
 						</c:when>
 						<c:when test="${list.kind eq '6'}">
-							<td>저칼로리간식</td>
+							<td style="text-align:center;">저칼로리간식</td>
 						</c:when>
 						<c:otherwise>
-							<td>무설탕음료</td>
+							<td style="text-align:center;">무설탕음료</td>
 						</c:otherwise>
 					</c:choose>
-					<td>${list.pname }</td>
-					<td class="title"><a href="/adm/qnaview.do?qbno=${list.qbno}">${list.qtitle}</a></td>
+					<td style="text-align:center;">${list.pname }</td>
+					<td class="title" style="text-align:center;"><a href="/adm/qnaview.do?qbno=${list.qbno}">${list.qtitle}</a></td>
 					<c:choose>
 						<c:when test="${list.status == 1}">
-							<td>답변대기</td>
+							<td style="text-align:center;">답변대기</td>
 						</c:when>
 						<c:otherwise>
-							<td>답변완료</td>
+							<td style="text-align:center;">답변완료</td>
 						</c:otherwise>
 					</c:choose>
-					<td>${list.qwriter}</td>
-					<td>
+					<td style="text-align:center;">${list.qwriter}</td>
+					<td style="text-align:center;">
 						<fmt:parseDate var="regdate" value="${list.qregdate}" pattern="yyyy-MM-dd"/><!-- String에서 Date타입으로 -->
 						<fmt:formatDate value="${regdate }" pattern="yyyy-MM-dd"/><!-- 날짜 형식을 출력 -->
 					</td>
@@ -131,8 +130,7 @@
 			<form id="actionForm" action="/adm/qna.do" method="get">
 				<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 				<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
-				<input type="hidden" name="type" value="${pageMaker.cri.type}">
-				<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+				<input type="hidden" name="kind" value="${pageMaker.cri.kind}">
 			</form>
 		</div>
 	  </div>

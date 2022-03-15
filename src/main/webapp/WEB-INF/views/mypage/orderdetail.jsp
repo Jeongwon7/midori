@@ -1,9 +1,34 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="mypageHeader.jsp" %>
-				<div class="col-md-9">
-					<h3>MyPage (주문상세 정보)</h3>
-					<h4>주문 정보</h4>
+<%@ include file="../mainheader.jsp" %>
+	 <div class="midori_main">
+	  <div class="tit_page"style="padding-top:100px;">
+        <div class="sub_my">
+          <h2 class="tit_snb">마이페이지</h2>
+           <div class="inner_snb">
+             <ul class="mypage_menu" style="padding-left:0px;">
+            	 <li>
+                 <a href="../mypage/cart_list">장바구니</a>
+                </li>
+                <li>
+                 <a href="../order/ordering">진행중인 주문 내역</a>
+                </li>
+                <li class="">
+                 <a href="../order/orderall">총 주문 내역</a>
+                </li>
+                <li>
+                 <a href="../member/memberModify.do">개인 정보 변경</a>
+                </li>
+               </ul>
+              </div>
+          </div>
+		 <div class="page_section section_myinfo type_form">
+           <div class="head_aticle">
+            <h2 class="tit">주문 상세 페이지</h2>
+           </div>
+               <div class="mypage_order">
+		         <div class="field_email">
+		          <div class="tbl_comm" style="border-bottom: 1px solid #333;">
 						<table class="table jw_table">
 							<tr>
 								<th>주문일자</th>
@@ -15,14 +40,14 @@
 								<th>처리상태</th>
 							</tr>
 							<tr>
-								<td><fmt:parseDate var="regdate" value="${od.indate}" pattern="yyyy-MM-dd"/><!-- String에서 Date타입으로 -->
+								<td style="padding-left:10px"><fmt:parseDate var="regdate" value="${od.indate}" pattern="yyyy-MM-dd"/><!-- String에서 Date타입으로 -->
 									<fmt:formatDate value="${regdate }" pattern="yyyy-MM-dd"/></td>
-								<td>${od.oseq}</td>
-								<td>${od.mname}</td>
-								<td>${od.oname}</td>
-								<td><fmt:formatNumber value="${totalPrice}"/>&#x20a9;</td>
-								<td>${od.address1} ${od.address2} ${od.zip_num}</td>
-								<td>
+								<td style="padding-left:10px">${od.oseq}</td>
+								<td style="padding-left:10px">${od.mname}</td>
+								<td style="padding-left:10px">${od.oname}</td>
+								<td style="padding-left:10px"><fmt:formatNumber value="${totalPrice}"/>&#x20a9;</td>
+								<td style="padding-left:10px">${od.address1} ${od.address2} ${od.zip_num}</td>
+								<td style="padding-left:10px">
 										<c:choose>
 											<c:when test="${status == 1}">
 												<span>입금 확인</span>
@@ -48,7 +73,11 @@
 									</td>
 							</tr>
 						</table>
-						<h4>주문 상품 정보</h4>
+					  </div>
+					  <div class="head_aticle">
+						<h2 class="tit" style="padding-top:20px;">주문 상품 정보</h2>
+					 </div>
+					 <div class="tbl_comm" style="border-bottom: 1px solid #333;">
 						<table class="table jw_table">
 							<tr>
 								<th>상품명</th>
@@ -60,12 +89,12 @@
 							</tr>
 							<c:forEach var="list" items="${odlist}">
 								<tr>
-									<td>${list.pname}</td>
-									<td><img src="/upload/${list.image}" alt="상품 사진" style="width:40px;"></td>
-									<td>${list.odseq}</td>
-									<td>${list.quantity}</td>
-									<td><fmt:formatNumber value="${list.price2}"/>&#x20a9;</td>
-									<td>
+									<td style="padding-left:10px">${list.pname}</td>
+									<td style="padding-left:10px"><img src="/upload/${list.image}" alt="상품 사진" style="width:40px;"></td>
+									<td style="padding-left:10px">${list.odseq}</td>
+									<td style="padding-left:10px">${list.quantity}</td>
+									<td style="padding-left:10px"><fmt:formatNumber value="${list.price2}"/>&#x20a9;</td>
+									<td style="padding-left:10px">
 										<c:choose>
 											<c:when test="${status == 1}">
 												<span>입금 확인</span>
@@ -93,11 +122,14 @@
 								</tr>
 							</c:forEach>
 						</table>
-						<div class="col-md-12">
-							<input type="button"  value="쇼핑계속하기" onclick="location.href='/'" style="display:block; margin:0 auto;">
+					   </div>
+						<div class="join_footer">
+						  <button type="button" class="btn_back1" onclick="location.href='/product/product_list'">
+						   <span class="txt_type">쇼핑계속하기</span>
+						  </button>
 						</div>
-						
 				</div><!-- 9 end -->
+			 </div>
 			</div>
 		</div>
 	</div>

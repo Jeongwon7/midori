@@ -1,40 +1,50 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file = "adminheader.jsp" %>
-			<div style="margin-top:100px; margin-left:300px; width:1200px;">
-				<div class="col-md-10">
-				  <h3 style="font-weight:bold;">Answer Writing</h3>
-					<form class="form-horizontal" name="qafrm" method="post">
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-					<input type="hidden" name="qbno" value="${qbno}">
-					<input type="hidden" name="ref" value="${ref}">
-					 <div class="form-group">
-					    <label for="atitle" class="col-sm-2 control-label">제목</label>
-					    <div class="col-sm-10">
-					      <input type="text" name="atitle" class="form-control" id="atitle" value="▲답변완료▲">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="awriter" class="col-sm-2 control-label">작성자</label>
-					    <div class="col-sm-10">
-					      <input type="text" name="awriter" class="form-control" id="awriter" value="관리자">
-					    </div>
-					  </div>
-					   <div class="form-group">
-					    <label for="content" class="col-sm-2 control-label">내용</label>
-					    <div class="col-sm-10">
-					      <textarea name="acontent" id="summernote" class="form-control" rows="10"></textarea>
-					    </div>
-					  </div>
-					    <div class="form-group">
-					    <div class="col-sm-offset-2 col-sm-10">
-					      <button type="button" onclick="answer_save()">답변등록</button>
-					       <button type="button" onclick="history.back();">목록으로</button>
-					    </div>
-					  </div>
-					</form>
-				</div>
-				</div>
+			<div class="col-md-12 col-sm-12" style="margin-left:250px; width:1100px;">
+			  <h2 style="padding-left:10px; padding:30px 0;">Answer Writing</h2>
+				<form class="form-horizontal" name="qafrm" method="post">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+				<input type="hidden" name="qbno" value="${qbno}">
+				<input type="hidden" name="ref" value="${ref}">
+				<div class="tbl_noticewrite">
+	  				<table class="noticewrite_table">
+	  					<colgroup>
+					       <col width="130">
+					       <col>
+					     </colgroup>
+						<tr>
+						 <th scope="row">
+						  <div for="atitle" class="txt-1">제목</div>
+						 </th>
+						 <td colspan="3">
+						  <input type="text" name="atitle" id="atitle" style="width:100%; margin:0;" value="▲답변완료▲">
+						 </td>
+						</tr>
+						<tr>
+						 <th scope="row">
+						  <div for="awriter" class="txt-1">작성자</div>
+						 </th>
+						 <td colspan="3">
+						  <input type="text" name="awriter" id="awriter" style="width:100%; margin:0;" value="관리자">
+						 </td>
+						</tr>
+						<tr>
+						 <th scope="row">
+						  <div for="content" class="txt-1">내용</div>
+						 </th>
+						 <td colspan="3">
+						  <textarea name="acontent" id="summernote" style="width:100%; height:150px;"></textarea>
+						 </td>
+						</tr>
+						</table>
+						
+				    <div style="text-align:center; margin:20px 0">
+				      <button type="button" class="rarara" onclick="answer_save()">답변등록</button>
+				       <button type="button" class="rarara" onclick="history.back();">목록으로</button>
+				  </div>
+				  </div>
+				</form>
 			</div><!-- row end -->
 		</div>
 	</div>

@@ -51,7 +51,7 @@
     font-size: 14px;
     color: #5f0080;
     line-height: 20px;
-    float:right;
+    float:left;
     letter-spacing: 0;
 }
 .good_info {
@@ -139,7 +139,7 @@
     line-height: 0;
     text-indent: -9999px;
 }
-.total{
+.total1{
 	width:560px;
 	padding: 10px 0 20px;
     border-top:1px solid #dedede;
@@ -216,7 +216,9 @@
 }
 
 .goods-view-infomation{
-	margin-top: 50px;
+	width: 1050px;
+    margin: 0 auto;
+    padding-top:100px;
 }
 .infomation-tab-group{
 	display: flex;
@@ -246,6 +248,14 @@
     border: 1px solid #eee;
     border-left: none;
 }
+
+.view_footer{
+	    width: 560px;
+    padding: 30px 0 10px;
+    border-top: 1px solid #dedede;
+    margin-top: 10px;
+}
+
 
 
 /* ------¸®ºä css ------*/
@@ -350,8 +360,11 @@
     border-bottom: 1px solid #e8e8e8;
 }
 .list_clear{
-   zoom: 1;
-   width:805px;
+   width: 1050px;
+    margin: 0 auto;
+    position: relative;
+    left: 40px;
+    padding-top:50px;
 }
 .list_total{
    float: left;
@@ -383,19 +396,22 @@
 }
 .inner_listbody{
    overflow: hidden;
-    width: 825px;
+    width: 1050px;
+    margin:0 auto;
 }
 .inner_listbody .list{
-   overflow: hidden;
-    width: 825px;
+       width: 1050px;
     margin-top: -10px;
-    padding-left:0px;
+    padding-left: 15px;
+    overflow: hidden;
 }
 .list_body li{
-   float: left;
-    width: 275px;
+      float: left;
+    width: 320px;
     height: 550px;
-    padding: 25px 18px 0 0;
+    padding: 25px 18px 0px 0px;
+    margin: 10px;
+    margin-left: 15px;
 }
 .list_body .item{
    display: block;
@@ -466,6 +482,22 @@
     vertical-align: middle;
 }
 
+.product_footer{
+	width: 1050px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.footer_active:hover, .footer_active .active{
+	font-size:26px;
+}
+
+.product_footer a:hover, .product_footer .active{
+	font-size:26px;
+}
+
 .product_search{
    position: absolute;
     right: 50px;
@@ -504,4 +536,24 @@
     font-size: 30px;
     font-weight: bold;
     letter-spacing: -3px;
+}
+
+.newproduct_thumbnail{
+	width: 1050px;
+    margin: 0 auto;
+    padding-top: 70px;
+}
+
+.btn_review{
+	margin-top:10px;
+	     border: 1px solid #49904E;
+    background-color: #49904E;
+    color: #fff;
+    display: inline-block;
+    width: 100PX;
+    margin-left: 5px;
+    vertical-align: top;
+    border-radius: 3px;
+    outline: none;
+    height: 30px;
 }

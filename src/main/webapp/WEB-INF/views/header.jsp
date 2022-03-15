@@ -27,6 +27,8 @@
 	<link rel="stylesheet" href="/resources/assets/css/all.min.css">
 	<!-- bootstrap -->
 	<link rel="stylesheet" href="/resources/assets/bootstrap/css/bootstrap.min.css">
+	
+	 <link href="/resources/assets/css/font-awesome.min.css" rel="stylesheet">
 	<!-- summernote -->
 	<link rel="stylesheet" href="/resources/assets/css/summernote.min.css">
 	<!-- owl carousel -->
@@ -51,6 +53,7 @@
 	<link rel="stylesheet" href="/resources/assets/css/notice.css">
 	
 	<link rel="stylesheet" href="/resources/assets/css/cart.css">
+	
 	
 	
 	<!-- <link rel="stylesheet" href="/resources/assets/css/footer.css"> -->

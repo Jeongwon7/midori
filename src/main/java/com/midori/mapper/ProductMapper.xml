@@ -2,15 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.midori.mapper.ProductMapper">
 	<sql id="jwCri">
-		<trim>
-			<choose>
-				<when test="kind != null">
+		<choose>
+				<when test="kind != null and kind != ''">
 					kind=#{kind} and 
 				</when>
-				<when test="kind == null">
+				<when test="kind == null or kind ==''">
 				</when>
-			</choose>
-		</trim>
+				<otherwise></otherwise>
+		</choose>
 	</sql>
 	  <sql id="yhCri">
 	  <choose>
@@ -62,14 +61,14 @@
 			select 
 				pseq, name, kind, price1, price2, price3, content, image, bestyn, indate 
 			from (
-				select rownum rn, pseq, name, kind, price1, price2, price3, content, image, bestyn, indate 
+				select /*+ index_desc(product SYS_C007971) */ rownum rn, pseq, name, kind, price1, price2, price3, content, image, bestyn, indate 
 				from product 
 				where 
 		]]>		
 			<include refid="jwCri"></include>
 				
 		<![CDATA[		
-				rownum <= #{pageNum} * #{amount} order by pseq desc
+				rownum <= #{pageNum} * #{amount}
 			)
 			where rn > (#{pageNum} - 1) * #{amount}
 		]]>
@@ -100,13 +99,13 @@
          select 
             pseq, name, kind, price2, content, image 
          from (
-            select rownum rn, pseq, name, kind, price2, content, image  
+            select /*+ index_desc(product SYS_C007971) */ rownum rn, pseq, name, kind, price2, content, image  
             from product
             where 
       ]]>
 			<include refid="yhCri"></include>
 		<![CDATA[
-            rownum <= #{pageNum} * #{amount} order by pseq desc
+            rownum <= #{pageNum} * #{amount}
          )
          where rn > (#{pageNum}-1) * #{amount}
       ]]>
@@ -121,4 +120,18 @@
 		]]>
    </select>
   	
+<select id="getNewProductCount" resultType="int">
+select count(*) from new_pro_view where 
+<![CDATA[ 
+			pseq > 0 
+		]]>
+</select>
+
+
+<select id="getBestProductCount" resultType="int">
+select count(*) from best_pro_view where 
+<![CDATA[ 
+			pseq > 0 
+		]]>
+</select>
 </mapper>

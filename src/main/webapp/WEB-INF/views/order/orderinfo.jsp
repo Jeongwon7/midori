@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ include file="../header.jsp" %>
+<%@ include file="../mainheader.jsp" %>
 
-  <div class="col-md-9">
-     <div class="container">
+     <div class="midori_main">
+	  <div class="tit_page">
 	   <div class="row">
 		<div class="order">
 		 <h2>주문/결제</h2>
@@ -157,18 +157,12 @@
 			    </div>
 		     </form>
 		 </div>
-		   <div class="order_footer" style="float:left;">
-	    		<div class="button_wrap">
-	    		  <p class="buy">
-	    		  <!-- 뷰페이지에서 바로 결제할 경우까지 생각해야 돼서 온클릭을 뒤로가기 함수로 바꿨어요!-->
-	    		  <a href="#" class="first" onclick="history.back();">뒤로가기</a>
-	    		  </p>
-	    		  <p class="cart">
-	    		  <!-- id="check_module"로 하면 결제기능 실행되고 오더, 오더디테일 테이블에 저장됩니다. onclick="orderInsert()"의 경우 테이블에 저장만 됩니다! -->
-	    		  <a href="#" class="first" id="check_module">결제하기</a><!--onclick="orderInsert()"-->
-	    		  </p>
-	    		</div>
-	    	  </div>
+		 <div class="join_footer">
+		   <button class="btn_join btn_active" onclick="orderInsert()">결제하기</button><!-- id="check_module" -->
+		   <button type="button" class="btn_back1" onclick="history.back(-1)" style="margin-right: 90px;">
+			  <span class="txt_type">뒤로가기</span>
+		   </button>
+		  </div>  
 		</div>      
 	   </div>
 	 </div>   
@@ -187,7 +181,7 @@ $(function(){
 
     $("#check_module").click(function () {
     	var IMP = window.IMP; // 생략가능
-    	IMP.init('imp78738453');
+    	IMP.init();
     	IMP.request_pay({
     	pg: 'inicis', // version 1.1.0부터 지원.
     	pay_method: 'card',
@@ -231,3 +225,4 @@ function orderInsert(){
 	document.orderfrm.submit();
 }
 </script>
+	<%@ include file="../footer.jsp" %>

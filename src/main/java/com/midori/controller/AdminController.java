@@ -96,6 +96,7 @@ public class AdminController {
     //고객관리
     @GetMapping("/member/admmember")
     public void admMember(Model model,Criteria cri) {
+    	System.out.println("cri: "+cri);
        model.addAttribute("list",service.GetMemberWithPaging(cri));
        int total = service.GetTotalMember(cri);
        model.addAttribute("pageMaker", new PageVO(cri, total));
@@ -184,6 +185,7 @@ public class AdminController {
 	//상품관리
 	  @GetMapping("/product/productlist.do")
 	   public void adminManager(Model model, Criteria cri) {
+		  System.out.println("cri: "+cri);
 	      List<ProductVO> list = Pservice.getProductAll(cri);
 	      
 	      int total = Pservice.getTotalProduct(cri);
@@ -497,17 +499,18 @@ public class AdminController {
 	//주문 단계별 스테이터스 처리(2의 경우 운송장까지 처리), form으로 받을 것이야
 	@PostMapping("/orderstatuspro.do")
 	public String orserStatus(OrderVO ovo) {//status, oseq, track
+		System.out.println("ovo: "+ovo);
 		int status = ovo.getStatus();
 		ovo.setStatus(status+1);
-		System.out.println("ovo: "+ovo);
+
 		
 		if(ovo.getTrack() != 0) {
-			//System.out.println("if문 실행");
+			System.out.println("if문 실행");
 			service.orderStatusUpdate(ovo);
 			service.TrackInsert(ovo);
 			
 		}else {
-			//System.out.println("else문 실행");
+			System.out.println("else문 실행");
 			service.orderStatusUpdate(ovo);
 		}
 		return "redirect:/adm/orderlist.do?status="+status;

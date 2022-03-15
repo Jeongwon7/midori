@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+.rarara {
+	width: 100px;
+    position: relative;
+    margin: 0 0 8px 0;
+    padding: 12px 0;
+    border-radius: 3px;
+    display: inline-block;
+    font-size: 10px;
+    height: 50px;
+    background: #000;
+    border: 1px solid #000;
+    color: #fff;
+    transition-duration: .4s;
+    -webkit-transition-duration: .4s;
+}
+
+.senn> th{
+	border-top: 2px solid #444444; 
+	border-bottom: 2px solid #444444; 
+	border-collapse: collapse;
+}
+	
+/* qnaview */
+
+.table3_1{
+	width:510px;
+	height:400px;
+	margin:auto;
+}
+.table3_1 th {
+	background-color:#000000;
+	color:#FFFFFF;
+	height:100px;
+}
+.table3_1,.table3_1 th,.table3_1 td
+{
+	font-size:0.95em;
+	text-align:center;
+	padding:4px;
+	border:1px solid #202020;
+	border-collapse:collapse
+}
+.table3_1 tr:nth-child(even){
+	background-color:#fdfdfd;
+}

@@ -22,16 +22,14 @@
 		</trim>
 	</sql>
 	<sql id="jwCri">
-		<trim>
-			<choose>
-				<when test="kind != null">
+		<choose>
+				<when test="kind != null and kind != ''">
 					kind=#{kind} and 
 				</when>
-				<when test="kind == null">
-					
+				<when test="kind == null or kind ==''">
 				</when>
-			</choose>
-		</trim>
+				<otherwise></otherwise>
+		</choose>
 	</sql>
 	<sql id="yhCri"><!-- 회원검색 -->
       <trim prefix="(" suffix=") " prefixOverrides="OR"><!-- where 다음에 or가 오면 지움 -->
@@ -98,7 +96,7 @@
 			select 
 				rbno, title, content, writer, regdate, star, pname, kind
 			from (
-				select rownum rn, rbno, title, r.content, writer, regdate, star, p.name as pname, p.kind 
+				select /*+ index_desc(review review_pk) */ rownum rn, rbno, title, r.content, writer, regdate, star, p.name as pname, p.kind 
 				from review r, product p 
 				where 
 		]]>		
@@ -136,7 +134,7 @@
 			select 
 				ref, qbno, secret, qtitle, qcontent, qwriter, qregdate, category, 
 				abno, atitle, acontent, awriter, aregdate, pseq, pname, kind , status 
-			from (select 
+			from (select /*+ index_desc(qeustion SYS_C007987) */
 				rownum rn, ref, qbno, secret, qtitle, qcontent, qwriter, qregdate, category, 
 				abno, atitle, acontent, awriter, aregdate, p.pseq, p.name as pname, kind, status 
 				from qna_view q, product p 
@@ -145,7 +143,7 @@
 			<include refid="jwCri"></include>
 				
 		<![CDATA[		
-				q.pseq = p.pseq and rownum <= #{pageNum} * #{amount} order by qbno desc
+				q.pseq = p.pseq and rownum <= #{pageNum} * #{amount} 
 			)
 			where rn > (#{pageNum} - 1) * #{amount}
 		]]>
@@ -209,9 +207,8 @@
 	</select>
 	<select id="oseqListPaging" resultType="int">
 		<![CDATA[ 
-			select oseq from(select distinct rownum rn, oseq from order_view 
-			where status=#{status} and rownum <= #{pageNum} * #{amount} order by oseq desc) 
-			where rn  > (#{pageNum} - 1) * #{amount}
+			select distinct oseq from order_view 
+			where status=#{status} order by oseq desc
 		]]>
 	</select>
 	<select id="orderDetailList" resultType="com.midori.domain.OrderVO">
@@ -301,9 +298,9 @@
    <select id="getMemberWithPaging" resultType="com.midori.domain.MemberVO">
       <![CDATA[
          select 
-            id,name,email,address1,address2,phone,indate 
+            id, name, email, address1, address2, phone, indate 
          from (
-            select rownum rn,id,name,email,address1,address2,phone,indate 
+            select /*+ INDEX_DESC(member mem_indate) */ rownum rn, id, name, email, address1, address2, phone, indate 
             from member
             
           ]]>

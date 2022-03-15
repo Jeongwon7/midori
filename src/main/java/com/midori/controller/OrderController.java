@@ -138,7 +138,7 @@ public class OrderController {
 	        model.addAttribute("orderList", orderList);
 	      
 	      
-	      return "/mypage/orderall";
+	      return "/mypage/ordering";
 	   }
 	 
 	 
@@ -169,6 +169,5 @@ public class OrderController {
 	         
 			 return "/mypage/orderall";
 		}
-
 	
 }

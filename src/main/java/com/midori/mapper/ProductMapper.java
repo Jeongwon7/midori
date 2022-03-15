@@ -36,5 +36,6 @@ public interface ProductMapper {
 	public List<ProductVO> getProductListWithPaging(Criteria9 cri);
     public int getTotalCount(Criteria9 cri);
     
-    
+    public int getNewProductCount(Criteria9 cri);
+    public int getBestProductCount(Criteria9 cri);
 }

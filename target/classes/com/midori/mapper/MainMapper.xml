@@ -7,4 +7,11 @@
   <select id="getBestPro" resultType="com.midori.domain.ProductVO">
   	select * from best_pro_view
   </select>
+  <select resultType="com.midori.domain.ProductVO" id="getSalad">select * from product where kind = '1' </select>
+
+	<select resultType="com.midori.domain.ProductVO" id="getDessert">select * from product where kind = '6' </select>
+
+	<select resultType="com.midori.domain.ProductVO" id="getFriedrice">select * from product where kind = '3' </select>
+
+	<select resultType="com.midori.domain.ProductVO" id="getChicken">select * from product where kind = '2' </select>
 </mapper>

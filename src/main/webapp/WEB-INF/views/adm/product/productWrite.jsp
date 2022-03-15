@@ -3,86 +3,112 @@
 
 <%@ include file="../adminheader.jsp" %>
 
-  			<div class="col-md-10" style="margin-top:100px; margin-left:300px; width:1200px;">
-  				<h2>상품등록</h2>
-				<div class="col-md-12">
-					<form class="form-horizontal" name="frm" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-					  <div class="form-group">
-					    <label for="kind" class="col-sm-2 control-label">상품분류</label>
-					    <div class="col-sm-10">
-					     <select name="kind" class="select">
-							<option value="">선택</option>
-							<option value="1">샐러드</option>
-							<option value="2">닭가슴살</option>
-							<option value="3">다이어트도시락</option>
-							<option value="4">샌드위치</option>
-							<option value="5">프로틴</option>
-							<option value="6">저칼로리간식</option>
-							<option value="7">무설탕음료</option>
-						</select>
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="name" class="col-sm-2 control-label">상품명</label>
-					    <div class="col-sm-10">
-					      <input type="text" name="name" class="form-control" id="name" placeholder="상품명 입력">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="price1" class="col-sm-2 control-label">원가</label>
-					    <div class="col-sm-10">
-					      <input type="text" name="price1" class="form-control" id="price1" placeholder="원가 입력" onKeyUp='NumberFormat(this)'>
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="price2" class="col-sm-2 control-label">판매가</label>
-					    <div class="col-sm-10">
-					      <input type="text" name="price2" class="form-control" id="price2" placeholder="판매가 입력" onBlur="go_ab()" onKeyUp='NumberFormat(this)'>
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="price3" class="col-sm-2 control-label">수익</label>
-					    <div class="col-sm-10">
-					      <input type="text" name="price3" class="form-control" id="price3" onKeyUp="NumberFormat(this)" readonly>
-					    </div>
-					  </div>
-					   <div class="form-group">
-					     <label class="form-check-label col-sm-2 control-label" for="bestyn">
-						  베스트 상품
-						  </label>
-						   <input class="form-check-input" type="radio" name="bestyn" id="bestyn" value="y">
-							  <label class="form-check-label" for="bestyn" style="margin-right:50px;">
-							    Y
-						      </label>
-					 	  <input class="form-check-input" type="radio" name="bestyn" id="bestyn" value="n" checked="checked">
-							  <label class="form-check-label" for="bestyn">
-							    N
-						  </label>
-					  </div>
-					 
-					  <div class="form-group">
-					    <label for="content" class="col-sm-2 control-label">상품설명</label>
-					    <div class="col-sm-10">
-					      <textarea name="content" class="form-control" rows="10" id="summernote"></textarea>
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <label for="image" class="col-sm-2 control-label">대표이미지</label>
-					    <div class="col-sm-10">
-					      <input type="file" name="uploadFile" class="form-control" id="image">
-					    </div>
-					  </div>
-					  <div class="form-group">
-					    <div class="col-sm-offset-2 col-sm-10">
-					      <button type="button" class="btn btn-default" onclick="go_save()">상품등록</button>
-					      <button type="button" class="btn btn-default" onclick="go_mov()">목록</button>
-					    </div>
-					  </div>
-					</form>
-				</div>
-  			</div>
-  		</div>
+<div class="col-md-12 col-sm-12" style="margin-left:250px; width:1100px;">
+	<h2 style="padding-left:10px; padding:30px 0;">상품등록</h2>
+	<div class="noticewrite">
+	<form name="frm" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+	  <div class="tbl_noticewrite">
+	  	<table class="noticewrite_table">
+	      <colgroup>
+	       <col width="130">
+	       <col> 
+	       <col>
+	      </colgroup>
+	      <tbody>
+			<tr>
+			 <th scope="row">
+			  <div class="txt-1">상품분류</div>
+			 </th>
+			 <td colspan="3">
+			 	<select name="kind" class="select">
+					<option value="">선택</option>
+					<option value="1">샐러드</option>
+					<option value="2">닭가슴살</option>
+					<option value="3">다이어트도시락</option>
+					<option value="4">샌드위치</option>
+					<option value="5">프로틴</option>
+					<option value="6">저칼로리간식</option>
+					<option value="7">무설탕음료</option>
+				</select>
+			 </td>
+			</tr>
+			<tr>
+			 <th scope="row">
+			  <div class="txt-1">상품명</div>
+			 </th>
+			 <td colspan="3">
+			  <input type="text" name="name" id="name" style="width:100%; margin:0;" placeholder="상품명 입력">
+			 </td>
+			</tr>
+			<tr>
+			 <th scope="row">
+			  <div class="txt-1">원가</div>
+			 </th>
+			 <td colspan="3">
+			 	<input type="text" name="price1" class="form-control" id="price1"  style="width:100%; margin:0;"  placeholder="원가 입력" onKeyUp='NumberFormat(this)'>
+			  </td>
+			 </tr>
+			 <tr>
+			 <th scope="row">
+			  <div class="txt-1">판매가</div>
+			 </th>
+			 <td colspan="3">
+			 	<input type="text" name="price2" id="price2"  style="width:100%; margin:0;"  placeholder="판매가 입력" onBlur="go_ab()" onKeyUp='NumberFormat(this)'>
+			  </td>
+			 </tr>
+			 <tr>
+			 <th scope="row">
+			  <div class="txt-1">수익</div>
+			 </th>
+			 <td colspan="3">
+			 	<input type="text" name="price3" id="price3"  style="width:100%; margin:0;" onKeyUp="NumberFormat(this)" readonly>
+			  </td>
+			 </tr>
+			 <tr>
+			 <th scope="row">
+			  <div class="txt-1">베스트 상품</div>
+			 </th>
+			 <td colspan="3">
+			 	<input type="radio" name="bestyn" id="bestyn" value="y"  >
+			 		<label class="form-check-label" for="bestyn" style="margin-right:50px;">Y</label>
+	 	  		<input class="form-check-input" type="radio" name="bestyn" id="bestyn" value="n" checked="checked">
+			  		<label class="form-check-label" for="bestyn">N</label>
+			  </td>
+			 </tr>
+			 <tr>
+			 <th scope="row">
+			  <div class="txt-1">상품설명</div>
+			 </th>
+			 <td colspan="3">
+			 	<textarea name="content" rows="10" id="summernote" style="width:100%; height:150px;"></textarea>
+			 </td>
+			 </tr>
+			  <tr>
+			 <th scope="row">
+			  <div class="txt-1">대표이미지</div>
+			 </th>
+			 <td colspan="3">
+			 	<input type="file" name="uploadFile" id="image"  style="width:100%; margin:0;" onKeyUp="NumberFormat(this)" readonly>
+			 </td>
+			 </tr>
+			</tbody>
+	  		</table>
+		    </div>
+		    <div class="order_footer" style="float:left;">
+    		<div class="button_wrap">
+    		  <p class="buy">
+    		  <button type="button" class="rarara" onclick="go_save()">상품등록</button>
+    		  </p>
+    		  <p class="cart">
+    		  <button type="button" class="rarara" onclick="location.href='/adm/product/productlist.do'">목록</button>
+    		  </p>
+    		</div>
+    	  </div>
+	</form>
+</div>
+</div>
+	</div>
   	</div>
 </div>
 	<script>

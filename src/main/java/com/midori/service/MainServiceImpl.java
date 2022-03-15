@@ -25,5 +25,23 @@ public class MainServiceImpl implements MainService {
 	public List<ProductVO> GetBestPro() {
 		return mapper.getBestPro();
 	}
+	  @Override
+	    public List<ProductVO> GetSalad() {
+	    	return mapper.getSalad();
+	    }  
+	    
+	    @Override
+	    public List<ProductVO> getDessert() {
+	        return mapper.getDessert();
+	    }
 
+	    @Override
+	    public List<ProductVO> GetFriedrice() {
+	    	return mapper.getFriedrice();
+	    }
+	    
+	    @Override
+	    public List<ProductVO> GetChicken() {
+	    	return mapper.getChicken();
+	    }
 }

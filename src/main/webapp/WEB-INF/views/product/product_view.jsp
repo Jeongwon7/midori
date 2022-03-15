@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%@ include file="../header.jsp" %>
+    <%@ include file="../mainheader.jsp" %>
 	
-   <link rel="stylesheet" href="../resources/assets/css/product.css">
+   <link rel="stylesheet" href="/resources/assets/css/product.css">
 
 
    <!-- single product -->
-         <div class="col-md-9 newitem" >
+      <div class="midori_main">
+	   <div class="tit_page" style="padding-top: 110px;padding-left: 25px;">
+	    <div class="productview_page">
           <form id="ofrm" method="post" name="formm" >
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
             <input type="hidden" name="pseq" value="${plist.pseq}">
@@ -59,7 +61,7 @@
                       </div>
                       <div class="cart_type2">
                         <span class="tit_item">
-                            구매수량
+                                                            구매수량
                         </span>
                          <span class="count">
                              <button class="btn7 down on minus" type="button">-</button>
@@ -69,7 +71,7 @@
                          </span>
                       </div>
                       <div class="total1">
-                       <div class="price">
+                       <div class="price" style="font-size: 20px;">
                          <strong class="tit">총 상품금액 : </strong>
                          <span class="sum">
                           <span class="num">
@@ -82,21 +84,16 @@
                         <span>비회원인 경우, 회원가입후 구매해주시기 바랍니다.</span>
                       </span>
                        </div>
-                       <div class="cart_footer">
-                        <div class="button_wrap">
-                         <p class="buy">
-                           <a href="#" class="first" onclick="return chk_formm()">구매하기</a>
-                         </p>
-                         <p class="cart">
-                          <a href="#" class="first" onclick="goCart()">장바구니</a>
-                          </p>
-                        </div>
-                       </div>
+                        <div class="view_footer">
+					      <button class="btn_join btn_active" onclick="goCart()" style="width: 220px;">장바구니</button>
+					      <button class="btn_join btn_active" onclick="goOrderinfo()"style="width: 220px;">구매하기</button>
+					  </div>
                    </div>
                 </div>
                   </div>
                  </form>
                  </div>
+                </div>
 
     			 <div class="goods-view-area">
     			  <div class="goods-view-infomation">
@@ -105,9 +102,9 @@
     			     <li class="infomation-tab actice" role="presentation">
     			      <a href="#productview" class="infomation-tab-anchor" aria-controls="productview" role="tab" data-toggle="tab">상품 설명</a>
     			     </li>
-    			     <li class="infomation-tab" role="presentation">
+    			     <!-- <li class="infomation-tab" role="presentation">
     			      <a href="#kcal" class="infomation-tab-anchor" aria-controls="kacl" role="tab" data-toggle="tab">상세 정보</a>
-    			     </li>
+    			     </li> -->
     			      <li class="infomation-tab" role="presentation">
     			      <a href="#review" class="infomation-tab-anchor" aria-controls="review" role="tab" data-toggle="tab">후기</a>
     			     </li>
@@ -118,14 +115,18 @@
     			    <div class="tab-content">
 					    <div role="tabpanel" class="tab-pane active" id="productview">
 					    	<div>
+					    		<span style="text-align:center;">
 					                   ${plist.content}
+					            </span>
 					    	</div>
 					    </div>
-					    <div role="tabpanel" class="tab-pane" id="kcal">
+					   <!--  <div role="tabpanel" class="tab-pane" id="kcal">
 						    <div>
-						          칼로리
+						         <span style="text-align:center;">
+					                  
+					            </span>
 						    </div>	 
-					    </div>
+					    </div> -->
 					    <div role="tabpanel" class="tab-pane" id="review">
 						   <div class="board">
 							<div class="title_txt">
@@ -461,8 +462,8 @@
 																					</div>
 																						<c:if test="${pinfo eq 'admin'}">
 																							<div class="review_btn">
-																									<span><input type="button" onclick="location.href='/adm/answermodify.do?abno=${list.abno}&qbno=${list.qbno}'" value="수정"></span>
-																									<span><input type="button" onclick="answer_delete(${list.abno}, ${list.qbno})" value="삭제"></span>
+																									<span><input type="button" class="btn_review" onclick="location.href='/adm/answermodify.do?abno=${list.abno}&qbno=${list.qbno}'" value="수정"></span>
+																									<span><input type="button" class="btn_review" onclick="answer_delete(${list.abno}, ${list.qbno})" value="삭제"></span>
 																							</div>
 																						</c:if>
 																					
@@ -484,13 +485,13 @@
 							 </table>
 							 	<sec:authorize access="isAnonymous()">
 											<div class="review_btn float-right">
-													<span><input type="button" onclick="alert('로그인이 필요한 기능입니다');" value="글쓰기"></span>
+													<span><input type="button" onclick="alert('로그인이 필요한 기능입니다');" class="btn_review" value="글쓰기"></span>
 											</div>
 										</sec:authorize>
 												
 											<sec:authorize access="isAuthenticated()">
 												<div class="review_btn float-right">
-													<span><input type="button" onclick="location.href='/qna/questionwrite.do?pseq=${plist.pseq}'" value="글쓰기"></span>
+													<span><input type="button" class="btn_review" onclick="location.href='/qna/questionwrite.do?pseq=${plist.pseq}'" value="글쓰기"></span>
 												</div>
 											</sec:authorize>
 							</div>
@@ -504,30 +505,6 @@
 			</div>
 		</div>
 	
-	<!-- copyright -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.<br>
-						Distributed By - <a href="https://themewagon.com/">Themewagon</a>
-					</p>
-				</div>
-				<div class="col-lg-6 text-right col-md-12">
-					<div class="social-icons">
-						<ul>
-							<li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#" target="_blank"><i class="fab fa-dribbble"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- end copyright -->
 	<script>
 	$(function(){ 
 
@@ -605,4 +582,11 @@
 		form.action = "/mypage/cartInsert.do";
 		form.submit();
 	}
+	
+    function goOrderinfo(){
+        var form = document.getElementById('ofrm');
+        form.action = "/order/orderinfo.do";
+        form.submit();
+     }
 	</script>
+	<%@ include file="../footer.jsp" %>
